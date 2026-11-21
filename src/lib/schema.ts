@@ -64,13 +64,15 @@ export function clinicaSchema() {
       { "@type": "MedicalProcedure", name: "Urgencias dentales" },
     ],
     sameAs: [CLINICA.redes.facebook, CLINICA.redes.instagram].filter(Boolean),
-    ...(CLINICA.resenas.total > 0 && {
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: CLINICA.resenas.calificacion,
-        reviewCount: CLINICA.resenas.total,
-      },
-    }),
+    ...(CLINICA.marcarAggregateRating
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: CLINICA.resenas.calificacion,
+            reviewCount: CLINICA.resenas.total,
+          },
+        }
+      : {}),
   };
 }
 

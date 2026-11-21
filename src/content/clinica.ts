@@ -63,6 +63,20 @@ export const CLINICA = {
   resenas: { calificacion: 4.9, total: 27 },
 
   /**
+   * Marcado aggregateRating en el schema de la clínica.
+   *
+   * Desactivado a propósito. Google no acepta reseñas "auto-servidas": un
+   * negocio no debe marcar en su propio sitio una calificación sobre sí
+   * mismo. No genera estrellas en los resultados y sí puede acarrear una
+   * acción manual. Las estrellas que sí aparecen son las de la ficha de
+   * Google Maps, que se ganan con reseñas reales (meta del plan: 50).
+   *
+   * Las cifras de arriba se siguen mostrando en la portada como dato,
+   * que eso sí está permitido.
+   */
+  marcarAggregateRating: false,
+
+  /**
    * Especialidades que la clínica comunica en Facebook:
    * odontología general · endodoncia · ortodoncia · implantología.
    * El sitio se concentra en ortodoncia y endodoncia por decisión del plan
