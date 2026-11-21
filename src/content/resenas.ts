@@ -1,15 +1,14 @@
+import { CLINICA } from "./clinica";
+
 /**
- * Reseñas y sus fuentes.
+ * Reseñas de la ficha de Google Business Profile.
  *
- * Regla de la casa: cualquier cifra de reseñas que se muestre en el sitio
- * lleva enlace a dónde se consultó y la fecha. Si no se puede citar, no se
- * publica. Es lo correcto y además protege a la clínica si alguien
- * cuestiona el dato.
+ * ✅ Tomadas de https://maps.app.goo.gl/49F15e9GqALj7oEYA el 21-nov-2026.
  *
- * ⚠️ NINGUNA de estas cifras viene de la ficha de Google Business Profile,
- * que es la fuente que de verdad importa. Son directorios que la copiaron
- * en algún momento. En cuanto tengamos acceso a la ficha hay que sustituir
- * esto por el dato real.
+ * Regla de la casa: solo se publican reseñas reales, con el nombre tal
+ * como aparece en Google y con enlace a la ficha para que cualquiera
+ * pueda comprobarlas. No se inventan ni se editan los textos; si hay que
+ * recortar, se marca el recorte.
  */
 
 export type FuenteResena = {
@@ -19,13 +18,21 @@ export type FuenteResena = {
   calificacion: number | null;
   total: number | null;
   consultado: string;
-  /** Advertencia que se muestra junto a la fuente, si aplica. */
   nota?: string;
-  /** false cuando no pudimos abrir la página y solo vimos el extracto. */
-  verificadaEnFuente: boolean;
+  /** La fuente que manda. Las demás son secundarias. */
+  principal?: boolean;
 };
 
 export const FUENTES_RESENAS: FuenteResena[] = [
+  {
+    id: "google",
+    nombre: "Google Maps",
+    url: CLINICA.googleMapsUrl,
+    calificacion: 4.9,
+    total: 47,
+    consultado: "2026-11-21",
+    principal: true,
+  },
   {
     id: "buscodentista",
     nombre: "Busco Dentista",
@@ -33,75 +40,74 @@ export const FUENTES_RESENAS: FuenteResena[] = [
     calificacion: 4.9,
     total: 27,
     consultado: "2026-11-21",
-    verificadaEnFuente: true,
-  },
-  {
-    id: "cybo",
-    nombre: "Cybo",
-    url: "https://es.cybo.com/MX-biz/clínica-dental-ident_2c",
-    calificacion: null,
-    total: null,
-    consultado: "2026-11-21",
-    nota: "La ficha existe pero la página no se pudo abrir para verificar las cifras.",
-    verificadaEnFuente: false,
+    nota: "Directorio que copió la ficha hace tiempo: va retrasado en el número de reseñas.",
   },
   {
     id: "facebook",
     nombre: "Facebook",
-    url: "https://www.facebook.com/IDentClinicaDentalQro/",
+    url: CLINICA.redes.facebook,
     calificacion: null,
     total: 1,
     consultado: "2026-11-21",
     nota: "1 opinión en la página, además de 408 seguidores.",
-    verificadaEnFuente: true,
-  },
-  {
-    id: "google",
-    nombre: "Google Maps",
-    url: "", // TODO: URL del perfil de Google Business Profile
-    calificacion: null,
-    total: null,
-    consultado: "",
-    nota: "Pendiente de acceso a la ficha. Es la fuente que cuenta.",
-    verificadaEnFuente: false,
   },
 ];
 
-/** La fuente que se usa para la cifra destacada del sitio. */
 export const FUENTE_PRINCIPAL = FUENTES_RESENAS[0];
 
-export type Testimonio = {
+export type Resena = {
   autor: string;
+  /** Lo que Google muestra bajo el nombre, p. ej. "Local Guide · 9 opiniones" */
+  credencial?: string;
   estrellas: number;
   texto: string;
-  fuente: string;
-  fuenteUrl: string;
-  /** Dónde lo vimos, para poder rastrearlo. */
-  origen: string;
+  fecha: string;
+  /** true cuando el texto viene recortado por Google en la vista pública. */
+  recortada?: boolean;
 };
 
-/**
- * ⚠️ Solo un testimonio está documentado hasta ahora, y lo vimos en una
- * publicación de Facebook de la clínica que reproducía una reseña de
- * Google. Antes de publicarlo conviene localizarlo en la ficha real.
- *
- * No se inventan testimonios. Cuando tengamos la ficha de Google se
- * cargan los reales aquí.
- */
-export const TESTIMONIOS: Testimonio[] = [
+/** Reseñas con autor, tal como aparecen en la ficha. */
+export const RESENAS: Resena[] = [
   {
-    autor: "Fernando Hernández",
+    autor: "Gonzalo Hernández",
+    credencial: "2 opiniones",
     estrellas: 5,
+    fecha: "Hace una semana",
     texto:
-      "Excelente servicio y buena atención a paciente, fueron muy amables y me ayudaron con las dudas que tenía respecto a mis tratamientos.",
-    fuente: "Reseña en Google",
-    fuenteUrl: "https://www.facebook.com/IDentClinicaDentalQro/",
-    origen:
-      "Publicación de la clínica en Facebook del 12 de agosto que reproduce la reseña",
+      "Excelente servicio y atención. Desde el primer momento fueron muy amables, profesionales y atentos. Quedé muy satisfecho con la experiencia. Totalmente recomendable.",
+  },
+  {
+    autor: "Torrez Daniel",
+    credencial: "10 opiniones · 3 fotos",
+    estrellas: 5,
+    fecha: "Hace 10 meses",
+    texto:
+      "Excelente atención de principio a fin. Me realizaron la extracción de una muela con endodoncia y todo el procedimiento fue muy profesional, sin dolor y con explicaciones claras en cada paso. También me colocaron brackets y la experiencia ha…",
+    recortada: true,
+  },
+  {
+    autor: "Ricardo Malagón",
+    credencial: "Local Guide · 9 opiniones",
+    estrellas: 5,
+    fecha: "Hace 2 meses",
+    texto:
+      "Excelente servicio, atención, calidad e higiene impecable. Totalmente recomendados.",
   },
 ];
 
-/** Meta del plan de trabajo: 50 reseñas bastan para disputar el mapa. */
+/**
+ * Frases que Google destaca en el resumen de opiniones de la ficha. No
+ * llevan autor porque Google no lo muestra en ese resumen, y así se
+ * identifican en el sitio: como destacados de Google, no como testimonios
+ * atribuidos.
+ */
+export const DESTACADOS_GOOGLE: string[] = [
+  "Mis dientes quedaron bien hermosos, ¡muchas gracias!",
+  "Excelente servicio, muy profesional y atenta.",
+  "Muy buena atención y excelente trato.",
+];
+
+/** Meta del plan: 50 reseñas bastan para disputar el mapa local. */
 export const META_RESENAS = 50;
 
 /** Referencia de la competencia (plan de trabajo, nov 2026). */

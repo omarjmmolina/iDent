@@ -146,7 +146,7 @@ export default function Page() {
             </table>
           </div>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+          <div className="reveal-grupo mt-10 grid gap-5 sm:grid-cols-2">
             <div className="rounded-3xl bg-sand-100 p-6">
               <h3 className="font-display text-lg font-semibold text-navy-800">
                 Qué incluye siempre

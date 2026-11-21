@@ -97,7 +97,7 @@ export default function Page() {
 
       <section className="py-14 sm:py-20">
         <Container>
-          <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="reveal-grupo grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {CASOS.map((c) => (
               <li key={c.id}>
                 <article className="flex h-full flex-col">

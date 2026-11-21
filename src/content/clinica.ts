@@ -1,48 +1,37 @@
 /**
  * Datos de la clínica (NAP) — FUENTE ÚNICA DE VERDAD.
  *
- * ⚠️ POR CONFIRMAR CON LA CLÍNICA. Los datos marcados con «⚠️ directorio»
- * se tomaron de directorios públicos (buscodentista.com.mx y cybo.com,
- * consultados el 21-nov-2026) y coinciden entre sí, pero NO están
- * verificados por Omar ni por Karely. Antes de publicar hay que
- * confirmarlos uno por uno.
+ * ✅ VERIFICADO contra la ficha de Google Business Profile el 21-nov-2026:
+ * https://maps.app.goo.gl/49F15e9GqALj7oEYA
  *
- * El NAP (nombre, dirección, teléfono) tiene que ser IDÉNTICO aquí, en la
- * ficha de Google Business Profile y en cualquier directorio. Si no
- * coincide carácter por carácter, el posicionamiento local se castiga.
+ * La ficha resolvió los dos conflictos que había:
+ *   · Dirección: es el 955, no el 953 que aparece en Facebook.
+ *   · Teléfono: es 775 144 8793, no el 7793 de Facebook.
+ * Facebook está desactualizado en los dos campos. Hay que corregirlo allá,
+ * porque Google premia que el NAP coincida carácter por carácter en todos
+ * lados y castiga lo contrario.
  */
 
 export const CLINICA = {
   nombre: "iDent",
-  // ⚠️ directorio: aparece como "Clínica Dental, Ident"
-  nombreLegal: "iDent Clínica Dental",
+  /** Tal como aparece en la ficha de Google. */
+  nombreLegal: "Clínica Dental iDent",
   tagline: "Sonreír es solo el comienzo",
   descripcionCorta:
     "Clínica dental en El Pueblito, Corregidora, especializada en ortodoncia y endodoncia, con atención para todo Querétaro.",
 
   // --- Contacto -------------------------------------------------------
-  // 🚨 CONFLICTO DE NAP — RESOLVER ANTES DE PUBLICAR.
-  // Hay TRES números distintos circulando:
-  //   · 775 144 7793 — Facebook oficial (sección "Información de contacto")
-  //   · 775 144 8793 — buscodentista.com.mx y cybo.com
-  //   · 442 143 7966 — imagen de portada de Facebook
-  // Un anuncio antiguo muestra además un 44 21 85 67 81 incompleto.
-  // Google premia que el teléfono sea idéntico en todos lados y castiga lo
-  // contrario. Hay que elegir UNO, ponerlo aquí y corregir el resto.
-  // Mientras tanto se usa el de Facebook, que es la fuente propia.
-  telefono: "+527751447793",
-  telefonoVisible: "775 144 7793",
-  // ⚠️ POR CONFIRMAR: Facebook tiene botón de WhatsApp. ¿A qué número va?
-  whatsapp: "527751447793",
-  // ⚠️ omarmmolina@outlook.com aparece en Facebook. No conviene publicar un
-  // correo personal en el sitio: pedir uno del dominio (contacto@...).
-  email: "",
+  // ✅ Google Business Profile
+  telefono: "+527751448793",
+  telefonoVisible: "775 144 8793",
+  /** ⚠️ POR CONFIRMAR: ¿el WhatsApp es este mismo número? */
+  whatsapp: "527751448793",
+  email: "", // TODO: correo del dominio. En Facebook hay uno personal.
 
   // --- Dirección ------------------------------------------------------
-  // 🚨 CONFLICTO: Facebook dice 953, los directorios dicen 955.
-  // Se usa el 953 por ser la fuente propia de la clínica. CONFIRMAR.
+  // ✅ Google Business Profile
   direccion: {
-    calle: "Av. Prolongación El Jacal 953, Local 23",
+    calle: "Av. Prolongación El Jacal 955, Local 23",
     plaza: "Plaza El Jacal",
     colonia: "El Pueblito",
     municipio: "Corregidora",
@@ -51,55 +40,21 @@ export const CLINICA = {
     pais: "MX",
   },
 
-  // TODO: coordenadas exactas del pin de Google Maps (estas son aproximadas
-  // al centro de El Pueblito y hay que sustituirlas por las reales).
-  geo: { lat: 20.5446, lng: -100.4432 },
+  /** ✅ Coordenadas exactas del pin de Google. */
+  geo: { lat: 20.5598265, lng: -100.4313485 },
+  /** Plus code de Google. */
+  plusCode: "HH59+WF El Pueblito, Querétaro",
 
-  googleMapsUrl: "", // TODO: URL corta del perfil de Google Business Profile
-  googleReviewUrl: "", // TODO: enlace directo para dejar reseña (g.page/r/...)
-
-  // Reseñas según directorios (nov 2026). Meta del plan: 50.
-  // ⚠️ CONFIRMAR con la ficha real de Google Business Profile.
-  resenas: { calificacion: 4.9, total: 27 },
-
+  googleMapsUrl: "https://maps.app.goo.gl/49F15e9GqALj7oEYA",
+  googleCid: "9457323074947018289",
   /**
-   * Marcado aggregateRating en el schema de la clínica.
-   *
-   * Desactivado a propósito. Google no acepta reseñas "auto-servidas": un
-   * negocio no debe marcar en su propio sitio una calificación sobre sí
-   * mismo. No genera estrellas en los resultados y sí puede acarrear una
-   * acción manual. Las estrellas que sí aparecen son las de la ficha de
-   * Google Maps, que se ganan con reseñas reales (meta del plan: 50).
-   *
-   * Las cifras de arriba se siguen mostrando en la portada como dato,
-   * que eso sí está permitido.
+   * ⚠️ PENDIENTE: enlace directo para dejar reseña (g.page/r/…).
+   * Se saca del panel de Google Business Profile, en "Pedir reseñas".
+   * Es la pieza que hace funcionar el sistema de reseñas del plan.
    */
-  marcarAggregateRating: false,
+  googleReviewUrl: "",
 
-  /**
-   * Especialidades que la clínica comunica en Facebook:
-   * odontología general · endodoncia · ortodoncia · implantología.
-   * El sitio se concentra en ortodoncia y endodoncia por decisión del plan
-   * de trabajo. ⚠️ PREGUNTAR si quieren página para implantología.
-   */
-  especialidadesFacebook: [
-    "Odontología general",
-    "Endodoncia",
-    "Ortodoncia",
-    "Implantología",
-  ],
-
-  /**
-   * ⚠️ POR CONFIRMAR: Facebook promociona "Evaluación de sonrisa GRATIS".
-   * Si sigue vigente es el mejor gancho del sitio y hay que ponerlo en la
-   * portada. Si ya no, hay que bajar ese post.
-   */
-  valoracionGratis: false,
-
-  // --- Horarios -------------------------------------------------------
-  // ⚠️ POR CONFIRMAR: los dos directorios no coinciden en viernes y sábado.
-  // buscodentista: L-V 9-21, Sáb 10-18 · cybo: Vie 10-21, Sáb 10-16.
-  // Aquí se usa la versión de buscodentista.
+  // --- Horarios ✅ Google Business Profile -----------------------------
   horarios: [
     { dias: "Lunes a viernes", abre: "09:00", cierra: "21:00" },
     { dias: "Sábado", abre: "10:00", cierra: "18:00" },
@@ -115,10 +70,47 @@ export const CLINICA = {
     { dias: ["Saturday"], abre: "10:00", cierra: "18:00" },
   ],
 
+  /** ✅ Google Business Profile, 21-nov-2026. Meta del plan: 50. */
+  resenas: { calificacion: 4.9, total: 47 },
+
+  /**
+   * Marcado aggregateRating en el schema: desactivado a propósito.
+   * Google no acepta reseñas auto-servidas: un negocio no debe marcar en
+   * su propio sitio una calificación sobre sí mismo. No genera estrellas y
+   * sí puede acarrear una acción manual. Las estrellas que cuentan son las
+   * de la ficha, y esas se ganan con reseñas reales.
+   */
+  marcarAggregateRating: false,
+
+  /**
+   * Especialidades que la clínica comunica en Facebook: odontología
+   * general, endodoncia, ortodoncia e implantología. El sitio cubre las
+   * dos del plan. ⚠️ PREGUNTAR si quieren página de implantología.
+   */
+  especialidadesFacebook: [
+    "Odontología general",
+    "Endodoncia",
+    "Ortodoncia",
+    "Implantología",
+  ],
+
+  /**
+   * ⚠️ POR CONFIRMAR: Facebook promociona "Evaluación de sonrisa GRATIS".
+   * Si sigue vigente conviene ponerlo en la portada.
+   */
+  valoracionGratis: false,
+
+  /**
+   * Hallazgos de la ficha que el plan convierte en trabajo inmediato:
+   *   · No tiene sitio web enlazado. Es lo primero que hay que poner.
+   *   · Solo 4 fotos cargadas. El frente 04 del plan pide cargarlas por
+   *     servicio.
+   */
+  fichaGoogle: { tieneSitioWeb: false, fotos: 4 },
+
   redes: {
     facebook: "https://www.facebook.com/IDentClinicaDentalQro/",
     instagram: "", // TODO: ¿@identclinicadentalqro?
-    // Facebook: 408 seguidores, 1 opinión (nov 2026)
   },
 } as const;
 

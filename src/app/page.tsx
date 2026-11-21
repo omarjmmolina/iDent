@@ -3,6 +3,11 @@ import { buildMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { faqSchema } from "@/lib/schema";
 import { Foto } from "@/components/Foto";
+import { Carrusel } from "@/components/Carrusel";
+import { Proceso } from "@/components/Proceso";
+import { BlogRelacionado } from "@/components/BlogRelacionado";
+import { Resenas } from "@/components/Resenas";
+import { Validadores } from "@/components/Validadores";
 import {
   Container,
   Eyebrow,
@@ -11,13 +16,10 @@ import {
   CtaFinal,
   Faqs,
 } from "@/components/ui";
-import { CLINICA, direccionUnaLinea } from "@/content/clinica";
+import { CLINICA, direccionUnaLinea, waLink } from "@/content/clinica";
 import { PILARES, SERVICIOS, serviciosDe } from "@/content/servicios";
 import { ZONAS } from "@/content/zonas";
 import { STOCK } from "@/content/imagenes";
-import { Proceso } from "@/components/Proceso";
-import { BlogRelacionado } from "@/components/BlogRelacionado";
-import { Resenas } from "@/components/Resenas";
 import { ARTICULOS } from "@/content/blog";
 
 export const metadata = buildMetadata({
@@ -59,30 +61,50 @@ export default function Home() {
     <>
       <JsonLd data={faqSchema(FAQS_HOME)} />
 
-      {/* ───────── Hero ───────── */}
+      {/* ───────── Portada ───────── */}
       <section className="relative overflow-hidden bg-sand-50">
         <div className="bg-grid absolute inset-0 opacity-60" aria-hidden="true" />
+        <div
+          aria-hidden="true"
+          className="aura absolute -top-32 -right-24 size-[28rem] rounded-full bg-teal-200/40 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="aura absolute -bottom-40 -left-32 size-[26rem] rounded-full bg-navy-200/40 blur-3xl"
+          style={{ animationDelay: "3s" }}
+        />
+
         <Container className="relative py-14 sm:py-20 lg:py-24">
           <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
             <div>
-              <Eyebrow>Corregidora · El Pueblito · Querétaro</Eyebrow>
-              <h1 className="mt-4 text-4xl leading-[1.05] font-bold text-navy-800 sm:text-5xl lg:text-[3.4rem]">
-                Ortodoncia y endodoncia en Corregidora
+              <div className="entra entra-1">
+                <Eyebrow>Corregidora · El Pueblito · Querétaro</Eyebrow>
+              </div>
+              <h1 className="entra entra-2 mt-4 text-4xl leading-[1.05] font-bold text-navy-800 sm:text-5xl lg:text-[3.4rem]">
+                Ortodoncia y endodoncia{" "}
+                <span className="relative inline-block">
+                  <span className="relative z-10">en Corregidora</span>
+                  <span
+                    aria-hidden="true"
+                    className="absolute inset-x-0 bottom-1.5 z-0 h-3 rounded-sm bg-teal-200/70 sm:bottom-2 sm:h-4"
+                  />
+                </span>
               </h1>
-              <p className="mt-5 max-w-xl text-lg leading-relaxed text-navy-600">
-                Dos especialidades, una clínica, y el costo por escrito desde la
-                primera cita. Atendemos a pacientes de todo Querétaro sin que
-                tengan que cruzar la ciudad para un ajuste de veinte minutos.
+              <p className="entra entra-3 mt-5 max-w-xl text-lg leading-relaxed text-navy-600">
+                Dos especialidades, una clínica, y el costo por escrito desde
+                la primera cita. Atendemos a pacientes de todo Querétaro sin
+                que tengan que cruzar la ciudad para un ajuste de veinte
+                minutos.
               </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <BotonWhatsApp mensaje="Hola, quiero agendar una valoración en iDent." >
+              <div className="entra entra-4 mt-8 flex flex-col gap-3 sm:flex-row">
+                <BotonWhatsApp mensaje="Hola, quiero agendar una valoración en iDent.">
                   Agendar valoración
                 </BotonWhatsApp>
                 <BotonTelefono />
               </div>
 
-              <dl className="mt-10 grid max-w-lg grid-cols-3 gap-4 border-t border-navy-100 pt-6">
+              <dl className="entra entra-4 mt-10 grid max-w-lg grid-cols-3 gap-4 border-t border-navy-100 pt-6">
                 <div>
                   <dt className="text-xs text-navy-400">Google</dt>
                   <dd className="font-display text-xl font-bold text-navy-800">
@@ -109,24 +131,28 @@ export default function Home() {
               </dl>
             </div>
 
-            <Foto
-              archivo="fachada-clinica-ident-corregidora"
-              priority
-              stock={STOCK.hero}
-              foto={{
-                src: null,
-                ratio: "4/3",
-                alt: "Fachada de la clínica dental iDent en Plaza El Jacal, El Pueblito, Corregidora",
-                brief:
-                  "Fachada o recepción de la clínica en Plaza El Jacal. Horizontal, luz de día, con el logotipo visible. Es la primera imagen que va a ver el paciente.",
-              }}
-            />
+            <div className="entra entra-3 zoom-foto">
+              <Foto
+                archivo="fachada-clinica-ident-corregidora"
+                priority
+                stock={STOCK.hero}
+                foto={{
+                  src: null,
+                  ratio: "4/3",
+                  alt: "Fachada de la clínica dental iDent en Plaza El Jacal, El Pueblito, Corregidora",
+                  brief:
+                    "Fachada o recepción de la clínica en Plaza El Jacal. Horizontal, luz de día, con el logotipo visible. Es la primera imagen que va a ver el paciente.",
+                }}
+              />
+            </div>
           </div>
         </Container>
       </section>
 
+      <Validadores />
+
       {/* ───────── Urgencias ───────── */}
-      <section className="border-y border-teal-100 bg-teal-50">
+      <section className="border-b border-teal-100 bg-teal-50">
         <Container className="flex flex-col items-start gap-4 py-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-base text-navy-700">
             <strong className="font-semibold text-navy-800">
@@ -136,9 +162,10 @@ export default function Home() {
           </p>
           <Link
             href={`/${PILARES.endodoncia.slug}/urgencia-dolor-dental`}
-            className="shrink-0 text-sm font-semibold text-teal-700 underline underline-offset-4 transition hover:text-teal-800"
+            className="grupo-flecha shrink-0 text-sm font-semibold text-teal-700 transition hover:text-teal-800"
           >
-            Ver urgencias dentales →
+            <span className="subraya">Ver urgencias dentales</span>{" "}
+            <span className="flecha inline-block">→</span>
           </Link>
         </Container>
       </section>
@@ -146,7 +173,7 @@ export default function Home() {
       {/* ───────── Las dos vertientes ───────── */}
       <section className="py-16 sm:py-24">
         <Container>
-          <div className="max-w-2xl">
+          <div className="reveal max-w-2xl">
             <Eyebrow>En qué nos especializamos</Eyebrow>
             <h2 className="mt-3 text-3xl font-bold text-navy-800 sm:text-4xl">
               Dos especialidades, dos formas distintas de atenderte
@@ -158,31 +185,62 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
+          <div className="reveal-grupo mt-10 grid items-stretch gap-6 lg:grid-cols-2">
             {[PILARES.ortodoncia, PILARES.endodoncia].map((p) => {
-              const hijos = p.slug === PILARES.ortodoncia.slug ? orto : endo;
+              const esOrto = p.slug === PILARES.ortodoncia.slug;
+              const hijos = esOrto ? orto : endo;
               return (
                 <article
                   key={p.slug}
-                  className="flex flex-col rounded-4xl border border-navy-100 bg-white p-7 transition hover:border-navy-200 sm:p-9"
+                  className={`tarjeta-hover flex flex-col rounded-4xl border p-7 sm:p-9 ${
+                    esOrto
+                      ? "border-navy-100 bg-white"
+                      : "border-navy-700 bg-navy-800 text-white"
+                  }`}
                 >
-                  <h3 className="font-display text-2xl font-bold text-navy-800">
-                    <Link href={`/${p.slug}`} className="transition hover:text-teal-700">
-                      {p.h1}
-                    </Link>
-                  </h3>
-                  <p className="mt-3 leading-relaxed text-navy-600">{p.intro}</p>
-                  <ul className="mt-6 flex-1 space-y-2.5">
+                  <div className="flex flex-col-reverse items-start gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+                    <h3
+                      className={`font-display text-2xl font-bold ${esOrto ? "text-navy-800" : "text-white"}`}
+                    >
+                      <Link
+                        href={`/${p.slug}`}
+                        className={esOrto ? "transition hover:text-teal-700" : "transition hover:text-teal-300"}
+                      >
+                        {p.h1}
+                      </Link>
+                    </h3>
+                    <span
+                      className={`shrink-0 rounded-full px-3 py-1 text-[11px] font-semibold tracking-wide whitespace-nowrap uppercase ${
+                        esOrto
+                          ? "bg-sand-100 text-navy-500"
+                          : "bg-teal-500/20 text-teal-300"
+                      }`}
+                    >
+                      {esOrto ? "Tratamiento largo" : "Decisión inmediata"}
+                    </span>
+                  </div>
+
+                  <p
+                    className={`mt-3 leading-relaxed ${esOrto ? "text-navy-600" : "text-navy-100"}`}
+                  >
+                    {p.intro}
+                  </p>
+
+                  <ul className="mt-6 space-y-2.5">
                     {hijos.map((s) => (
                       <li key={s.slug}>
                         <Link
                           href={`/${p.slug}/${s.slug}`}
-                          className="group flex items-center justify-between gap-3 rounded-xl border border-transparent bg-sand-100 px-4 py-3 text-[15px] font-medium text-navy-700 transition hover:border-navy-200 hover:bg-white"
+                          className={`grupo-flecha flex items-center justify-between gap-3 rounded-xl border border-transparent px-4 py-3 text-[15px] font-medium transition ${
+                            esOrto
+                              ? "bg-sand-100 text-navy-700 hover:border-navy-200 hover:bg-white"
+                              : "bg-white/5 text-navy-100 hover:bg-white/10"
+                          }`}
                         >
                           {s.nombre}
                           <span
                             aria-hidden="true"
-                            className="text-navy-300 transition group-hover:translate-x-0.5 group-hover:text-teal-600"
+                            className={`flecha ${esOrto ? "text-navy-300" : "text-teal-400"}`}
                           >
                             →
                           </span>
@@ -190,12 +248,50 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                  <Link
-                    href={`/${p.slug}`}
-                    className="mt-6 text-sm font-semibold text-teal-700 underline underline-offset-4 transition hover:text-teal-800"
-                  >
-                    Ver {p.nombre.toLowerCase()} en Querétaro →
-                  </Link>
+
+                  {/* Bloque de cierre: equilibra las dos tarjetas y cada una
+                      remata con la acción que corresponde a su urgencia. */}
+                  <div className="mt-auto pt-6">
+                    {esOrto ? (
+                      <div className="rounded-2xl bg-teal-50 p-5">
+                        <p className="font-display text-base font-semibold text-navy-800">
+                          ¿No sabes cuál te toca?
+                        </p>
+                        <p className="mt-1.5 text-sm leading-relaxed text-navy-600">
+                          En la valoración medimos el espacio real de tu boca y
+                          te decimos qué sistemas funcionan en tu caso, con el
+                          costo de cada uno.
+                        </p>
+                        <Link
+                          href={`/${p.slug}`}
+                          className="grupo-flecha mt-3 inline-block text-sm font-semibold text-teal-700"
+                        >
+                          <span className="subraya">Ver ortodoncia en Querétaro</span>{" "}
+                          <span className="flecha inline-block">→</span>
+                        </Link>
+                      </div>
+                    ) : (
+                      <div className="rounded-2xl bg-teal-500/15 p-5">
+                        <p className="font-display text-base font-semibold text-white">
+                          Si estás con dolor ahora
+                        </p>
+                        <p className="mt-1.5 text-sm leading-relaxed text-navy-100">
+                          Guardamos espacios de urgencia cada día. Escríbenos
+                          contando qué te pasa y te decimos en minutos si hay
+                          hueco hoy.
+                        </p>
+                        <a
+                          href={waLink("Hola, tengo dolor de muela y necesito una cita hoy.")}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          data-evento="click_whatsapp"
+                          className="mt-4 inline-flex items-center justify-center rounded-full bg-teal-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-400"
+                        >
+                          Escribir por WhatsApp
+                        </a>
+                      </div>
+                    )}
+                  </div>
                 </article>
               );
             })}
@@ -203,10 +299,61 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* ───────── Por qué iDent ───────── */}
-      <section className="bg-navy-800 py-16 text-white sm:py-24">
+      {/* ───────── Todos los tratamientos (carrusel) ───────── */}
+      <section className="bg-sand-50 py-16 sm:py-20">
         <Container>
-          <div className="max-w-2xl">
+          <div className="reveal max-w-2xl">
+            <Eyebrow>Tratamientos</Eyebrow>
+            <h2 className="mt-3 text-3xl font-bold text-navy-800 sm:text-4xl">
+              Todo lo que resolvemos
+            </h2>
+          </div>
+          <Carrusel etiqueta="Tratamientos de iDent" className="mt-10">
+            {SERVICIOS.map((s) => (
+              <li key={s.slug} className="w-[17rem] sm:w-[19rem]">
+                <Link
+                  href={`/${PILARES[s.pilar].slug}/${s.slug}`}
+                  className="grupo-flecha tarjeta-hover flex h-full flex-col overflow-hidden rounded-3xl border border-navy-100 bg-white"
+                >
+                  <span className="zoom-foto relative block aspect-[4/3] overflow-hidden bg-navy-100">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`/img/stock/${s.slug}.webp`}
+                      alt=""
+                      loading="lazy"
+                      className="size-full object-cover"
+                    />
+                  </span>
+                  <span className="flex flex-1 flex-col p-6">
+                    <span className="text-[11px] font-semibold tracking-[0.12em] text-teal-600 uppercase">
+                      {PILARES[s.pilar].nombre}
+                    </span>
+                    <span className="mt-2 font-display text-lg leading-tight font-semibold text-navy-800">
+                      {s.nombre}
+                    </span>
+                    <span className="mt-2 flex-1 text-sm leading-relaxed text-navy-500">
+                      {s.datos[0].label}: {s.datos[0].valor}
+                    </span>
+                    <span className="mt-4 text-sm font-semibold text-teal-700">
+                      Ver tratamiento{" "}
+                      <span className="flecha inline-block">→</span>
+                    </span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </Carrusel>
+        </Container>
+      </section>
+
+      {/* ───────── Por qué iDent ───────── */}
+      <section className="relative overflow-hidden bg-navy-800 py-16 text-white sm:py-24">
+        <div
+          aria-hidden="true"
+          className="aura absolute top-1/2 -right-32 size-[30rem] -translate-y-1/2 rounded-full bg-teal-500/15 blur-3xl"
+        />
+        <Container className="relative">
+          <div className="reveal max-w-2xl">
             <p className="text-[11px] font-semibold tracking-[0.16em] text-teal-300 uppercase">
               Cómo trabajamos
             </p>
@@ -214,7 +361,7 @@ export default function Home() {
               Tres cosas que decidimos hacer distinto
             </h2>
           </div>
-          <div className="mt-12 grid gap-10 sm:grid-cols-3">
+          <div className="reveal-grupo mt-12 grid gap-10 sm:grid-cols-3">
             {[
               {
                 n: "01",
@@ -232,7 +379,7 @@ export default function Home() {
                 d: "Hay casos en los que lo correcto es esperar seis meses y volver a revisar. Lo decimos aunque signifique no vender el tratamiento hoy.",
               },
             ].map((item) => (
-              <div key={item.n}>
+              <div key={item.n} className="border-t border-white/15 pt-5">
                 <p className="font-display text-sm font-bold text-teal-400">
                   {item.n}
                 </p>
@@ -254,7 +401,7 @@ export default function Home() {
       <section className="bg-sand-50 py-14 sm:py-20">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
-            <div>
+            <div className="reveal">
               <Eyebrow>Formas de pago</Eyebrow>
               <h2 className="mt-3 text-3xl font-bold text-navy-800 sm:text-4xl">
                 Un tratamiento de dos años no se paga de una vez
@@ -266,19 +413,22 @@ export default function Home() {
               </p>
               <Link
                 href="/precios"
-                className="mt-6 inline-block text-sm font-semibold text-teal-700 underline underline-offset-4"
+                className="grupo-flecha mt-6 inline-block text-sm font-semibold text-teal-700"
               >
-                Ver precios y qué incluye cada tratamiento →
+                <span className="subraya">
+                  Ver precios y qué incluye cada tratamiento
+                </span>{" "}
+                <span className="flecha inline-block">→</span>
               </Link>
             </div>
-            <ul className="grid gap-4 sm:grid-cols-2">
+            <ul className="reveal-grupo grid gap-4 sm:grid-cols-2">
               {[
                 { t: "Mensualidades", d: "Un pago inicial y cuotas que caen junto con cada cita de ajuste." },
                 { t: "Tarjeta", d: "Débito y crédito. Consulta los plazos disponibles a meses sin intereses." },
                 { t: "Efectivo y transferencia", d: "Las dos opciones, con comprobante." },
                 { t: "Por etapas", d: "En endodoncia con corona, el pago se puede dividir entre las dos fases." },
               ].map((item) => (
-                <li key={item.t} className="rounded-3xl bg-white p-6">
+                <li key={item.t} className="tarjeta-hover rounded-3xl bg-white p-6">
                   <h3 className="font-display text-lg font-semibold text-navy-800">
                     {item.t}
                   </h3>
@@ -292,10 +442,40 @@ export default function Home() {
         </Container>
       </section>
 
+      {/* ───────── Marquesina de zonas ───────── */}
+      <section
+        aria-label="Zonas que atendemos"
+        className="marquesina-contenedor overflow-hidden border-y border-navy-100 bg-white py-4"
+      >
+        <div className="marquesina">
+          {[0, 1].map((tanda) => (
+            <ul
+              key={tanda}
+              className="flex shrink-0 gap-3 pr-3"
+              aria-hidden={tanda === 1 ? "true" : undefined}
+            >
+              {ZONAS.map((z) => (
+                <li key={z.slug}>
+                  <Link
+                    href={`/zonas/${z.slug}`}
+                    tabIndex={tanda === 1 ? -1 : undefined}
+                    className="inline-flex items-center gap-2 rounded-full bg-sand-100 px-5 py-2 text-sm font-medium whitespace-nowrap text-navy-600 transition hover:bg-teal-50 hover:text-teal-700"
+                  >
+                    <span aria-hidden="true" className="size-1.5 rounded-full bg-teal-400" />
+                    {z.nombreCorto}
+                    <span className="text-navy-300">{z.traslado.tiempo}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ))}
+        </div>
+      </section>
+
       {/* ───────── Zonas ───────── */}
-      <section className="py-16 sm:py-24">
+      <section className="py-16 sm:py-20">
         <Container>
-          <div className="max-w-2xl">
+          <div className="reveal max-w-2xl">
             <Eyebrow>Cobertura</Eyebrow>
             <h2 className="mt-3 text-3xl font-bold text-navy-800 sm:text-4xl">
               De dónde vienen nuestros pacientes
@@ -306,31 +486,47 @@ export default function Home() {
               tiempo de traslado y cómo organizamos las citas.
             </p>
           </div>
-          <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <Carrusel etiqueta="Zonas que atendemos" className="mt-10">
             {ZONAS.map((z) => (
-              <li key={z.slug}>
+              <li key={z.slug} className="w-[16rem] sm:w-[18rem]">
                 <Link
                   href={`/zonas/${z.slug}`}
-                  className="group flex h-full flex-col rounded-3xl border border-navy-100 p-6 transition hover:border-teal-300 hover:bg-teal-50/40"
+                  className="grupo-flecha tarjeta-hover flex h-full flex-col rounded-3xl border border-navy-100 p-6 hover:border-teal-300"
                 >
-                  <h3 className="font-display text-lg font-semibold text-navy-800">
+                  <span className="font-display text-lg font-semibold text-navy-800">
                     {z.nombreCorto}
-                  </h3>
-                  <p className="mt-1 text-sm text-navy-400">{z.municipio}</p>
-                  <p className="mt-4 text-sm font-medium text-teal-700">
+                  </span>
+                  <span className="mt-1 text-sm text-navy-400">
+                    {z.municipio}
+                  </span>
+                  <span className="mt-6 flex items-center gap-2 text-sm font-medium text-teal-700">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      aria-hidden="true"
+                      className="size-4"
+                    >
+                      <circle cx="12" cy="12" r="9" />
+                      <path strokeLinecap="round" d="M12 7v5l3 2" />
+                    </svg>
                     {z.traslado.tiempo}
-                  </p>
+                  </span>
+                  <span className="mt-4 text-sm font-semibold text-navy-500">
+                    Ver zona <span className="flecha inline-block">→</span>
+                  </span>
                 </Link>
               </li>
             ))}
-          </ul>
+          </Carrusel>
         </Container>
       </section>
 
       {/* ───────── Equipo y casos ───────── */}
       <section className="bg-sand-50 py-16 sm:py-24">
         <Container className="grid gap-10 lg:grid-cols-2 lg:gap-14">
-          <div className="flex flex-col">
+          <div className="reveal flex flex-col">
             <Eyebrow>Quién te atiende</Eyebrow>
             <h2 className="mt-3 text-3xl font-bold text-navy-800">
               El equipo de iDent
@@ -354,13 +550,14 @@ export default function Home() {
             </div>
             <Link
               href="/equipo"
-              className="mt-6 text-sm font-semibold text-teal-700 underline underline-offset-4"
+              className="grupo-flecha mt-6 inline-block text-sm font-semibold text-teal-700"
             >
-              Conocer al equipo →
+              <span className="subraya">Conocer al equipo</span>{" "}
+              <span className="flecha inline-block">→</span>
             </Link>
           </div>
 
-          <div className="flex flex-col">
+          <div className="reveal flex flex-col">
             <Eyebrow>Resultados</Eyebrow>
             <h2 className="mt-3 text-3xl font-bold text-navy-800">
               Casos antes y después
@@ -384,57 +581,30 @@ export default function Home() {
             </div>
             <Link
               href="/casos"
-              className="mt-6 text-sm font-semibold text-teal-700 underline underline-offset-4"
+              className="grupo-flecha mt-6 inline-block text-sm font-semibold text-teal-700"
             >
-              Ver casos →
+              <span className="subraya">Ver casos</span>{" "}
+              <span className="flecha inline-block">→</span>
             </Link>
           </div>
         </Container>
       </section>
 
-      {/* ───────── Todos los tratamientos ───────── */}
-      <section className="py-16 sm:py-24">
-        <Container>
-          <Eyebrow>Tratamientos</Eyebrow>
-          <h2 className="mt-3 text-3xl font-bold text-navy-800 sm:text-4xl">
-            Todo lo que resolvemos
-          </h2>
-          <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {SERVICIOS.map((s) => (
-              <li key={s.slug}>
-                <Link
-                  href={`/${PILARES[s.pilar].slug}/${s.slug}`}
-                  className="flex h-full flex-col justify-between gap-6 rounded-3xl bg-sand-100 p-6 transition hover:bg-navy-50"
-                >
-                  <div>
-                    <p className="text-[11px] font-semibold tracking-[0.12em] text-teal-600 uppercase">
-                      {PILARES[s.pilar].nombre}
-                    </p>
-                    <h3 className="mt-2 font-display text-lg leading-tight font-semibold text-navy-800">
-                      {s.nombre}
-                    </h3>
-                  </div>
-                  <p className="text-sm text-navy-500">{s.datos[0].valor}</p>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </Container>
-      </section>
-
       {/* ───────── FAQ ───────── */}
-      <section className="pb-16 sm:pb-24">
+      <section className="py-16 sm:py-20">
         <Container className="max-w-4xl">
-          <Eyebrow>Preguntas frecuentes</Eyebrow>
-          <h2 className="mt-3 mb-8 text-3xl font-bold text-navy-800 sm:text-4xl">
-            Lo que más nos preguntan
-          </h2>
+          <div className="reveal">
+            <Eyebrow>Preguntas frecuentes</Eyebrow>
+            <h2 className="mt-3 mb-8 text-3xl font-bold text-navy-800 sm:text-4xl">
+              Lo que más nos preguntan
+            </h2>
+          </div>
           <Faqs faqs={FAQS_HOME} />
         </Container>
       </section>
 
       <BlogRelacionado
-        articulos={ARTICULOS.slice(0, 3)}
+        articulos={ARTICULOS.slice(0, 6)}
         titulo="Lo que más nos preguntan antes de la primera cita"
         fondo="sand"
       />

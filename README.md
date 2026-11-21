@@ -87,18 +87,37 @@ cambiar contenido.**
 Google penaliza las páginas clonadas que solo cambian el nombre de la zona.
 Si se agrega una página, se escribe texto nuevo.
 
-## Reseñas y sus fuentes
+## Reseñas
 
-El bloque de reseñas aparece en todas las páginas (versión completa en las
-principales, compacta en el blog). **Cada cifra lleva enlace a dónde se
-consultó y con qué fecha.** Si un dato no se puede citar, no se publica.
+Carrusel de reseñas **reales de la ficha de Google**
+([4.9 con 47 opiniones](https://maps.app.goo.gl/49F15e9GqALj7oEYA),
+consultada el 21-nov-2026), en todas las páginas principales.
 
-Hoy las cifras vienen de directorios, no de la ficha de Google. Está
-marcado como tal en el propio bloque. Se edita en
-`src/content/resenas.ts`.
+Reglas: solo reseñas reales, con el nombre tal como aparece en Google,
+enlace a la ficha para que cualquiera compruebe, y marca explícita cuando
+Google recorta un texto. Las tres frases sin autor van identificadas como
+destacados del resumen de Google, no como testimonios atribuidos.
+
+Se edita en `src/content/resenas.ts`.
 
 El `aggregateRating` del schema está desactivado a propósito: Google no
 acepta que un negocio marque su propia calificación en su sitio.
+
+## Movimiento y animación
+
+Todo con CSS, sin JavaScript que monte contenido. Es deliberado: el texto
+tiene que estar en el HTML desde el primer byte.
+
+- **Aparición al hacer scroll** con `animation-timeline: view()`, dentro
+  de un `@supports`. Si el navegador no lo soporta, el contenido se ve sin
+  más. Las animaciones arrancan en `opacity: 0.15`, no en 0, para no
+  disparar los detectores de texto oculto.
+- **Carruseles** con `scroll-snap` nativo (`.pista` en `globals.css`). Los
+  elementos son listas normales renderizadas en el servidor; el JS solo
+  añade las flechas. Sin JS se recorren a dedo o con la rueda.
+- **Marquesina de zonas**: la primera tanda son enlaces reales, la copia
+  va `aria-hidden` para no duplicar contenido.
+- Todo respeta `prefers-reduced-motion`.
 
 ## Imágenes
 

@@ -77,7 +77,7 @@ export default function Page() {
 
       <section className="py-14 sm:py-20">
         <Container>
-          <ul className="grid gap-10 lg:grid-cols-3">
+          <ul className="reveal-grupo grid gap-10 lg:grid-cols-3">
             {EQUIPO.map((m) => (
               <li key={m.id}>
                 <article>

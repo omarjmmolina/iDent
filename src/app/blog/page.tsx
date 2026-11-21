@@ -104,10 +104,10 @@ export default function Page() {
       <section className="py-14 sm:py-16">
         <Container>
           <Eyebrow>Lo más reciente</Eyebrow>
-          <ul className="mt-6 grid gap-6 lg:grid-cols-2">
+          <ul className="reveal-grupo mt-6 grid gap-6 lg:grid-cols-2">
             {destacados.map((a) => (
               <li key={a.slug}>
-                <article className="flex h-full flex-col rounded-4xl border border-navy-100 p-7 transition hover:border-teal-300 sm:p-9">
+                <article className="tarjeta-hover flex h-full flex-col rounded-4xl border border-navy-100 p-7 hover:border-teal-300 sm:p-9">
                   <p className="text-xs font-semibold tracking-[0.12em] text-teal-600 uppercase">
                     {CATEGORIAS[a.categoria].nombre}
                   </p>
@@ -146,7 +146,7 @@ export default function Page() {
                 </h2>
                 <p className="mt-2 text-navy-600">{cat.descripcion}</p>
               </div>
-              <ul className="mt-7 grid gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
+              <ul className="reveal-grupo mt-7 grid gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
                 {articulos.map((a) => (
                   <li key={a.slug} className="border-t border-navy-100 pt-4">
                     <h3 className="font-display text-lg leading-snug font-semibold text-navy-800">

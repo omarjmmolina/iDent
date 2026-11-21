@@ -28,7 +28,7 @@ export function Proceso({ fondo = "blanco" }: { fondo?: "blanco" | "sand" }) {
   return (
     <section className={`py-14 sm:py-20 ${fondo === "sand" ? "bg-sand-50" : ""}`}>
       <Container>
-        <div className="max-w-2xl">
+        <div className="reveal max-w-2xl">
           <Eyebrow>Cómo funciona</Eyebrow>
           <h2 className="mt-3 text-3xl font-bold text-navy-800 sm:text-4xl">
             De la primera pregunta al tratamiento
@@ -38,9 +38,9 @@ export function Proceso({ fondo = "blanco" }: { fondo?: "blanco" | "sand" }) {
             es lo que se cobra hasta el final.
           </p>
         </div>
-        <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="reveal-grupo mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {PASOS.map((p) => (
-            <li key={p.n} className="relative rounded-3xl bg-sand-100 p-6">
+            <li key={p.n} className="tarjeta-hover relative rounded-3xl bg-sand-100 p-6">
               <span className="font-display text-sm font-bold text-teal-600">
                 {p.n}
               </span>

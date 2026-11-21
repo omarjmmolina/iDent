@@ -18,6 +18,7 @@ import { STOCK } from "@/content/imagenes";
 import { Proceso } from "@/components/Proceso";
 import { BlogRelacionado } from "@/components/BlogRelacionado";
 import { Resenas } from "@/components/Resenas";
+import { Validadores } from "@/components/Validadores";
 import { ARTICULOS } from "@/content/blog";
 
 export function PaginaPilar({
@@ -80,15 +81,17 @@ export function PaginaPilar({
         </Container>
       </section>
 
+      <Validadores fondo="blanco" />
+
       <section className="py-14 sm:py-20">
         <Container>
-          <div className="max-w-2xl">
+          <div className="reveal max-w-2xl">
             <Eyebrow>Cómo elegir</Eyebrow>
             <h2 className="mt-3 text-3xl font-bold text-navy-800 sm:text-4xl">
               Qué tratamiento te corresponde
             </h2>
           </div>
-          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+          <ul className="reveal-grupo mt-8 grid gap-3 sm:grid-cols-2">
             {p.comoDecidir.map((c) => (
               <li
                 key={c}
@@ -103,11 +106,11 @@ export function PaginaPilar({
             ))}
           </ul>
 
-          <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="reveal-grupo mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {hijos.map((s) => (
               <article
                 key={s.slug}
-                className="flex flex-col rounded-3xl border border-navy-100 p-6 transition hover:border-teal-300"
+                className="tarjeta-hover flex flex-col rounded-3xl border border-navy-100 p-6 hover:border-teal-300"
               >
                 <h3 className="font-display text-xl leading-tight font-bold text-navy-800">
                   <Link href={`/${p.slug}/${s.slug}`} className="transition hover:text-teal-700">
@@ -146,7 +149,7 @@ export function PaginaPilar({
       {/* Comparativa rápida entre los tratamientos del pilar */}
       <section className="bg-sand-50 py-14 sm:py-16">
         <Container>
-          <div className="max-w-2xl">
+          <div className="reveal max-w-2xl">
             <Eyebrow>De un vistazo</Eyebrow>
             <h2 className="mt-3 text-2xl font-bold text-navy-800 sm:text-3xl">
               Los tratamientos comparados

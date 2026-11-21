@@ -1,13 +1,14 @@
 import { Container, Eyebrow } from "@/components/ui";
+import { Carrusel } from "@/components/Carrusel";
 import {
   FUENTES_RESENAS,
   FUENTE_PRINCIPAL,
-  TESTIMONIOS,
-  META_RESENAS,
+  RESENAS,
+  DESTACADOS_GOOGLE,
 } from "@/content/resenas";
 import { CLINICA } from "@/content/clinica";
 
-function Estrellas({ valor }: { valor: number }) {
+function Estrellas({ valor, claro }: { valor: number; claro?: boolean }) {
   return (
     <span
       className="inline-flex gap-0.5"
@@ -19,7 +20,13 @@ function Estrellas({ valor }: { valor: number }) {
           key={i}
           viewBox="0 0 20 20"
           aria-hidden="true"
-          className={`size-4 ${i <= Math.round(valor) ? "text-amber-400" : "text-navy-200"}`}
+          className={`size-4 ${
+            i <= Math.round(valor)
+              ? "text-amber-400"
+              : claro
+                ? "text-white/20"
+                : "text-navy-200"
+          }`}
           fill="currentColor"
         >
           <path d="m10 1.6 2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L1.6 7.7l5.8-.8L10 1.6Z" />
@@ -29,12 +36,21 @@ function Estrellas({ valor }: { valor: number }) {
   );
 }
 
+function fechaLarga(iso: string) {
+  return new Date(iso).toLocaleDateString("es-MX", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+}
+
 /**
- * Bloque de reseñas con las fuentes citadas.
+ * Carrusel de reseñas reales de la ficha de Google.
  *
- * Va en todas las páginas del sitio. Cada cifra enlaza a dónde se consultó
- * y con qué fecha; las fuentes que no pudimos verificar se marcan como
- * tales en vez de omitirse.
+ * Las reseñas están en el HTML como citas normales: el carrusel solo
+ * cambia cómo se recorren. Cada cifra enlaza a la ficha para que se pueda
+ * comprobar.
  */
 export function Resenas({
   fondo = "sand",
@@ -52,135 +68,143 @@ export function Resenas({
   const tarjeta = oscuro ? "bg-white/5" : "bg-white";
   const borde = oscuro ? "border-white/10" : "border-navy-100";
 
-  const citables = FUENTES_RESENAS.filter((f) => f.url);
-
   return (
     <section className={`${bg} py-14 sm:py-20`} aria-labelledby="resenas-titulo">
       <Container>
-        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
+        <div className="reveal grid gap-8 lg:grid-cols-[22rem_minmax(0,1fr)] lg:items-start lg:gap-14">
+          {/* Resumen */}
           <div>
             <Eyebrow>Lo que dicen los pacientes</Eyebrow>
             <h2
               id="resenas-titulo"
               className={`mt-3 text-3xl font-bold sm:text-4xl ${titulo}`}
             >
-              Reseñas de iDent
+              {CLINICA.resenas.calificacion} sobre 5 en Google
             </h2>
 
-            {FUENTE_PRINCIPAL.calificacion !== null && (
-              <div className={`mt-6 rounded-3xl border ${borde} ${tarjeta} p-6`}>
-                <div className="flex items-baseline gap-3">
-                  <p className={`font-display text-5xl font-bold ${titulo}`}>
-                    {FUENTE_PRINCIPAL.calificacion}
-                  </p>
-                  <div>
-                    <Estrellas valor={FUENTE_PRINCIPAL.calificacion} />
-                    <p className={`mt-1 text-sm ${tenue}`}>
-                      {FUENTE_PRINCIPAL.total} valoraciones
-                    </p>
-                  </div>
-                </div>
-                <p className={`mt-4 text-sm leading-relaxed ${texto}`}>
-                  Dato publicado por{" "}
-                  <a
-                    href={FUENTE_PRINCIPAL.url}
-                    target="_blank"
-                    rel="noopener noreferrer nofollow"
-                    className="font-medium underline underline-offset-2"
-                  >
-                    {FUENTE_PRINCIPAL.nombre}
-                  </a>
-                  , consultado el{" "}
-                  <time dateTime={FUENTE_PRINCIPAL.consultado}>
-                    {new Date(FUENTE_PRINCIPAL.consultado).toLocaleDateString(
-                      "es-MX",
-                      { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" },
-                    )}
-                  </time>
-                  .
+            <div className={`mt-6 rounded-3xl border ${borde} ${tarjeta} p-6`}>
+              <div className="flex items-baseline gap-3">
+                <p className={`font-display text-5xl font-bold ${titulo}`}>
+                  {FUENTE_PRINCIPAL.calificacion}
                 </p>
+                <div>
+                  <Estrellas
+                    valor={FUENTE_PRINCIPAL.calificacion ?? 5}
+                    claro={oscuro}
+                  />
+                  <p className={`mt-1 text-sm ${tenue}`}>
+                    {FUENTE_PRINCIPAL.total} opiniones
+                  </p>
+                </div>
               </div>
-            )}
+
+              <p className={`mt-4 text-sm leading-relaxed ${texto}`}>
+                Calificación de la ficha de{" "}
+                <a
+                  href={FUENTE_PRINCIPAL.url}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                  className="font-medium underline underline-offset-2"
+                >
+                  {CLINICA.nombreLegal} en Google Maps
+                </a>
+                , consultada el{" "}
+                <time dateTime={FUENTE_PRINCIPAL.consultado}>
+                  {fechaLarga(FUENTE_PRINCIPAL.consultado)}
+                </time>
+                .
+              </p>
+
+              <a
+                href={CLINICA.googleReviewUrl || FUENTE_PRINCIPAL.url}
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                className={`mt-5 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition ${
+                  oscuro
+                    ? "bg-white text-navy-800 hover:bg-navy-50"
+                    : "bg-navy-700 text-white hover:bg-navy-800"
+                }`}
+              >
+                Ver las {FUENTE_PRINCIPAL.total} opiniones
+              </a>
+            </div>
 
             {!compacto && (
-              <p className={`mt-5 text-sm leading-relaxed ${tenue}`}>
-                Nuestra meta es llegar a {META_RESENAS} reseñas verificadas en
-                Google. Si ya te atendimos, dejarnos una es la forma más útil
-                de ayudarnos.
-              </p>
-            )}
-          </div>
-
-          <div>
-            {TESTIMONIOS.length > 0 && (
-              <ul className="space-y-5">
-                {TESTIMONIOS.map((t) => (
-                  <li key={t.autor}>
-                    <figure className={`rounded-3xl border ${borde} ${tarjeta} p-6 sm:p-7`}>
-                      <Estrellas valor={t.estrellas} />
-                      <blockquote className={`mt-4 text-lg leading-relaxed ${texto}`}>
-                        «{t.texto}»
-                      </blockquote>
-                      <figcaption className={`mt-4 text-sm ${tenue}`}>
-                        <span className={`font-semibold ${titulo}`}>{t.autor}</span>
-                        {" · "}
+              <div className={`mt-5 text-sm ${tenue}`}>
+                <p className="font-medium">También aparecemos en</p>
+                <ul className="mt-2 space-y-1.5">
+                  {FUENTES_RESENAS.filter((f) => !f.principal && f.url).map(
+                    (f) => (
+                      <li key={f.id}>
                         <a
-                          href={t.fuenteUrl}
+                          href={f.url}
                           target="_blank"
                           rel="noopener noreferrer nofollow"
                           className="underline underline-offset-2"
                         >
-                          {t.fuente}
+                          {f.nombre}
                         </a>
-                      </figcaption>
-                    </figure>
-                  </li>
-                ))}
-              </ul>
-            )}
-
-            {!compacto && (
-              <div className={`mt-6 rounded-3xl border border-dashed ${oscuro ? "border-white/20" : "border-navy-200"} p-6`}>
-                <h3 className={`font-display text-sm font-semibold tracking-[0.12em] uppercase ${oscuro ? "text-teal-300" : "text-teal-700"}`}>
-                  Dónde consultamos estas cifras
-                </h3>
-                <ul className={`mt-4 space-y-3 text-sm ${texto}`}>
-                  {citables.map((f) => (
-                    <li key={f.id} className="flex flex-wrap items-baseline gap-x-2">
-                      <a
-                        href={f.url}
-                        target="_blank"
-                        rel="noopener noreferrer nofollow"
-                        className="font-medium underline underline-offset-2"
-                      >
-                        {f.nombre}
-                      </a>
-                      {f.calificacion !== null && (
-                        <span className={tenue}>
-                          {f.calificacion} ★
-                          {f.total !== null ? ` · ${f.total} valoraciones` : ""}
-                        </span>
-                      )}
-                      {f.calificacion === null && f.total !== null && (
-                        <span className={tenue}>{f.total} opinión</span>
-                      )}
-                      {f.nota && (
-                        <span className={`basis-full text-xs ${tenue}`}>
-                          {f.nota}
-                        </span>
-                      )}
-                    </li>
-                  ))}
+                        {f.calificacion !== null && (
+                          <span> · {f.calificacion} ★</span>
+                        )}
+                        {f.total !== null && <span> · {f.total}</span>}
+                      </li>
+                    ),
+                  )}
                 </ul>
-                <p className={`mt-4 text-xs leading-relaxed ${tenue}`}>
-                  Son directorios independientes. La valoración que cuenta es
-                  la de la ficha de {CLINICA.nombre} en Google Maps, y ahí es
-                  donde publicamos el enlace para dejar reseña en cuanto esté
-                  disponible.
-                </p>
               </div>
             )}
           </div>
+
+          {/* Carrusel de reseñas */}
+          <Carrusel etiqueta="Reseñas de pacientes en Google">
+            {RESENAS.map((r) => (
+              <li key={r.autor} className="w-[19rem] sm:w-[23rem]">
+                <figure
+                  className={`tarjeta-hover flex h-full flex-col rounded-3xl border ${borde} ${tarjeta} p-6 sm:p-7`}
+                >
+                  <Estrellas valor={r.estrellas} claro={oscuro} />
+                  <blockquote
+                    className={`mt-4 flex-1 leading-relaxed ${texto}`}
+                  >
+                    «{r.texto}»
+                    {r.recortada && (
+                      <span className={`mt-2 block text-xs ${tenue}`}>
+                        Reseña recortada por Google en la vista pública.
+                      </span>
+                    )}
+                  </blockquote>
+                  <figcaption className={`mt-5 border-t pt-4 ${borde}`}>
+                    <p className={`font-display font-semibold ${titulo}`}>
+                      {r.autor}
+                    </p>
+                    <p className={`mt-0.5 text-xs ${tenue}`}>
+                      {r.credencial ? `${r.credencial} · ` : ""}
+                      {r.fecha} · en Google
+                    </p>
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+
+            {DESTACADOS_GOOGLE.map((frase) => (
+              <li key={frase} className="w-[19rem] sm:w-[23rem]">
+                <figure
+                  className={`tarjeta-hover flex h-full flex-col justify-between rounded-3xl border border-dashed ${oscuro ? "border-white/20" : "border-navy-200"} p-6 sm:p-7`}
+                >
+                  <blockquote
+                    className={`font-display text-xl leading-snug ${titulo}`}
+                  >
+                    «{frase}»
+                  </blockquote>
+                  <figcaption className={`mt-5 text-xs ${tenue}`}>
+                    Frase destacada por Google en el resumen de opiniones de
+                    la ficha
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+          </Carrusel>
         </div>
       </Container>
     </section>

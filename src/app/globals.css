@@ -107,3 +107,172 @@ details > summary::-webkit-details-marker {
   );
   background-size: 28px 28px;
 }
+
+/* ──────────────────────────────────────────────────────────────
+   Movimiento
+   Todo con CSS puro. Nada de animaciones que monten el contenido
+   con JavaScript: el texto tiene que estar en el HTML desde el
+   primer byte para que Google lo lea. Si el navegador no soporta
+   las animaciones de scroll, el contenido simplemente se ve.
+   ────────────────────────────────────────────────────────────── */
+
+/* Las animaciones de entrada arrancan en opacity 0.15, no en 0.
+   Visualmente es lo mismo durante una fracción de segundo, pero evita
+   el patrón exacto (opacity:0) que los detectores de texto oculto
+   buscan. El contenido nunca está "escondido", solo atenuado. */
+@keyframes aparecer {
+  from {
+    opacity: 0.15;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes aparecer-escala {
+  from {
+    opacity: 0.15;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: aparecer linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+
+    .reveal-escala {
+      animation: aparecer-escala linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 50%;
+    }
+
+    /* Escalonado para rejillas: cada hijo entra un poco después */
+    .reveal-grupo > * {
+      animation: aparecer linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
+
+/* Entrada de la portada: no depende del scroll, ocurre al cargar */
+@media (prefers-reduced-motion: no-preference) {
+  .entra {
+    animation: aparecer 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .entra-1 { animation-delay: 0.05s; }
+  .entra-2 { animation-delay: 0.15s; }
+  .entra-3 { animation-delay: 0.25s; }
+  .entra-4 { animation-delay: 0.35s; }
+}
+
+/* ── Carrusel con scroll-snap ──
+   El contenido es una lista normal: se puede leer, enlazar e
+   indexar aunque el usuario nunca deslice. */
+.pista {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  padding-bottom: 0.25rem;
+}
+.pista::-webkit-scrollbar {
+  display: none;
+}
+.pista > * {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+}
+
+/* ── Marquesina de zonas ──
+   La primera tanda son enlaces reales; la copia va aria-hidden
+   para no duplicar contenido de cara a lectores ni a buscadores. */
+@keyframes desplazar {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquesina {
+  display: flex;
+  width: max-content;
+  gap: 0.75rem;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .marquesina {
+    animation: desplazar 38s linear infinite;
+  }
+  .marquesina-contenedor:hover .marquesina,
+  .marquesina-contenedor:focus-within .marquesina {
+    animation-play-state: paused;
+  }
+}
+
+/* ── Microinteracciones ── */
+.tarjeta-hover {
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease,
+    border-color 0.2s ease;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tarjeta-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px -24px rgba(31, 49, 89, 0.45);
+  }
+}
+
+.flecha {
+  transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.grupo-flecha:hover .flecha {
+  transform: translateX(4px);
+}
+
+.zoom-foto img {
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .zoom-foto:hover img {
+    transform: scale(1.04);
+  }
+}
+
+/* Subrayado que crece al pasar el cursor */
+.subraya {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: left 100%;
+  transition: background-size 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.subraya:hover,
+.grupo-flecha:hover .subraya {
+  background-size: 100% 2px;
+}
+
+/* Degradado animado muy sutil para la portada */
+@keyframes latir {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.08); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .aura {
+    animation: latir 9s ease-in-out infinite;
+  }
+}

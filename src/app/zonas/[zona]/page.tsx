@@ -19,6 +19,7 @@ import { CLINICA, direccionUnaLinea } from "@/content/clinica";
 import { Proceso } from "@/components/Proceso";
 import { BlogRelacionado } from "@/components/BlogRelacionado";
 import { Resenas } from "@/components/Resenas";
+import { Validadores } from "@/components/Validadores";
 import { ARTICULOS } from "@/content/blog";
 
 export function generateStaticParams() {
@@ -99,6 +100,8 @@ export default async function Page({
         </Container>
       </section>
 
+      <Validadores fondo="blanco" />
+
       {/* Cómo llegar */}
       <section className="py-14 sm:py-20">
         <Container>
@@ -107,7 +110,7 @@ export default async function Page({
               <h2 className="text-2xl font-bold text-navy-800 sm:text-3xl">
                 Cómo llegar desde {z.nombreCorto}
               </h2>
-              <ol className="mt-6 space-y-4">
+              <ol className="reveal-grupo mt-6 space-y-4">
                 {z.comoLlegar.map((paso, i) => (
                   <li key={paso} className="flex gap-4">
                     <span
@@ -199,7 +202,7 @@ export default async function Page({
               Cómo organizamos tus citas desde {z.nombreCorto}
             </h2>
           </div>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="reveal-grupo mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
                 t: "Confirmación el día anterior",
@@ -242,11 +245,11 @@ export default async function Page({
           <h2 className="mt-3 text-2xl font-bold text-navy-800 sm:text-3xl">
             Tratamientos para pacientes de {z.nombreCorto}
           </h2>
-          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+          <div className="reveal-grupo mt-8 grid gap-6 lg:grid-cols-2">
             {(["ortodoncia", "endodoncia"] as const).map((k) => {
               const p = PILARES[k];
               return (
-                <div key={k} className="rounded-3xl bg-white p-6 sm:p-8">
+                <div key={k} className="tarjeta-hover rounded-3xl bg-white p-6 sm:p-8">
                   <h3 className="font-display text-xl font-bold text-navy-800">
                     <Link href={`/${p.slug}`} className="transition hover:text-teal-700">
                       {p.nombre} en Querétaro

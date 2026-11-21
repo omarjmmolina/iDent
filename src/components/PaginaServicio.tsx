@@ -15,6 +15,7 @@ import { faqSchema, breadcrumbSchema, servicioSchema } from "@/lib/schema";
 import { Proceso } from "@/components/Proceso";
 import { BlogRelacionado } from "@/components/BlogRelacionado";
 import { Resenas } from "@/components/Resenas";
+import { Validadores } from "@/components/Validadores";
 import { articulosDeServicio, articulosDeCategoria } from "@/content/blog";
 import { PILARES, serviciosDe, type Servicio } from "@/content/servicios";
 import { PRECIOS, precioTexto, MSI_MESES } from "@/content/precios";
@@ -28,6 +29,24 @@ export function PaginaServicio({ servicio }: { servicio: Servicio }) {
     (s) => s.slug !== servicio.slug,
   );
   const precio = PRECIOS[servicio.slug];
+  // Los apartados que describen una secuencia se pintan numerados; el
+  // resto, como tarjetas. Evita el muro de viñetas todas iguales.
+  const esSecuencia = (h2: string) =>
+    /paso a paso|qué pasa el día|cómo es el tratamiento|qué hacer|cómo funciona/i.test(
+      h2,
+    );
+  const idDe = (h2: string) =>
+    h2
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+  const secciones = servicio.secciones.map((sec) => ({
+    ...sec,
+    id: idDe(sec.h2),
+    numerada: esSecuencia(sec.h2),
+  }));
   const migas = [
     { nombre: "Inicio", path: "/" },
     { nombre: pilar.nombre, path: `/${pilar.slug}` },
@@ -109,33 +128,126 @@ export function PaginaServicio({ servicio }: { servicio: Servicio }) {
         </Container>
       </section>
 
+      <Validadores fondo="blanco" />
+
       <article className="py-14 sm:py-20">
-        <Container className="max-w-3xl">
-          {servicio.secciones.map((sec) => (
-            <section key={sec.h2} className="mb-12 last:mb-0">
-              <h2 className="text-2xl font-bold text-navy-800 sm:text-3xl">
-                {sec.h2}
-              </h2>
-              {sec.parrafos?.map((p) => (
-                <p key={p.slice(0, 40)} className="mt-4 text-lg leading-relaxed text-navy-600">
-                  {p}
+        <Container>
+          <div className="grid gap-12 lg:grid-cols-[14rem_minmax(0,46rem)] lg:gap-16">
+            {/* Índice lateral: ayuda a escanear la página y da enlaces
+                internos a cada apartado. */}
+            <nav
+              aria-label="En esta página"
+              className="hidden lg:block"
+            >
+              <div className="sticky top-28">
+                <p className="text-[11px] font-semibold tracking-[0.14em] text-navy-400 uppercase">
+                  En esta página
                 </p>
-              ))}
-              {sec.lista && (
-                <ul className="mt-5 space-y-3">
-                  {sec.lista.map((li) => (
-                    <li key={li} className="flex gap-3 text-lg leading-relaxed text-navy-600">
-                      <span
-                        aria-hidden="true"
-                        className="mt-2.5 size-1.5 shrink-0 rounded-full bg-teal-500"
-                      />
-                      <span>{li}</span>
+                <ul className="mt-4 space-y-2.5 border-l border-navy-100 pl-4">
+                  {secciones.map((sec) => (
+                    <li key={sec.id}>
+                      <a
+                        href={`#${sec.id}`}
+                        className="block text-sm leading-snug text-navy-500 transition hover:text-teal-700"
+                      >
+                        {sec.h2}
+                      </a>
                     </li>
                   ))}
+                  <li>
+                    <a
+                      href="#preguntas"
+                      className="block text-sm leading-snug text-navy-500 transition hover:text-teal-700"
+                    >
+                      Preguntas frecuentes
+                    </a>
+                  </li>
                 </ul>
-              )}
-            </section>
-          ))}
+              </div>
+            </nav>
+
+            <div>
+              {secciones.map((sec, i) => (
+                <section
+                  key={sec.id}
+                  id={sec.id}
+                  className="reveal mb-14 scroll-mt-28 last:mb-0"
+                >
+                  <div className="flex items-baseline gap-4">
+                    <span
+                      aria-hidden="true"
+                      className="font-display text-sm font-bold text-teal-500"
+                    >
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h2 className="text-2xl font-bold text-navy-800 sm:text-3xl">
+                      {sec.h2}
+                    </h2>
+                  </div>
+
+                  {sec.parrafos?.map((p, n) => (
+                    <p
+                      key={p.slice(0, 40)}
+                      className={
+                        n === 0
+                          ? "mt-5 border-l-2 border-teal-200 pl-5 text-lg leading-relaxed text-navy-700"
+                          : "mt-4 text-lg leading-relaxed text-navy-600"
+                      }
+                    >
+                      {p}
+                    </p>
+                  ))}
+
+                  {sec.lista && sec.numerada && (
+                    <ol className="mt-6 space-y-5 border-l border-navy-100 pl-6">
+                      {sec.lista.map((li, n) => (
+                        <li key={li} className="relative">
+                          <span
+                            aria-hidden="true"
+                            className="absolute top-1 -left-[1.95rem] grid size-6 place-items-center rounded-full bg-teal-500 text-[11px] font-bold text-white"
+                          >
+                            {n + 1}
+                          </span>
+                          <span className="block text-lg leading-relaxed text-navy-600">
+                            {li}
+                          </span>
+                        </li>
+                      ))}
+                    </ol>
+                  )}
+
+                  {sec.lista && !sec.numerada && (
+                    <ul className="mt-6 grid gap-3">
+                      {sec.lista.map((li) => (
+                        <li
+                          key={li}
+                          className="flex gap-3 rounded-2xl bg-sand-100 px-5 py-4"
+                        >
+                          <svg
+                            aria-hidden="true"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.2"
+                            className="mt-1 size-5 shrink-0 text-teal-500"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="m5 13 4 4L19 7"
+                            />
+                          </svg>
+                          <span className="leading-relaxed text-navy-700">
+                            {li}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </section>
+              ))}
+            </div>
+          </div>
         </Container>
       </article>
 
@@ -209,7 +321,7 @@ export function PaginaServicio({ servicio }: { servicio: Servicio }) {
 
       <Proceso />
 
-      <section className="pb-14 sm:pb-20">
+      <section id="preguntas" className="scroll-mt-28 pb-14 sm:pb-20">
         <Container className="max-w-3xl">
           <h2 className="mb-6 text-2xl font-bold text-navy-800 sm:text-3xl">
             Preguntas sobre {servicio.nombre.toLowerCase()}
