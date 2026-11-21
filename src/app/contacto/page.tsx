@@ -5,6 +5,7 @@ import { FormularioContacto } from "@/components/FormularioContacto";
 import { Container, Eyebrow, Migas, BotonTelefono } from "@/components/ui";
 import { CLINICA, direccionUnaLinea } from "@/content/clinica";
 import { Resenas } from "@/components/Resenas";
+import { MapaClinica } from "@/components/MapaClinica";
 
 export const metadata = buildMetadata({
   title: "Contacto | Clínica dental iDent en Corregidora, Querétaro",
@@ -99,21 +100,7 @@ export default function Page() {
                 </ul>
               </div>
 
-              <div
-                className="grid aspect-[4/3] place-items-center rounded-3xl border-2 border-dashed border-navy-300 bg-navy-50 p-6 text-center"
-                data-pendiente="mapa"
-              >
-                <div>
-                  <p className="text-[11px] font-semibold tracking-[0.14em] text-teal-700 uppercase">
-                    Mapa pendiente
-                  </p>
-                  <p className="mt-2 text-sm text-navy-600">
-                    Mapa incrustado de Google con el pin de la clínica. Se
-                    activa con el Place ID de la ficha de Google Business
-                    Profile.
-                  </p>
-                </div>
-              </div>
+              <MapaClinica />
             </aside>
           </div>
         </Container>

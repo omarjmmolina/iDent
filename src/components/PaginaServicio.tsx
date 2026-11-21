@@ -363,9 +363,9 @@ export function PaginaServicio({ servicio }: { servicio: Servicio }) {
             <div>
               <Eyebrow>¿Desde dónde vienes?</Eyebrow>
               <p className="mt-3 text-navy-600">
-                Atendemos desde Corregidora a pacientes de buena parte del
-                área metropolitana. Cada zona tiene su ruta y su tiempo de
-                traslado.
+                La clínica está en El Pueblito, Corregidora, y hasta allá se
+                trasladan pacientes de buena parte del área metropolitana.
+                Cada zona tiene su ruta y su tiempo estimado.
               </p>
               <ul className="mt-5 flex flex-wrap gap-2">
                 {ZONAS.map((z) => (

@@ -42,12 +42,12 @@ npm run build   # genera las 25 páginas estáticas
   /tratamiento-de-conductos
   /retratamiento
   /urgencia-dolor-dental
-/zonas/dentista-en-corregidora                Prioridad 1
-/zonas/dentista-en-el-pueblito                Prioridad 1
-/zonas/dentista-en-juriquilla                 Prioridad 3
-/zonas/dentista-en-zibata                     Prioridad 3
-/zonas/dentista-en-el-marques-y-huimilpan     Prioridad 4
-/zonas/dentista-en-san-juan-del-rio           Prioridad 5
+/zonas/dentista-en-corregidora                Sede · Prioridad 1
+/zonas/dentista-en-el-pueblito                Sede · Prioridad 1
+/zonas/dentista-para-juriquilla               Traslado · Prioridad 3
+/zonas/dentista-para-zibata                   Traslado · Prioridad 3
+/zonas/dentista-para-el-marques-y-huimilpan   Traslado · Prioridad 4
+/zonas/dentista-para-san-juan-del-rio         Traslado · Prioridad 5
 /precios   /casos   /equipo   /contacto
 /blog                                         Índice con 7 categorías
 /blog/<40 artículos>                          Cola larga
@@ -88,6 +88,26 @@ cambiar contenido.**
 **Regla del plan:** nada duplicado entre servicios ni entre municipios.
 Google penaliza las páginas clonadas que solo cambian el nombre de la zona.
 Si se agrega una página, se escribe texto nuevo.
+
+### La regla de las zonas
+
+iDent tiene **una sola clínica**, en Plaza El Jacal, El Pueblito,
+Corregidora. No hay sucursales en Juriquilla, Zibatá, El Marqués,
+Huimilpan ni San Juan del Río.
+
+Las páginas de zona existen porque los pacientes de esas zonas **se
+trasladan**, no porque atendamos allá. Por eso:
+
+- Las zonas sede llevan slug `dentista-en-…`; las demás, `dentista-para-…`.
+- El título dice de dónde es el paciente y que la clínica está en
+  Corregidora.
+- Cada página abre con un aviso visible: «No tenemos sucursal en X».
+- Hay una pregunta frecuente explícita: «¿Tienen consultorio en X?».
+- El mapa es siempre el mismo, el de Corregidora.
+
+Prometer una presencia que no existe es deshonesto y, además, es lo que
+Google llama *doorway page* y penaliza. El campo `sede` en
+`src/content/zonas.ts` es lo que controla todo esto.
 
 ## Reseñas
 

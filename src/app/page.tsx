@@ -20,6 +20,7 @@ import { CLINICA, direccionUnaLinea, waLink } from "@/content/clinica";
 import { PILARES, SERVICIOS, serviciosDe } from "@/content/servicios";
 import { ZONAS } from "@/content/zonas";
 import { STOCK } from "@/content/imagenes";
+import { MapaClinica } from "@/components/MapaClinica";
 import { ARTICULOS } from "@/content/blog";
 
 export const metadata = buildMetadata({
@@ -444,7 +445,7 @@ export default function Home() {
 
       {/* ───────── Marquesina de zonas ───────── */}
       <section
-        aria-label="Zonas que atendemos"
+        aria-label="Zonas desde las que vienen nuestros pacientes"
         className="marquesina-contenedor overflow-hidden border-y border-navy-100 bg-white py-4"
       >
         <div className="marquesina">
@@ -481,9 +482,10 @@ export default function Home() {
               De dónde vienen nuestros pacientes
             </h2>
             <p className="mt-4 text-lg text-navy-600">
-              Estamos en Corregidora y atendemos a buena parte del área
-              metropolitana. Cada zona tiene su propia página con la ruta, el
-              tiempo de traslado y cómo organizamos las citas.
+              Tenemos una sola clínica y está en El Pueblito, Corregidora.
+              No hay sucursales: lo que hay son pacientes que se trasladan
+              desde buena parte del área metropolitana. Cada zona tiene su
+              página con la ruta, el tiempo y cómo organizamos las citas.
             </p>
           </div>
           <Carrusel etiqueta="Zonas que atendemos" className="mt-10">
@@ -497,7 +499,7 @@ export default function Home() {
                     {z.nombreCorto}
                   </span>
                   <span className="mt-1 text-sm text-navy-400">
-                    {z.municipio}
+                    {z.sede ? "Aquí está la clínica" : `${z.municipio} · se trasladan`}
                   </span>
                   <span className="mt-6 flex items-center gap-2 text-sm font-medium text-teal-700">
                     <svg
@@ -511,7 +513,7 @@ export default function Home() {
                       <circle cx="12" cy="12" r="9" />
                       <path strokeLinecap="round" d="M12 7v5l3 2" />
                     </svg>
-                    {z.traslado.tiempo}
+                    {z.sede ? z.traslado.tiempo : `A ${z.traslado.tiempo.replace("Aprox. ", "")} de la clínica`}
                   </span>
                   <span className="mt-4 text-sm font-semibold text-navy-500">
                     Ver zona <span className="flecha inline-block">→</span>
@@ -520,6 +522,27 @@ export default function Home() {
               </li>
             ))}
           </Carrusel>
+
+          <div className="mt-14 grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:items-center lg:gap-14">
+            <div>
+              <h3 className="font-display text-2xl font-bold text-navy-800">
+                La clínica, una sola, en Corregidora
+              </h3>
+              <p className="mt-3 leading-relaxed text-navy-600">
+                Plaza El Jacal, en El Pueblito. Todas las citas, de
+                cualquier zona, son aquí. Si vienes de fuera del municipio,
+                escríbenos antes y te confirmamos horario y ruta.
+              </p>
+              <Link
+                href="/contacto"
+                className="grupo-flecha mt-5 inline-block text-sm font-semibold text-teal-700"
+              >
+                <span className="subraya">Ver horarios y contacto</span>{" "}
+                <span className="flecha inline-block">→</span>
+              </Link>
+            </div>
+            <MapaClinica alto="aspect-[16/10]" />
+          </div>
         </Container>
       </section>
 

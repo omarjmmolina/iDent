@@ -236,8 +236,13 @@ export function PaginaPilar({
         <Container>
           <Eyebrow>Atendemos en</Eyebrow>
           <h2 className="mt-3 text-2xl font-bold text-navy-800 sm:text-3xl">
-            {p.nombre} para todo Querétaro
+            {p.nombre} en Corregidora, para todo Querétaro
           </h2>
+          <p className="mt-3 max-w-2xl text-navy-600">
+            Una sola clínica, en El Pueblito. Estas son las zonas desde las
+            que se trasladan nuestros pacientes, cada una con su ruta y su
+            tiempo estimado.
+          </p>
           <ul className="mt-6 flex flex-wrap gap-2">
             {ZONAS.map((z) => (
               <li key={z.slug}>

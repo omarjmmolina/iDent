@@ -38,6 +38,13 @@ versiones circulando, se está perdiendo señal.
 **Acción:** corregir la información de contacto de Facebook y rehacer o
 retirar la imagen de portada con el teléfono viejo.
 
+## ✅ Mapa activo
+
+El mapa de la clínica ya está incrustado en portada, contacto y las seis
+páginas de zona, con el pin real en Plaza El Jacal. Usa el modo embed de
+Google, que funciona sin API key. El `Place ID` sigue haciendo falta solo
+para el enlace de reseñas (punto 2).
+
 ## 🚨 2. Enlace para pedir reseñas
 
 Falta el enlace directo (`g.page/r/…`) que se saca del panel de Google

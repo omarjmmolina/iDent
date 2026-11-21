@@ -20,6 +20,7 @@ import { Proceso } from "@/components/Proceso";
 import { BlogRelacionado } from "@/components/BlogRelacionado";
 import { Resenas } from "@/components/Resenas";
 import { Validadores } from "@/components/Validadores";
+import { MapaClinica } from "@/components/MapaClinica";
 import { ARTICULOS } from "@/content/blog";
 
 export function generateStaticParams() {
@@ -72,13 +73,39 @@ export default async function Page({
           <Migas items={migas} />
           <div className="mt-8 max-w-3xl">
             <Eyebrow>
-              {z.municipio === "Querétaro"
-                ? "Querétaro"
-                : `${z.municipio}, Querétaro`}
+              {z.sede
+                ? `${z.municipio}, Querétaro`
+                : `Pacientes de ${z.nombreCorto}`}
             </Eyebrow>
             <h1 className="mt-4 text-4xl leading-[1.06] font-bold text-navy-800 sm:text-5xl">
               {z.h1}
             </h1>
+            {/* Aviso de ubicación: la clínica es una y está en Corregidora */}
+            <p
+              className={`mt-5 flex gap-3 rounded-2xl px-5 py-4 leading-relaxed ${
+                z.sede
+                  ? "bg-teal-50 text-navy-700"
+                  : "bg-navy-800 text-navy-100"
+              }`}
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                className={`mt-0.5 size-5 shrink-0 ${z.sede ? "text-teal-600" : "text-teal-300"}`}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11Z"
+                />
+                <circle cx="12" cy="10" r="2.5" />
+              </svg>
+              <span>{z.aclaracion}</span>
+            </p>
+
             <p className="mt-5 text-lg leading-relaxed text-navy-600">
               {z.entradilla}
             </p>
@@ -108,7 +135,9 @@ export default async function Page({
           <div className="grid gap-10 lg:grid-cols-2 lg:gap-14">
             <div>
               <h2 className="text-2xl font-bold text-navy-800 sm:text-3xl">
-                Cómo llegar desde {z.nombreCorto}
+                {z.sede
+                  ? "Cómo llegar a la clínica"
+                  : `Cómo llegar desde ${z.nombreCorto}`}
               </h2>
               <ol className="reveal-grupo mt-6 space-y-4">
                 {z.comoLlegar.map((paso, i) => (
@@ -133,41 +162,14 @@ export default async function Page({
 
             <div>
               <h2 className="text-2xl font-bold text-navy-800 sm:text-3xl">
-                Dónde estamos
+                Dónde está la clínica
               </h2>
-              <address className="mt-4 text-lg leading-relaxed text-navy-600 not-italic">
-                {direccionUnaLinea}
-              </address>
-              {CLINICA.googleMapsUrl ? (
-                <a
-                  href={CLINICA.googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 inline-block text-sm font-semibold text-teal-700 underline underline-offset-4"
-                >
-                  Abrir ruta en Google Maps →
-                </a>
-              ) : (
-                <p className="mt-3 rounded-xl border border-dashed border-navy-300 bg-navy-50 px-4 py-3 font-mono text-xs text-navy-500">
-                  Pendiente: enlace de Google Maps en CLINICA.googleMapsUrl
-                </p>
-              )}
-
-              <div
-                className="mt-6 grid aspect-[4/3] place-items-center rounded-3xl border-2 border-dashed border-navy-300 bg-navy-50 p-6 text-center"
-                data-pendiente="mapa"
-              >
-                <div>
-                  <p className="text-[11px] font-semibold tracking-[0.14em] text-teal-700 uppercase">
-                    Mapa pendiente
-                  </p>
-                  <p className="mt-2 text-sm text-navy-600">
-                    Aquí va el mapa incrustado de Google con el pin de la
-                    clínica. Se activa en cuanto tengamos el Place ID de la
-                    ficha de Google Business Profile.
-                  </p>
-                </div>
-              </div>
+              <p className="mt-4 text-lg leading-relaxed text-navy-600">
+                {z.sede
+                  ? "Aquí mismo, en Plaza El Jacal."
+                  : `Tenemos una sola clínica y es esta. No hay sucursal en ${z.nombreCorto}: lo que hay es un esquema de citas pensado para que venir valga la pena.`}
+              </p>
+              <MapaClinica className="mt-6" />
             </div>
           </div>
         </Container>

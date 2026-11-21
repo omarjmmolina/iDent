@@ -73,8 +73,11 @@ export function Footer() {
 
           <div>
             <h2 className="font-display text-sm font-semibold tracking-[0.12em] text-white uppercase">
-              Dónde atendemos
+              De dónde vienen
             </h2>
+            <p className="mt-2 text-xs leading-relaxed text-navy-300">
+              Clínica única en El Pueblito, Corregidora.
+            </p>
             <ul className="mt-4 space-y-2.5 text-sm">
               {ZONAS.map((z) => (
                 <li key={z.slug}>

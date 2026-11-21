@@ -5,9 +5,9 @@ import { ZONAS } from "@/content/zonas";
 import { ARTICULOS } from "@/content/blog";
 
 /**
- * Sitemap de las 25 URLs indexables.
- * El plan lo pide explícitamente: los dos competidores tienen 2 URLs y
- * 0 sitemaps entre los dos.
+ * Sitemap de las URLs indexables: 23 de sitio más los 40 artículos.
+ * El plan lo pide explícitamente: los dos competidores de referencia
+ * tienen 2 URLs y 0 sitemaps entre los dos.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const hoy = new Date();

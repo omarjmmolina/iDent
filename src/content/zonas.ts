@@ -1,16 +1,27 @@
 /**
  * Páginas de zona (SEO local / GEO).
  *
- * Regla del plan de trabajo: "se abre una página de zona solo cuando hay
- * contenido real que ponerle. Preferimos seis páginas sólidas a dieciocho
- * páginas vacías que Google termine ignorando."
+ * ⚠️ REGLA QUE NO SE ROMPE: iDent tiene UNA sola clínica, en Plaza El
+ * Jacal, El Pueblito, Corregidora. No hay sucursales en Juriquilla, en
+ * Zibatá, en El Marqués, en Huimilpan ni en San Juan del Río.
  *
- * Por eso cada zona lleva su propia ruta de llegada, su tiempo de traslado
- * y su contexto. NO son plantillas con el nombre del municipio cambiado:
- * Google penaliza exactamente eso.
+ * Estas páginas existen porque los pacientes de esas zonas se trasladan,
+ * no porque atendamos allá. Por eso:
+ *   · Las que no son sede llevan slug "dentista-para-…", nunca "en".
+ *   · El título dice de dónde es el paciente y dónde está la clínica.
+ *   · Cada página abre con un aviso explícito de que la sede es
+ *     Corregidora.
+ *   · El mapa es siempre el mismo: el de la clínica en Corregidora.
  *
- * ⚠️ PENDIENTE: los tiempos de traslado son estimaciones en tráfico normal.
- * Conviene que la clínica los confirme con lo que reportan los pacientes.
+ * Prometer una presencia que no existe es, además de deshonesto, lo que
+ * Google llama doorway page y penaliza.
+ *
+ * Regla del plan: "se abre una página de zona solo cuando hay contenido
+ * real que ponerle". Por eso cada una lleva su ruta, su tiempo y su
+ * contexto propio, y no una plantilla con el municipio cambiado.
+ *
+ * ⚠️ PENDIENTE: los tiempos de traslado son estimaciones en tráfico
+ * normal. Conviene contrastarlos con lo que reportan los pacientes.
  */
 
 export type Zona = {
@@ -18,10 +29,14 @@ export type Zona = {
   municipio: string;
   nombreCorto: string;
   prioridad: 1 | 2 | 3 | 4 | 5;
+  /** true solo donde está físicamente la clínica. */
+  sede: boolean;
   titulo: string;
   metaDescription: string;
   h1: string;
   keyword: string;
+  /** Aviso que abre la página, visible y sin rodeos. */
+  aclaracion: string;
   entradilla: string;
   traslado: { tiempo: string; distancia: string; ruta: string };
   comoLlegar: string[];
@@ -36,11 +51,14 @@ export const ZONAS: Zona[] = [
     municipio: "Corregidora",
     nombreCorto: "Corregidora",
     prioridad: 1,
+    sede: true,
     titulo: "Dentista en Corregidora, Querétaro | Ortodoncia y endodoncia | iDent",
     metaDescription:
-      "Clínica dental en Corregidora, Querétaro: ortodoncia, endodoncia y urgencias por dolor dental. Estamos aquí mismo, sin que tengas que cruzar la ciudad. Agenda por WhatsApp.",
+      "Clínica dental en El Pueblito, Corregidora: ortodoncia, endodoncia y urgencias por dolor dental. Aquí está la clínica, sin que tengas que cruzar la ciudad.",
     h1: "Dentista en Corregidora, Querétaro",
     keyword: "dentista corregidora queretaro",
+    aclaracion:
+      "La clínica está aquí, en Corregidora: Plaza El Jacal, en El Pueblito.",
     entradilla:
       "iDent está en Corregidora. No somos una clínica de la capital que también atiende por acá: la silla, el equipo y los doctores están en el municipio, y eso cambia por completo lo que te cuesta ir a una cita de ajuste de veinte minutos.",
     traslado: {
@@ -54,7 +72,7 @@ export const ZONAS: Zona[] = [
       "Desde Tejeda y Balvanera: tomando Paseo Constituyentes hacia el poniente.",
       "Desde Santa Bárbara y El Mirador: bajando por Camino Real a El Pueblito.",
     ],
-    estacionamiento: "Estacionamiento disponible para pacientes.", // TODO: confirmar si es propio, en la calle o en plaza
+    estacionamiento: "Estacionamiento disponible para pacientes en Plaza El Jacal.", // TODO: confirmar condiciones
     contexto: [
       {
         h2: "Por qué Corregidora estaba desatendida",
@@ -74,7 +92,7 @@ export const ZONAS: Zona[] = [
     faqs: [
       {
         q: "¿Dónde está exactamente la clínica en Corregidora?",
-        a: "Estamos en el municipio de Corregidora, en la zona de El Pueblito. En la página de contacto tienes el mapa con el pin exacto y el enlace para abrir la ruta en Google Maps desde donde estés.",
+        a: "En Plaza El Jacal, sobre Av. Prolongación El Jacal 955, local 23, en El Pueblito, código postal 76910. En esta misma página tienes el mapa con el pin exacto.",
       },
       {
         q: "¿Atienden urgencias de dolor el mismo día?",
@@ -91,17 +109,20 @@ export const ZONAS: Zona[] = [
     municipio: "Corregidora",
     nombreCorto: "El Pueblito",
     prioridad: 1,
+    sede: true,
     titulo: "Dentista en El Pueblito, Corregidora | Ortodoncia y endodoncia | iDent",
     metaDescription:
-      "Clínica dental en El Pueblito, Corregidora: ortodoncia, endodoncia y urgencias dentales a minutos de la plaza principal. Agenda tu valoración por WhatsApp.",
+      "Clínica dental en El Pueblito, Corregidora: ortodoncia, endodoncia y urgencias dentales en Plaza El Jacal. Agenda tu valoración por WhatsApp.",
     h1: "Dentista en El Pueblito, Corregidora",
     keyword: "dentista el pueblito corregidora",
+    aclaracion:
+      "Aquí es donde está la clínica: Plaza El Jacal, Av. Prolongación El Jacal 955.",
     entradilla:
-      "El Pueblito es la cabecera de Corregidora y es donde se concentra la vida del municipio: el mercado, la plaza, las escuelas y los trámites. Atender aquí significa que la cita del dentista cabe en una mañana en la que ya ibas a salir.",
+      "El Pueblito es la cabecera de Corregidora y es donde está nuestra clínica. Aquí se concentra la vida del municipio: el mercado, la plaza, las escuelas y los trámites. Atender aquí significa que la cita del dentista cabe en una mañana en la que ya ibas a salir.",
     traslado: {
-      tiempo: "Minutos",
+      tiempo: "Aquí está la clínica",
       distancia: "Cabecera municipal",
-      ruta: "A pocas cuadras de la plaza principal",
+      ruta: "Plaza El Jacal, El Pueblito",
     },
     comoLlegar: [
       "Desde la plaza principal de El Pueblito: a pocos minutos en coche.",
@@ -109,7 +130,8 @@ export const ZONAS: Zona[] = [
       "Desde Av. Constituyentes poniente, entrando al centro de El Pueblito.",
       "Transporte público: rutas que llegan al centro de El Pueblito.", // TODO: confirmar números de ruta
     ],
-    estacionamiento: "Estacionamiento para pacientes; en la zona del centro conviene llegar con cinco minutos de margen.", // TODO
+    estacionamiento:
+      "Estacionamiento de Plaza El Jacal; en horas de centro conviene llegar con cinco minutos de margen.", // TODO
     contexto: [
       {
         h2: "La ventaja de tratarte donde ya haces tu vida",
@@ -129,7 +151,7 @@ export const ZONAS: Zona[] = [
     faqs: [
       {
         q: "¿Qué tan cerca están de la plaza de El Pueblito?",
-        a: "A pocos minutos en coche. En la página de contacto está el pin exacto en Google Maps para que calcules la ruta desde tu casa.",
+        a: "Estamos en Plaza El Jacal, a pocos minutos en coche de la plaza principal. En esta página está el mapa con el pin exacto.",
       },
       {
         q: "¿Atienden niños?",
@@ -142,20 +164,24 @@ export const ZONAS: Zona[] = [
     ],
   },
   {
-    slug: "dentista-en-juriquilla",
+    slug: "dentista-para-juriquilla",
     municipio: "Querétaro",
     nombreCorto: "Juriquilla",
     prioridad: 3,
-    titulo: "Dentista para pacientes de Juriquilla | Ortodoncia y endodoncia | iDent",
+    sede: false,
+    titulo:
+      "Ortodoncia y endodoncia para pacientes de Juriquilla | iDent Corregidora",
     metaDescription:
-      "¿Vives en Juriquilla y buscas ortodoncia o endodoncia? En iDent, Corregidora, agrupamos tus citas para que el traslado valga la pena. Valoración con plan y costo cerrado.",
-    h1: "Dentista para pacientes de Juriquilla",
+      "¿Vives en Juriquilla y buscas ortodoncia o endodoncia? Nuestra clínica está en Corregidora y organizamos las citas para que el traslado valga la pena.",
+    h1: "Ortodoncia y endodoncia para pacientes de Juriquilla",
     keyword: "dentista juriquilla queretaro",
+    aclaracion:
+      "No tenemos sucursal en Juriquilla. Nuestra única clínica está en El Pueblito, Corregidora, a unos 40 minutos, y así organizamos las citas de quien viene desde el norte.",
     entradilla:
-      "Sabemos que de Juriquilla a Corregidora hay un buen trayecto. Por eso con los pacientes de esta zona trabajamos distinto: citas más largas y menos frecuentes, confirmación el día anterior y la hora respetada. Si vas a manejar cuarenta minutos, lo mínimo es que no esperes en la sala.",
+      "Si vives en Juriquilla, venir a tratarte implica cruzar el área metropolitana. Por eso con los pacientes de esta zona trabajamos distinto: citas más largas y menos frecuentes, confirmación el día anterior y la hora respetada. Si vas a manejar cuarenta minutos, lo mínimo es que no esperes en la sala.",
     traslado: {
       tiempo: "Aprox. 40 minutos",
-      distancia: "Norte a suroeste del área metropolitana",
+      distancia: "Del norte al suroeste del área metropolitana",
       ruta: "Anillo Vial Fray Junípero Serra y Bernardo Quintana",
     },
     comoLlegar: [
@@ -164,7 +190,7 @@ export const ZONAS: Zona[] = [
       "Paseo Constituyentes al poniente hasta entrar a Corregidora.",
       "Alternativa con menos semáforos a media mañana: Anillo Vial III en dirección poniente.",
     ],
-    estacionamiento: "Estacionamiento para pacientes, sin pago por hora.", // TODO: confirmar
+    estacionamiento: "Estacionamiento de Plaza El Jacal para pacientes.", // TODO: confirmar
     contexto: [
       {
         h2: "Por qué un paciente de Juriquilla se traslada a Corregidora",
@@ -183,6 +209,10 @@ export const ZONAS: Zona[] = [
     ],
     faqs: [
       {
+        q: "¿Tienen consultorio en Juriquilla?",
+        a: "No. Tenemos una sola clínica y está en Plaza El Jacal, El Pueblito, Corregidora. Lo que sí tenemos es un esquema de citas pensado para pacientes que se trasladan desde el norte de la ciudad.",
+      },
+      {
         q: "¿Cuánto se hace de Juriquilla a la clínica?",
         a: "Alrededor de cuarenta minutos en tráfico normal. Las horas más pesadas son de 7:30 a 9:30 y de 18:00 a 20:00; si puedes, agenda a media mañana o a media tarde.",
       },
@@ -192,25 +222,29 @@ export const ZONAS: Zona[] = [
       },
       {
         q: "¿Pueden darme todas las citas de una vez?",
-        a: "Sí. A los pacientes de Juriquilla les dejamos agendada la serie completa de ajustes al inicio del tratamiento, para que elijas siempre el mismo horario y lo puedas organizar con tiempo.",
+        a: "Sí. A los pacientes que vienen de Juriquilla les dejamos agendada la serie completa de ajustes al inicio del tratamiento, para que elijas siempre el mismo horario y lo puedas organizar con tiempo.",
       },
     ],
   },
   {
-    slug: "dentista-en-zibata",
+    slug: "dentista-para-zibata",
     municipio: "El Marqués",
     nombreCorto: "Zibatá",
     prioridad: 3,
-    titulo: "Dentista para pacientes de Zibatá | Ortodoncia y endodoncia | iDent",
+    sede: false,
+    titulo:
+      "Ortodoncia y endodoncia para pacientes de Zibatá | iDent Corregidora",
     metaDescription:
-      "Ortodoncia y endodoncia para pacientes de Zibatá, El Marqués. Clínica iDent en Corregidora: citas agrupadas, horario respetado y costo cerrado desde la valoración.",
-    h1: "Dentista para pacientes de Zibatá",
+      "Pacientes de Zibatá, El Marqués: nuestra clínica está en Corregidora. Citas agrupadas, horario respetado y costo cerrado desde la valoración.",
+    h1: "Ortodoncia y endodoncia para pacientes de Zibatá",
     keyword: "dentista zibata queretaro",
+    aclaracion:
+      "No tenemos sucursal en Zibatá. Nuestra única clínica está en El Pueblito, Corregidora, a unos 35 o 45 minutos cruzando la ciudad.",
     entradilla:
-      "Zibatá creció rápido y con población joven: familias con niños en edad de primera valoración de ortodoncia y adultos que postergaron el tratamiento por falta de tiempo. Atendemos a esta zona desde Corregidora con un esquema pensado para que vengas lo menos posible.",
+      "Zibatá creció rápido y con población joven: familias con niños en edad de primera valoración de ortodoncia y adultos que postergaron el tratamiento por falta de tiempo. Atendemos a esos pacientes en nuestra clínica de Corregidora, con un esquema pensado para que vengas lo menos posible.",
     traslado: {
       tiempo: "Aprox. 35 a 45 minutos",
-      distancia: "Oriente a suroeste del área metropolitana",
+      distancia: "Del oriente al suroeste del área metropolitana",
       ruta: "Anillo Vial III y Paseo Constituyentes",
     },
     comoLlegar: [
@@ -219,7 +253,7 @@ export const ZONAS: Zona[] = [
       "Enlace con Paseo Constituyentes y continuar hacia Corregidora.",
       "Alternativa en hora pico: Bernardo Quintana en dirección sur.",
     ],
-    estacionamiento: "Estacionamiento para pacientes.", // TODO: confirmar
+    estacionamiento: "Estacionamiento de Plaza El Jacal para pacientes.", // TODO: confirmar
     contexto: [
       {
         h2: "Una zona joven, con mucha ortodoncia pendiente",
@@ -238,6 +272,10 @@ export const ZONAS: Zona[] = [
     ],
     faqs: [
       {
+        q: "¿Tienen consultorio en Zibatá?",
+        a: "No. Nuestra única clínica está en Plaza El Jacal, El Pueblito, Corregidora. Atendemos a pacientes de Zibatá que se trasladan, y organizamos las citas pensando en eso.",
+      },
+      {
         q: "¿Cuánto tardo de Zibatá a la clínica?",
         a: "Entre treinta y cinco y cuarenta y cinco minutos según la hora. El Anillo Vial III fluye bien fuera de las horas pico de entrada y salida de las empresas de la zona.",
       },
@@ -252,17 +290,21 @@ export const ZONAS: Zona[] = [
     ],
   },
   {
-    slug: "dentista-en-el-marques-y-huimilpan",
+    slug: "dentista-para-el-marques-y-huimilpan",
     municipio: "El Marqués y Huimilpan",
     nombreCorto: "El Marqués y Huimilpan",
     prioridad: 4,
-    titulo: "Dentista en El Marqués y Huimilpan | Ortodoncia y endodoncia | iDent",
+    sede: false,
+    titulo:
+      "Dentista para El Marqués y Huimilpan | Clínica en Corregidora | iDent",
     metaDescription:
-      "Ortodoncia, endodoncia y urgencias dentales para El Marqués y Huimilpan desde la clínica iDent en Corregidora. Costo cerrado desde la valoración y atención el mismo día.",
-    h1: "Dentista para El Marqués y Huimilpan",
+      "Pacientes de El Marqués y Huimilpan: ortodoncia, endodoncia y urgencias en nuestra clínica de Corregidora, más cerca que el centro de Querétaro.",
+    h1: "Ortodoncia y endodoncia para El Marqués y Huimilpan",
     keyword: "dentista el marques huimilpan",
+    aclaracion:
+      "No tenemos sucursal en estos municipios. Nuestra clínica está en El Pueblito, Corregidora, que desde buena parte de Huimilpan queda más cerca que el centro de Querétaro.",
     entradilla:
-      "Son los dos municipios conurbados donde la oferta de especialidad es más escasa: hay odontología general, pero para una endodoncia o una ortodoncia la gente termina moviéndose a la capital. Desde Corregidora quedamos más cerca que el centro de Querétaro para buena parte de estas localidades.",
+      "Son los dos municipios conurbados donde la oferta de especialidad es más escasa: hay odontología general, pero para una endodoncia o una ortodoncia la gente termina moviéndose a la capital. Nuestra clínica en Corregidora queda, para buena parte de estas localidades, más cerca que el centro de Querétaro.",
     traslado: {
       tiempo: "Aprox. 25 a 40 minutos",
       distancia: "Según la localidad de origen",
@@ -274,7 +316,8 @@ export const ZONAS: Zona[] = [
       "Desde La Pila y Pueblo Nuevo, El Marqués: por Paseo Constituyentes en dirección poniente.",
       "Desde El Colorado y Chichimequillas: por el Anillo Vial III rodeando la ciudad.",
     ],
-    estacionamiento: "Estacionamiento para pacientes, con espacio para camioneta.", // TODO: confirmar
+    estacionamiento:
+      "Estacionamiento de Plaza El Jacal, con espacio para camioneta.", // TODO: confirmar
     contexto: [
       {
         h2: "La razón por la que trabajamos estas zonas",
@@ -293,6 +336,10 @@ export const ZONAS: Zona[] = [
     ],
     faqs: [
       {
+        q: "¿Tienen consultorio en El Marqués o en Huimilpan?",
+        a: "No. Tenemos una sola clínica, en Plaza El Jacal, El Pueblito, Corregidora. Atendemos a pacientes de los dos municipios que se trasladan hasta allá.",
+      },
+      {
         q: "¿Desde Huimilpan cuánto se hace?",
         a: "Entre veinticinco y treinta y cinco minutos desde la cabecera, por la carretera que sube directo a Corregidora. Es menos de lo que se hace al centro de Querétaro.",
       },
@@ -307,17 +354,21 @@ export const ZONAS: Zona[] = [
     ],
   },
   {
-    slug: "dentista-en-san-juan-del-rio",
+    slug: "dentista-para-san-juan-del-rio",
     municipio: "San Juan del Río",
     nombreCorto: "San Juan del Río",
     prioridad: 5,
-    titulo: "Ortodoncia y endodoncia para San Juan del Río | iDent Querétaro",
+    sede: false,
+    titulo:
+      "Ortodoncia y endodoncia para San Juan del Río | iDent Corregidora",
     metaDescription:
-      "Pacientes de San Juan del Río: ortodoncia y endodoncia en la clínica iDent de Corregidora, con citas agrupadas y cotización cerrada por WhatsApp antes de viajar.",
+      "Pacientes de San Juan del Río: nuestra clínica está en Corregidora, a una hora por la 57. Citas agrupadas y cotización por WhatsApp antes de viajar.",
     h1: "Ortodoncia y endodoncia para pacientes de San Juan del Río",
     keyword: "ortodoncista san juan del rio",
+    aclaracion:
+      "No tenemos sucursal en San Juan del Río. Nuestra clínica está en El Pueblito, Corregidora, a cerca de una hora por la carretera 57.",
     entradilla:
-      "San Juan del Río es el segundo mercado del estado y está a casi una hora por la 57. Con esa distancia, un tratamiento solo tiene sentido si las citas se reducen al mínimo y cada visita resuelve varias cosas. Así es como planteamos los casos de esta zona.",
+      "San Juan del Río es el segundo mercado del estado y está a casi una hora de nuestra clínica por la 57. Con esa distancia, un tratamiento solo tiene sentido si las citas se reducen al mínimo y cada visita resuelve varias cosas. Así es como planteamos los casos de esta zona.",
     traslado: {
       tiempo: "Aprox. 55 a 65 minutos",
       distancia: "Por la carretera federal 57",
@@ -329,7 +380,7 @@ export const ZONAS: Zona[] = [
       "Entrada a Corregidora por Paseo Constituyentes poniente.",
       "Conviene evitar el regreso entre 18:00 y 20:00, cuando la 57 se carga.",
     ],
-    estacionamiento: "Estacionamiento para pacientes, sin costo.", // TODO: confirmar
+    estacionamiento: "Estacionamiento de Plaza El Jacal, sin costo.", // TODO: confirmar
     contexto: [
       {
         h2: "Cuándo tiene sentido venir desde San Juan del Río",
@@ -348,6 +399,10 @@ export const ZONAS: Zona[] = [
     ],
     faqs: [
       {
+        q: "¿Tienen sucursal en San Juan del Río?",
+        a: "No. Nuestra única clínica está en Plaza El Jacal, El Pueblito, Corregidora. Atendemos a pacientes de San Juan del Río que se trasladan, y planteamos el tratamiento para que sean los menos viajes posibles.",
+      },
+      {
         q: "¿Cuánto se hace de San Juan del Río a Corregidora?",
         a: "Alrededor de una hora por la 57 en tráfico normal. El tramo se complica los viernes por la tarde y los domingos por la noche.",
       },
@@ -364,3 +419,8 @@ export const ZONAS: Zona[] = [
 ];
 
 export const zonaPorSlug = (slug: string) => ZONAS.find((z) => z.slug === slug);
+
+/** Zonas donde está físicamente la clínica. */
+export const ZONAS_SEDE = ZONAS.filter((z) => z.sede);
+/** Zonas desde las que los pacientes se trasladan. */
+export const ZONAS_TRASLADO = ZONAS.filter((z) => !z.sede);
