@@ -1,0 +1,190 @@
+import type { Bloque } from "../tipos";
+
+export const AMP_CUIDADOS: Record<string, Bloque[]> = {
+  "como-limpiar-los-brackets": [
+    { tipo: "h2", texto: "El kit que cabe en la mochila" },
+    { tipo: "p", texto: "La higiene con brackets se gana fuera de casa, en la comida del mediodía. Un kit pequeño cambia por completo el resultado a dos años." },
+    { tipo: "lista", items: ["Cepillo de viaje plegable.", "Dos o tres cepillos interdentales del calibre que te indiquen.", "Hilo con enhebrador o hilo rígido en un extremo.", "Cera de ortodoncia.", "Un espejo pequeño: sin ver, no se limpia bien."] },
+    { tipo: "p", texto: "Si no puedes cepillarte después de comer, al menos enjuaga con agua con fuerza y pasa el interdental. Es mucho mejor que nada y toma treinta segundos." },
+    { tipo: "h2", texto: "Las zonas que casi todo el mundo se salta" },
+    { tipo: "tabla", encabezados: ["Zona", "Por qué se escapa", "Qué usar"], filas: [["Entre bracket y encía", "El cepillo no entra en ángulo", "Cerdas a 45° hacia arriba"], ["Debajo del alambre", "Queda un túnel", "Interdental"], ["Cara interna, lingual", "No se ve", "Espejo y cepillo pequeño"], ["Últimos molares", "Difícil acceso", "Cepillo de penacho único"], ["Alrededor de los tubos", "Relieve grande", "Interdental fino"]] },
+    { tipo: "h2", texto: "Cómo saber si lo estás haciendo bien" },
+    { tipo: "p", texto: "Hay una comprobación casera que funciona: las pastillas reveladoras de placa, que se venden en farmacia. Masticas una después de cepillarte y tiñe de color la placa que quedó. Es incómodo verlo la primera vez y es la forma más rápida de aprender qué zona se te escapa." },
+    { tipo: "p", texto: "Señales de que algo no va bien: encías rojas o que sangran al cepillar, mal aliento persistente, o una línea blanquecina pegada al borde del bracket. Ninguna es normal." },
+    { tipo: "h2", texto: "Limpieza profesional durante la ortodoncia" },
+    { tipo: "p", texto: "Con brackets, la recomendación pasa de una limpieza al año a una cada cuatro o seis meses. No es un extra opcional: es lo que evita que el sarro se acumule en zonas donde el cepillo no llega y que la encía se inflame, lo que de paso frena el movimiento dental." },
+  ],
+
+  "que-no-comer-con-brackets": [
+    { tipo: "h2", texto: "Qué comer la semana del ajuste" },
+    { tipo: "p", texto: "Cada cuatro semanas, después del ajuste, hay dos o tres días en los que morder cuesta. Tener resuelto qué comer evita acabar cenando pan dulce." },
+    { tipo: "lista", items: ["Desayuno: avena, yogur con plátano, huevo revuelto, licuado de fruta.", "Comida: sopa de verduras, caldo de pollo deshebrado, pasta blanda, puré de papa, pescado.", "Cena: crema de calabaza, quesadillas suaves, frijoles refritos, arroz.", "Antojos: helado, gelatina, flan, natilla, smoothies."] },
+    { tipo: "h2", texto: "La comida mexicana con brackets" },
+    { tipo: "p", texto: "Vale la pena ser concreto, porque las listas genéricas no mencionan lo que realmente se come aquí." },
+    { tipo: "tabla", encabezados: ["Platillo", "¿Se puede?", "Cómo"], filas: [["Tacos de guisado", "Sí", "Sin problema"], ["Carne asada", "Sí", "Cortada en trozos pequeños"], ["Elote en vaso", "Sí", "Desgranado, nunca en mazorca"], ["Totopos y chicharrón", "Con cuidado", "Son de lo que más despega brackets"], ["Cacahuates y nueces", "No", "Partidos muy fino o evitar"], ["Palomitas", "No", "Los granos sin reventar son el peor enemigo"], ["Tamales", "Sí", "Sin problema"], ["Dulces de tamarindo", "No", "Pegajosos: arrancan el bracket"], ["Caña y jícama", "Con cuidado", "En bastones finos, con muelas"]] },
+    { tipo: "h2", texto: "Las bebidas, que nadie menciona" },
+    { tipo: "p", texto: "El problema de los refrescos con brackets no es el bracket: es el esmalte que lo rodea. El azúcar y el ácido se quedan en los recovecos donde el cepillo no llega bien, y ahí es donde aparecen las manchas blancas de descalcificación." },
+    { tipo: "lista", items: ["Si tomas refresco, que sea con la comida y no a sorbos durante toda la tarde.", "Usa popote para reducir el contacto con los dientes de delante.", "Enjuaga con agua después.", "No te cepilles inmediatamente después de algo ácido: espera treinta minutos, el esmalte está temporalmente reblandecido."] },
+  ],
+
+  "cuidados-despues-de-una-endodoncia": [
+    { tipo: "h2", texto: "Qué pasa si se cae el provisional" },
+    { tipo: "p", texto: "Es la incidencia más frecuente de estas semanas y conviene saber reaccionar, porque el reloj corre." },
+    { tipo: "pasos", items: ["No intentes taparlo con algodón ni con chicle.", "Enjuaga con agua tibia y sal para limpiar la cavidad.", "Evita comer de ese lado por completo.", "Escribe a la clínica el mismo día, aunque no duela.", "Si vas a tardar más de un día, hay cementos provisionales de farmacia que sirven de parche temporal."] },
+    { tipo: "alerta", texto: "El provisional sella el conducto recién desinfectado. Cada día que pasa abierto, la saliva y sus bacterias entran al conducto y comprometen el tratamiento. Pasadas unas semanas, puede hacer falta repetir la endodoncia." },
+    { tipo: "h2", texto: "La radiografía de control al año" },
+    { tipo: "p", texto: "Es la cita que casi nadie agenda y la que confirma que todo salió bien. Cuando hay una lesión en la punta de la raíz, el hueso tarda entre seis y veinticuatro meses en regenerarse, y eso solo se ve en una radiografía." },
+    { tipo: "p", texto: "Si la lesión disminuyó o desapareció, el tratamiento funcionó. Si sigue igual o creció, se detecta a tiempo y se puede retratar antes de que haya síntomas. Es una cita corta y barata que evita perder el diente años después." },
+    { tipo: "h2", texto: "Convivir con un diente endodonciado a largo plazo" },
+    { tipo: "lista", items: ["Se cepilla y se usa hilo igual que el resto: no es frágil a la higiene, es frágil a la fuerza.", "Con su corona puesta, puedes masticar normal.", "Si rechinas los dientes por la noche, una férula de descarga protege esa pieza.", "Revisa el borde de la corona en cada limpieza: ahí es donde aparece caries.", "Un diente endodonciado no duele aunque tenga caries: por eso las revisiones importan más."] },
+  ],
+
+  "como-limpiar-los-alineadores-invisibles": [
+    { tipo: "h2", texto: "Rutina mínima que funciona" },
+    { tipo: "p", texto: "No hace falta un ritual complicado. Con esto, un alineador llega al final de sus dos semanas igual de transparente que el primer día." },
+    { tipo: "tabla", encabezados: ["Momento", "Qué hacer", "Tiempo"], filas: [["Al quitártelo", "Enjuagar con agua fría de inmediato", "10 s"], ["Antes de comer", "Guardar en el estuche, nunca en servilleta", "5 s"], ["Antes de volver a ponerlo", "Cepillarte los dientes", "2 min"], ["Una vez al día", "Remojo con pastilla limpiadora", "15 min"], ["Cada noche", "Cepillado suave sin pasta", "30 s"]] },
+    { tipo: "h2", texto: "Por qué se ponen opacos" },
+    { tipo: "p", texto: "Son tres causas y las tres se evitan." },
+    { tipo: "lista", items: ["Pasta dental abrasiva: deja microrrayas que dispersan la luz. Usa solo agua y cepillo suave.", "Saliva seca: si no lo enjuagas al quitártelo, se cristaliza encima. Agua fría de inmediato.", "Bebidas con el alineador puesto: el café y el refresco tiñen el plástico desde dentro. Solo agua."] },
+    { tipo: "h2", texto: "Los topes de resina en los dientes" },
+    { tipo: "p", texto: "Son esos pequeños relieves que se pegan a algunos dientes para que la férula tenga de dónde agarrar. Se llaman ataches y conviene saber tres cosas sobre ellos." },
+    { tipo: "lista", items: ["Se manchan con café y vino, igual que una resina. Se limpian en la limpieza profesional.", "Si se cae uno, avisa: ese diente deja de recibir la fuerza planificada.", "Al terminar el tratamiento se retiran y se pule el esmalte, sin dejar marca."] },
+    { tipo: "h2", texto: "Viajar con alineadores" },
+    { tipo: "lista", items: ["Lleva el juego actual, el anterior y el siguiente.", "El estuche siempre en el equipaje de mano, nunca documentado.", "Un cepillo de viaje y pastillas limpiadoras.", "Si cambias de zona horaria, mantén las veintidós horas aunque se desordene el reloj.", "Nunca lo dejes en el coche al sol: el calor lo deforma."] },
+  ],
+
+  "se-me-despego-un-bracket-que-hago": [
+    { tipo: "h2", texto: "Cómo poner cera de ortodoncia bien" },
+    { tipo: "p", texto: "Mal puesta se cae en dos minutos. Bien puesta aguanta horas y resuelve el fin de semana." },
+    { tipo: "pasos", items: ["Lávate las manos y cepíllate la zona.", "Seca el bracket con una gasa o un pañuelo: sobre superficie mojada no se adhiere.", "Toma un trozo de cera del tamaño de un chícharo y amásalo entre los dedos hasta que se ablande.", "Presiónalo sobre el bracket o la punta que roza, cubriéndolo por completo.", "Cámbiala después de comer y antes de dormir."] },
+    { tipo: "h2", texto: "Si un alambre se te está clavando" },
+    { tipo: "p", texto: "Es la única de estas situaciones que sí es urgente, porque puede hacer una herida en la mejilla en cuestión de horas." },
+    { tipo: "lista", items: ["Intenta doblarlo hacia el diente con la goma de un lápiz, con cuidado.", "Si no cede, cúbrelo con una bola de cera generosa.", "Si está haciendo herida y no puedes llegar a la clínica, en último caso se puede cortar con un cortaúñas pequeño esterilizado con alcohol, sujetando el extremo con una gasa para que no caiga en la boca.", "Avisa a la clínica igualmente: hay que revisar ese sector."] },
+    { tipo: "h2", texto: "Cuánto retrasa el tratamiento" },
+    { tipo: "tabla", encabezados: ["Situación", "Retraso aproximado"], filas: [["Bracket repuesto en la siguiente cita", "Casi nada"], ["Bracket despegado un mes", "2 a 4 semanas"], ["Varios brackets en el mismo sector", "1 a 2 meses"], ["Arco salido y no avisado", "Puede exigir replanificar"]] },
+    { tipo: "p", texto: "La conclusión práctica: avisar el mismo día cuesta un mensaje y puede ahorrar meses." },
+  ],
+
+  "cuanto-tiempo-hay-que-usar-retenedores": [
+    { tipo: "h2", texto: "Por qué los dientes se mueven toda la vida" },
+    { tipo: "p", texto: "No es un defecto del tratamiento: es biología normal. Los dientes de una persona que nunca tuvo ortodoncia también se desplazan con los años, y el apiñamiento de los incisivos inferiores es uno de los cambios más frecuentes a partir de los treinta." },
+    { tipo: "p", texto: "Se suman varias fuerzas: la presión de la lengua, el tono de los labios y las mejillas, el empuje al masticar y, en algunos casos, la erupción de las muelas del juicio. El retenedor no corrige nada; lo que hace es sostener la posición frente a todo eso." },
+    { tipo: "h2", texto: "Una pauta realista a largo plazo" },
+    { tipo: "tabla", encabezados: ["Periodo", "Uso", "Por qué"], filas: [["Meses 1 a 6", "Todo el día salvo comer", "El ligamento sigue reorganizándose"], ["Meses 6 a 12", "Todas las noches", "Riesgo de recaída todavía alto"], ["Año 2", "4 a 5 noches por semana", "Estabilización"], ["Año 3 en adelante", "2 a 3 noches por semana", "Mantenimiento"], ["Siempre", "No abandonar del todo", "Los dientes siguen moviéndose"]] },
+    { tipo: "p", texto: "Puesto así son unas pocas noches al mes a cambio de conservar dos años de tratamiento. La prueba de que la pauta es suficiente es sencilla: si el retenedor entra sin forzar, vas bien." },
+    { tipo: "h2", texto: "Qué hacer si se rompe o se pierde" },
+    { tipo: "pasos", items: ["Avisa a la clínica el mismo día.", "Mientras llega el nuevo, usa el anterior si lo guardaste, aunque quede algo flojo.", "No pasen semanas: en un mes sin retención ya hay movimiento medible.", "Al recogerlo, comprueba que entra sin forzar y sin dolor.", "Pide un segundo juego de repuesto si viajas mucho."] },
+  ],
+};
+
+export const AMP_INFANTIL: Record<string, Bloque[]> = {
+  "a-que-edad-llevar-a-mi-hijo-al-ortodoncista": [
+    { tipo: "h2", texto: "Qué se ve en la radiografía a los seis años" },
+    { tipo: "p", texto: "Es la razón de que la cita sea a esa edad y no a los catorce: hay información que solo está disponible mientras los dientes permanentes siguen dentro del hueso." },
+    { tipo: "lista", items: ["Si están todos los dientes permanentes o falta alguno de nacimiento, que es más frecuente de lo que parece.", "En qué dirección viene cada uno: un canino que apunta mal se corrige fácil a los ocho años y es cirugía a los quince.", "Si hay espacio suficiente midiendo el tamaño de los dientes que vienen.", "Si hay dientes supernumerarios, de más, bloqueando la salida.", "Cómo van creciendo los maxilares, uno respecto al otro."] },
+    { tipo: "h2", texto: "Cómo preparar al niño para su primera cita" },
+    { tipo: "p", texto: "La primera visita marca la relación con el dentista durante años. Un par de cosas ayudan y otras conviene evitarlas." },
+    { tipo: "tabla", encabezados: ["Sí", "No"], filas: [["«Van a contar tus dientes»", "«No te va a doler»: introduce la idea del dolor"], ["«Te van a tomar una foto por dentro»", "«Si te portas bien te compro algo»"], ["Ir tú primero, que te vea en la silla", "Contarle tus propias malas experiencias"], ["Agendar a media mañana, descansado", "Última cita del día, cansado y con hambre"], ["Dejarle llevar su juguete", "Amenazar con el dentista como castigo"]] },
+    { tipo: "h2", texto: "Qué pasa si la indicación es esperar" },
+    { tipo: "p", texto: "Es un resultado frecuente y bueno. Significa que hay que volver a revisar en seis meses para ver cómo evoluciona el recambio. Esas revisiones son cortas, sirven para detectar a tiempo lo que aparezca y, de paso, el niño se acostumbra a la clínica sin que nunca le hayan hecho nada incómodo." },
+    { tipo: "p", texto: "Desconfía si en una primera valoración a los seis años te proponen un tratamiento largo y caro sin explicarte qué pasaría si se espera." },
+  ],
+
+  "mi-hijo-se-chupa-el-dedo-consecuencias": [
+    { tipo: "h2", texto: "Cómo abordarlo por edades" },
+    { tipo: "tabla", encabezados: ["Edad", "Qué hacer"], filas: [["0 a 3 años", "Nada. Es normal y se resuelve solo en la mayoría"], ["3 a 4 años", "Empezar a ofrecer alternativas, sin presión"], ["4 a 6 años", "Trabajo de conducta con el niño como aliado"], ["6 años en adelante", "Valorar aparato si el hábito persiste"]] },
+    { tipo: "p", texto: "La diferencia de edad importa porque antes de los cuatro años lo que se mueve suele autocorregirse. Después, con los permanentes saliendo, la huella empieza a quedarse." },
+    { tipo: "h2", texto: "Un plan que suele funcionar" },
+    { tipo: "pasos", items: ["Observa una semana y anota cuándo pasa: al dormir, viendo pantallas, cuando está cansado o nervioso.", "Habla con el niño en un momento tranquilo, nunca en el momento del hábito. Explícale qué hace el dedo con sus dientes, con un dibujo.", "Que sea idea suya: pregúntale si quiere dejarlo y qué le ayudaría.", "Sustituye en los momentos detectados: un peluche que abrazar, una pelota antiestrés, calcetines en las manos para dormir si él acepta.", "Calendario de días logrados, con el niño poniendo las marcas.", "Si a las ocho semanas sigue igual, valorar aparato."] },
+    { tipo: "h2", texto: "El aparato, cuando toca" },
+    { tipo: "p", texto: "Se llama rejilla o trampa lingual y es una barrera fija cementada en el paladar que impide que el dedo haga vacío contra él. No duele y no castiga: simplemente quita la sensación que hace agradable la succión." },
+    { tipo: "p", texto: "La respuesta suele ser rápida, en semanas. Lo importante es presentárselo al niño como una ayuda que pidió, no como un castigo que le pusieron, porque la diferencia cambia por completo cómo lo lleva." },
+  ],
+
+  "mi-hijo-respira-por-la-boca": [
+    { tipo: "h2", texto: "Una prueba sencilla en casa" },
+    { tipo: "p", texto: "Antes de la consulta, puedes observar algunas cosas que le sirven mucho al profesional." },
+    { tipo: "lista", items: ["Mientras ve la tele, obsérvalo diez minutos: ¿tiene los labios juntos o separados en reposo?", "De noche, entra a su cuarto: ¿duerme con la boca abierta? ¿ronca? ¿hace pausas al respirar?", "Pídele que cierre la boca y respire por la nariz un minuto: ¿lo consigue o se agobia?", "Acerca un espejito pequeño bajo cada fosa nasal por separado: ¿se empaña por las dos?", "Por la mañana: ¿tiene la boca seca y los labios agrietados?"] },
+    { tipo: "p", texto: "Anota lo que veas y llévalo a la consulta. Y si puedes, graba un vídeo corto de cómo duerme: vale más que cualquier descripción." },
+    { tipo: "h2", texto: "Qué profesionales intervienen" },
+    { tipo: "tabla", encabezados: ["Profesional", "Qué aporta"], filas: [["Otorrinolaringólogo", "Descarta adenoides, amígdalas y tabique"], ["Alergólogo", "Rinitis alérgica, que es muy frecuente"], ["Ortodoncista", "Ensancha el paladar y mejora el paso de aire"], ["Terapeuta miofuncional", "Reeduca la lengua y el patrón respiratorio"], ["Pediatra", "Coordina y valora el descanso general"]] },
+    { tipo: "p", texto: "El orden habitual es: primero descartar la obstrucción, luego la parte estructural y al final la reeducación. Tratar solo una pata de las tres suele dejar el problema a medias." },
+    { tipo: "h2", texto: "Señales de apnea infantil" },
+    { tipo: "alerta", texto: "Si el niño ronca fuerte casi todas las noches, hace pausas al respirar, despierta sobresaltado, suda mucho al dormir, moja la cama por encima de la edad esperable o está irritable y distraído durante el día, hay que descartar apnea obstructiva del sueño con un estudio específico. Afecta al descanso, al crecimiento y al rendimiento escolar, y no se resuelve solo con el tiempo." },
+  ],
+
+  "perdida-prematura-de-dientes-de-leche": [
+    { tipo: "h2", texto: "Tipos de mantenedor de espacio" },
+    { tipo: "p", texto: "No hay uno solo: se elige según qué diente falta y si el niño perdió uno o varios." },
+    { tipo: "tabla", encabezados: ["Tipo", "Cuándo se usa"], filas: [["Banda y ansa", "Falta un molar de leche, de un solo lado"], ["Arco lingual", "Faltan varios en la arcada inferior"], ["Botón de Nance", "Varios en la arcada superior"], ["Zapata distal", "El molar se perdió antes de que saliera el permanente"], ["Removible con diente estético", "Zona de delante, por estética y pronunciación"]] },
+    { tipo: "h2", texto: "Qué revisar en casa si lleva mantenedor" },
+    { tipo: "lista", items: ["Que no se haya despegado de ningún lado: debe sentirse firme.", "Que la encía alrededor no esté roja ni inflamada.", "Que el niño pueda cepillarse bien debajo del alambre.", "Que no le lastime: si se queja, no es cuestión de acostumbrarse.", "Revisión cada seis meses para ver si ya hay que retirarlo."] },
+    { tipo: "h2", texto: "Si el diente se perdió por un golpe" },
+    { tipo: "p", texto: "El traumatismo en dientes de leche tiene una consideración añadida: el germen del diente permanente está justo debajo, a pocos milímetros. Un golpe fuerte puede afectarlo." },
+    { tipo: "lista", items: ["Avisa siempre que la pérdida fue por un golpe, aunque haya pasado tiempo.", "Hay que controlar con radiografía cómo se está formando el permanente.", "Las posibles secuelas son manchas en el esmalte, malformación de la corona o un cambio en la trayectoria de salida.", "Detectarlo pronto permite planear y, en muchos casos, resolverlo bien."] },
+    { tipo: "alerta", texto: "Un diente de leche que se sale completo por un golpe NO se reimplanta: hacerlo puede dañar el germen del permanente. Esto es al revés que en los dientes definitivos, donde sí hay que guardarlo en leche y acudir de inmediato." },
+  ],
+};
+
+export const AMP_SENALES: Record<string, Bloque[]> = {
+  "senales-de-que-necesitas-endodoncia": [
+    { tipo: "h2", texto: "Cómo se confirma el diagnóstico" },
+    { tipo: "p", texto: "Ninguna de las señales por sí sola basta. El diagnóstico se construye combinando varias pruebas, y conviene saber en qué consisten porque son rápidas e indoloras." },
+    { tipo: "lista", items: ["Prueba de frío: se aplica un algodón muy frío. Si el dolor dura más de treinta segundos, el nervio está dañado de forma irreversible. Si no responde, puede estar muerto.", "Percusión: se golpea suavemente el diente. Si duele, la inflamación llegó al ligamento.", "Palpación de la encía sobre la raíz, buscando una zona sensible o abultada.", "Radiografía periapical, para ver si hay lesión en la punta de la raíz.", "Comparación con los dientes vecinos, que sirven de referencia sana."] },
+    { tipo: "h2", texto: "Qué se hace si el diagnóstico no es claro" },
+    { tipo: "p", texto: "Pasa, y lo correcto es decirlo en vez de tratar por si acaso. Cuando hay dudas, se puede hacer un tratamiento reversible, como una restauración provisional con medicación, y reevaluar en dos o tres semanas." },
+    { tipo: "p", texto: "Entrar a un diente sano es irreversible: ese diente ya nunca vuelve a tener nervio. Por eso un profesional prudente prefiere esperar y volver a valorar antes que abrir con dudas." },
+    { tipo: "h2", texto: "El dolor que no viene del diente" },
+    { tipo: "p", texto: "Antes de tratar conviene descartar causas que imitan un dolor dental, porque tratar el diente equivocado es más común de lo que parece." },
+    { tipo: "tabla", encabezados: ["Origen", "Cómo se distingue"], filas: [["Sinusitis", "Duelen varias muelas de arriba a la vez, empeora al agacharse"], ["Articulación mandibular", "Duele al abrir, cerca del oído, con chasquido"], ["Bruxismo", "Dolor difuso al despertar, en varios dientes"], ["Neuralgia", "Descargas eléctricas muy breves, con disparadores"], ["Dolor referido", "Duele una arcada y el problema está en la otra"]] },
+  ],
+
+  "diente-oscuro-despues-de-un-golpe": [
+    { tipo: "h2", texto: "Qué hacer en las primeras horas tras un golpe" },
+    { tipo: "p", texto: "La mayoría de las consultas por diente oscurecido llegan meses después, pero lo que se hace el primer día cambia bastante el pronóstico." },
+    { tipo: "pasos", items: ["Frío por fuera del labio para controlar la inflamación.", "Dieta blanda y no morder con ese diente durante dos semanas.", "Acude a revisión aunque el diente no se mueva ni duela: hay que ver el estado de la raíz y del hueso.", "Si el diente quedó móvil, no lo muevas con la lengua ni con los dedos.", "Si se salió completo y es un diente definitivo, guárdalo en leche y ve de inmediato: hay una ventana de una hora."] },
+    { tipo: "h2", texto: "El seguimiento que hay que hacer" },
+    { tipo: "p", texto: "Un diente golpeado necesita controles, porque las secuelas aparecen con el tiempo y casi siempre sin síntomas." },
+    { tipo: "tabla", encabezados: ["Momento", "Qué se revisa"], filas: [["A las 2 semanas", "Movilidad, color, respuesta a pruebas"], ["A los 3 meses", "Color y radiografía"], ["A los 6 meses", "Vitalidad del nervio"], ["Al año", "Radiografía de control"], ["Cada año después", "Color y estado de la raíz"]] },
+    { tipo: "h2", texto: "Reabsorción radicular: la complicación silenciosa" },
+    { tipo: "alerta", texto: "Después de un traumatismo, algunos dientes desarrollan reabsorción de la raíz: el propio organismo empieza a disolverla. No duele y no se nota hasta que está avanzada. Solo se detecta en radiografía, y es la razón principal por la que un diente golpeado necesita controles aunque esté perfecto por fuera. Detectada pronto tiene tratamiento; tarde, se pierde la pieza." },
+  ],
+
+  "absceso-dental-que-hacer": [
+    { tipo: "h2", texto: "Los dos tipos de absceso" },
+    { tipo: "p", texto: "No todos nacen en el mismo sitio y el tratamiento cambia, así que conviene distinguirlos." },
+    { tipo: "tabla", encabezados: ["", "Periapical", "Periodontal"], filas: [["Origen", "Dentro del diente, el nervio", "La encía y el hueso de alrededor"], ["Causa típica", "Caries profunda o golpe", "Enfermedad periodontal"], ["El diente responde al frío", "No", "Sí, suele estar vivo"], ["Tratamiento", "Endodoncia", "Raspado y alisado, periodoncia"]] },
+    { tipo: "p", texto: "Se diferencian con una prueba de vitalidad y una radiografía, en la misma cita. Tratar un absceso periodontal con endodoncia, o al revés, no resuelve nada." },
+    { tipo: "h2", texto: "Qué se hace en la cita de urgencia" },
+    { tipo: "pasos", items: ["Diagnóstico con radiografía y pruebas, para saber de qué tipo es.", "Drenaje: se abre el diente o se drena por la encía. Aquí es donde el dolor baja de forma notable.", "Limpieza inicial del conducto si es periapical.", "Medicación dentro del conducto y restauración provisional.", "Antibiótico solo si hay afectación general: fiebre, hinchazón extendida o ganglios.", "Cita de seguimiento en unos días para terminar el tratamiento."] },
+    { tipo: "p", texto: "Casi siempre se sale de esa primera cita sin dolor. Lo que no se resuelve en una sola visita es el tratamiento completo." },
+    { tipo: "h2", texto: "Por qué vuelve si no se trata la causa" },
+    { tipo: "p", texto: "El absceso es la consecuencia, no la enfermedad. Drenarlo alivia la presión y quita el dolor, pero las bacterias siguen dentro del conducto o de la bolsa periodontal, multiplicándose. En semanas o meses vuelve a acumularse pus y el ciclo se repite, cada vez con más pérdida de hueso alrededor." },
+    { tipo: "p", texto: "Hay pacientes que llevan años con una fístula que aparece y desaparece, convencidos de que se les cura sola. Lo que ocurre es que la infección encontró una vía de drenaje permanente mientras sigue destruyendo hueso." },
+  ],
+
+  "se-me-cayo-una-corona-que-hago": [
+    { tipo: "h2", texto: "Qué mirar en la corona que se cayó" },
+    { tipo: "p", texto: "Antes de guardarla, obsérvala un momento: lo que tenga dentro adelanta bastante el diagnóstico." },
+    { tipo: "tabla", encabezados: ["Qué ves dentro", "Qué suele significar"], filas: [["Solo cemento viejo, grisáceo", "El cemento falló: suele recementarse"], ["Un trozo de diente oscuro", "Fractura del muñón: hay que valorar"], ["Un poste metálico o de fibra", "Se soltó el poste con todo"], ["Material blando y oscuro, mal olor", "Caries debajo: hay que tratarla primero"], ["Está partida", "Hay que hacer una nueva"]] },
+    { tipo: "h2", texto: "Qué hacer si no puedes ir en varios días" },
+    { tipo: "p", texto: "Si estás de viaje o es puente largo, hay medidas razonables para aguantar, siempre entendiendo que son un parche." },
+    { tipo: "lista", items: ["Cemento provisional dental de farmacia, siguiendo las instrucciones del envase.", "Solo si la corona entra sola, sin forzar y sin dolor al asentarla.", "Limpia la corona por dentro con un cepillo suave y sécala antes.", "Si no entra bien, no la pongas: guárdala y evita masticar de ese lado.", "Sensibilidad al frío mientras tanto: pasta desensibilizante aplicada con el dedo sobre el muñón."] },
+    { tipo: "alerta", texto: "El cemento provisional de farmacia sella mal y filtra. Sirve para unos días, no para semanas. Cuanto más tiempo pase, más probable es que entre caries por debajo y que la corona ya no sirva." },
+    { tipo: "h2", texto: "Cómo evitar que vuelva a pasar" },
+    { tipo: "lista", items: ["Higiene cuidadosa en el borde de la corona: es donde empieza la caries que la despega.", "Hilo dental a diario en esa zona, sacándolo de lado y no tirando hacia arriba.", "Revisión cada seis meses, con radiografía periódica del borde.", "Si rechinas los dientes, férula de descarga nocturna.", "Evita abrir cosas con los dientes y morder hielo."] },
+  ],
+
+  "por-que-se-mueven-los-dientes-en-adultos": [
+    { tipo: "h2", texto: "Los grados de movilidad y qué significan" },
+    { tipo: "p", texto: "En la consulta se mide con una escala sencilla que ayuda a entender el pronóstico real de cada diente." },
+    { tipo: "tabla", encabezados: ["Grado", "Qué se observa", "Pronóstico"], filas: [["0", "Movilidad fisiológica normal", "Sano"], ["1", "Menos de 1 mm en horizontal", "Bueno con tratamiento"], ["2", "Más de 1 mm en horizontal", "Reservado, tratable"], ["3", "Se mueve también en vertical", "Malo, a veces irrecuperable"]] },
+    { tipo: "p", texto: "La diferencia entre grado 1 y grado 3 es, casi siempre, el tiempo que se dejó pasar. Un grado 1 tratado a tiempo vuelve a la normalidad; un grado 3 rara vez se recupera." },
+    { tipo: "h2", texto: "Qué incluye un tratamiento periodontal" },
+    { tipo: "pasos", items: ["Sondaje: se mide la profundidad alrededor de cada diente, en seis puntos. Es el diagnóstico real.", "Radiografías para ver cuánto hueso queda.", "Raspado y alisado radicular, normalmente en dos o cuatro sesiones con anestesia.", "Reevaluación a las seis u ocho semanas, midiendo otra vez.", "Si quedan bolsas profundas, se valora cirugía periodontal.", "Mantenimiento cada tres o cuatro meses, de por vida."] },
+    { tipo: "p", texto: "Ese último punto es el que decide el resultado a diez años. La enfermedad periodontal no se cura: se controla, y el control depende del mantenimiento." },
+    { tipo: "h2", texto: "Bruxismo y férula de descarga" },
+    { tipo: "p", texto: "Si la movilidad viene de apretar o rechinar, el tratamiento es distinto: ajustar los contactos para repartir la fuerza y una férula de descarga nocturna." },
+    { tipo: "p", texto: "La férula no evita que aprietes, porque eso ocurre mientras duermes y tiene causas que no están en la boca. Lo que hace es que la fuerza la reciba un plástico y no tus dientes y tu hueso. Es protección, no cura, y es la medida con mejor relación entre costo y daño evitado que hay en odontología." },
+  ],
+};

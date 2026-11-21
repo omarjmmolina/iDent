@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { buildMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -11,6 +12,7 @@ import {
   type CategoriaId,
 } from "@/content/blog";
 import { SITE_URL } from "@/content/clinica";
+import { imagenDe } from "@/content/blog/imagenes";
 
 export const metadata = buildMetadata({
   title: "Blog dental | Ortodoncia y endodoncia en Querétaro | iDent",
@@ -107,7 +109,20 @@ export default function Page() {
           <ul className="reveal-grupo mt-6 grid gap-6 lg:grid-cols-2">
             {destacados.map((a) => (
               <li key={a.slug}>
-                <article className="tarjeta-hover flex h-full flex-col rounded-4xl border border-navy-100 p-7 hover:border-teal-300 sm:p-9">
+                <article className="tarjeta-hover flex h-full flex-col overflow-hidden rounded-4xl border border-navy-100 hover:border-teal-300">
+                  <Link
+                    href={`/blog/${a.slug}`}
+                    className="zoom-foto relative block aspect-[2/1] overflow-hidden bg-navy-100"
+                  >
+                    <Image
+                      src={imagenDe(a.slug).src}
+                      alt={imagenDe(a.slug).alt}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 32rem"
+                      className="object-cover"
+                    />
+                  </Link>
+                  <div className="flex flex-1 flex-col p-7 sm:p-9">
                   <p className="text-xs font-semibold tracking-[0.12em] text-teal-600 uppercase">
                     {CATEGORIAS[a.categoria].nombre}
                   </p>
@@ -122,6 +137,7 @@ export default function Page() {
                   <p className="mt-5 text-sm text-navy-400">
                     <time dateTime={a.fecha}>{fecha(a.fecha)}</time> · {a.lectura}
                   </p>
+                  </div>
                 </article>
               </li>
             ))}
@@ -149,18 +165,32 @@ export default function Page() {
               <ul className="reveal-grupo mt-7 grid gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
                 {articulos.map((a) => (
                   <li key={a.slug} className="border-t border-navy-100 pt-4">
-                    <h3 className="font-display text-lg leading-snug font-semibold text-navy-800">
-                      <Link
-                        href={`/blog/${a.slug}`}
-                        className="transition hover:text-teal-700"
-                      >
-                        {a.titulo}
-                      </Link>
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-navy-500">
-                      {a.resumen}
-                    </p>
-                    <p className="mt-2 text-xs text-navy-400">{a.lectura}</p>
+                    <Link
+                      href={`/blog/${a.slug}`}
+                      className="grupo-flecha flex gap-4"
+                    >
+                      <span className="zoom-foto relative block size-20 shrink-0 overflow-hidden rounded-xl bg-navy-100">
+                        <Image
+                          src={imagenDe(a.slug).src}
+                          alt=""
+                          fill
+                          loading="lazy"
+                          sizes="80px"
+                          className="object-cover"
+                        />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block font-display text-[17px] leading-snug font-semibold text-navy-800 transition group-hover:text-teal-700">
+                          {a.titulo}
+                        </span>
+                        <span className="mt-1 block text-sm leading-relaxed text-navy-500">
+                          {a.resumen}
+                        </span>
+                        <span className="mt-1.5 block text-xs text-navy-400">
+                          {a.lectura}
+                        </span>
+                      </span>
+                    </Link>
                   </li>
                 ))}
               </ul>

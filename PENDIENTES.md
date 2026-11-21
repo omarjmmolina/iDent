@@ -94,9 +94,14 @@ Si ya no, hay que bajar ese post.
 
 ## 📋 7. Fotografías
 
-El sitio no se ve con huecos: tratamientos y consultorio llevan imágenes
-de stock de Unsplash marcadas como "Imagen ilustrativa". Son provisionales
-y conviene sustituirlas, porque las fotos reales convierten mejor.
+El sitio no se ve con huecos: tratamientos, consultorio y los 40
+artículos del blog llevan imágenes de stock de Unsplash marcadas como
+"Imagen ilustrativa". Son provisionales y conviene sustituirlas, porque
+las fotos reales convierten mejor.
+
+Si la clínica va generando fotos propias de tratamientos, las del blog
+son las primeras que conviene cambiar: son las que ve alguien que llega
+desde una búsqueda y todavía no conoce la clínica.
 
 **Donde NO hay stock y sigue el marcador, a propósito:** retratos del
 equipo, casos de antes y después y fachada de la clínica. Poner un modelo

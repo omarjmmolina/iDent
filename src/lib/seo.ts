@@ -8,6 +8,8 @@ type Args = {
   path: string;
   /** Si la página no debe indexarse (p. ej. gracias, 404) */
   noIndex?: boolean;
+  /** Ruta de la imagen para Open Graph, empezando con "/" */
+  imagen?: string;
 };
 
 /**
@@ -20,8 +22,10 @@ export function buildMetadata({
   description,
   path,
   noIndex,
+  imagen,
 }: Args): Metadata {
   const url = `${SITE_URL}${path}`;
+  const imagenes = imagen ? [{ url: imagen }] : undefined;
   return {
     title,
     description,
@@ -34,11 +38,13 @@ export function buildMetadata({
       siteName: `${CLINICA.nombre} · ${CLINICA.tagline}`,
       title,
       description,
+      images: imagenes,
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: imagenes,
     },
   };
 }

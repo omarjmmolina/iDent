@@ -80,6 +80,8 @@ cambiar contenido.**
 | `src/content/zonas.ts` | Las 6 páginas de zona: ruta, traslado, contexto propio |
 | `src/content/precios.ts` | Importes por tratamiento y meses sin intereses |
 | `src/content/blog/` | Los 40 artículos, un archivo por categoría |
+| `src/content/blog/amp/` | Apartados añadidos a cada artículo, aparte del texto original |
+| `src/content/blog/imagenes.ts` | Imagen destacada de cada artículo |
 | `src/content/resenas.ts` | Reseñas y las fuentes que las respaldan |
 | `src/content/imagenes.ts` | Catálogo de imágenes de stock provisionales |
 
@@ -102,6 +104,24 @@ Se edita en `src/content/resenas.ts`.
 
 El `aggregateRating` del schema está desactivado a propósito: Google no
 acepta que un negocio marque su propia calificación en su sitio.
+
+## Blog
+
+40 artículos en 7 categorías, cada uno con:
+
+- **Imagen destacada**, que se usa también en las tarjetas del índice, en
+  los bloques de relacionados y como imagen de Open Graph al compartir.
+- **Tres llamados a la acción repartidos** por el texto. No están escritos
+  a mano en cada artículo: `CuerpoArticulo` calcula dónde cae un tercio y
+  dos tercios de los apartados y los inserta ahí, justo antes de un
+  encabezado para no partir una sección. El tercero cierra el artículo.
+  Cada uno tiene una forma distinta y el contenido cambia según el
+  tratamiento del que hable el artículo.
+- **Tiempo de lectura calculado**, no escrito a mano: se cuenta el texto
+  real a 200 palabras por minuto, así que no se desfasa al ampliar.
+
+Para alargar un artículo se añaden bloques en `src/content/blog/amp/`,
+sin tocar el archivo original. Se insertan antes del bloque de cierre.
 
 ## Movimiento y animación
 

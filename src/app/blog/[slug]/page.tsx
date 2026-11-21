@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { buildMetadata } from "@/lib/seo";
 import { JsonLd } from "@/components/JsonLd";
@@ -19,6 +20,7 @@ import {
   articuloPorSlug,
   relacionados,
 } from "@/content/blog";
+import { imagenDe } from "@/content/blog/imagenes";
 import { SERVICIOS, PILARES } from "@/content/servicios";
 import { SITE_URL, CLINICA } from "@/content/clinica";
 
@@ -40,6 +42,7 @@ export async function generateMetadata({
     title: a.tituloSeo,
     description: a.metaDescription,
     path: `/blog/${a.slug}`,
+    imagen: imagenDe(a.slug).src,
   });
 }
 
@@ -71,6 +74,7 @@ export default async function Page({
   const servicio = a.servicio
     ? SERVICIOS.find((s) => s.slug === a.servicio)
     : undefined;
+  const imagen = imagenDe(a.slug);
 
   return (
     <>
@@ -83,6 +87,7 @@ export default async function Page({
             "@type": "BlogPosting",
             headline: a.titulo,
             description: a.metaDescription,
+            image: `${SITE_URL}${imagenDe(a.slug).src}`,
             articleSection: cat.nombre,
             datePublished: a.fecha,
             dateModified: a.actualizado ?? a.fecha,
@@ -124,11 +129,31 @@ export default async function Page({
               {a.resumen}
             </p>
           </Container>
+
+          <Container className="mt-8 max-w-5xl">
+            <figure className="zoom-foto relative aspect-[16/9] overflow-hidden rounded-3xl bg-navy-100 sm:aspect-[2/1]">
+              <Image
+                src={imagen.src}
+                alt={imagen.alt}
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 64rem"
+                className="object-cover"
+              />
+            </figure>
+            <figcaption className="mt-2 text-xs text-navy-400">
+              Imagen ilustrativa
+            </figcaption>
+          </Container>
         </header>
 
         <div className="py-12 sm:py-16">
           <Container className="max-w-3xl">
-            <CuerpoArticulo bloques={a.cuerpo} />
+            <CuerpoArticulo
+              bloques={a.cuerpo}
+              titulo={a.titulo}
+              servicio={a.servicio}
+            />
           </Container>
         </div>
 

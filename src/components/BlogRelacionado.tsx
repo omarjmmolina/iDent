@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Container, Eyebrow } from "@/components/ui";
 import { Carrusel } from "@/components/Carrusel";
 import { CATEGORIAS, type Articulo } from "@/content/blog";
+import { imagenDe } from "@/content/blog/imagenes";
 
 /**
  * Carrusel de artículos del blog relacionados con la página actual.
@@ -43,7 +45,21 @@ export function BlogRelacionado({
         <Carrusel etiqueta="Artículos del blog" className="mt-8">
           {articulos.map((a) => (
             <li key={a.slug} className="w-[18rem] sm:w-[21rem]">
-              <article className="tarjeta-hover flex h-full flex-col rounded-3xl border border-navy-100 bg-white p-6 hover:border-teal-300">
+              <article className="tarjeta-hover flex h-full flex-col overflow-hidden rounded-3xl border border-navy-100 bg-white hover:border-teal-300">
+                <Link
+                  href={`/blog/${a.slug}`}
+                  className="zoom-foto relative block aspect-[16/9] overflow-hidden bg-navy-100"
+                >
+                  <Image
+                    src={imagenDe(a.slug).src}
+                    alt=""
+                    fill
+                    loading="lazy"
+                    sizes="21rem"
+                    className="object-cover"
+                  />
+                </Link>
+                <div className="flex flex-1 flex-col p-6">
                 <p className="text-[11px] font-semibold tracking-[0.12em] text-teal-600 uppercase">
                   {CATEGORIAS[a.categoria].nombre}
                 </p>
@@ -72,6 +88,7 @@ export function BlogRelacionado({
                   </svg>
                   {a.lectura}
                 </p>
+                </div>
               </article>
             </li>
           ))}
