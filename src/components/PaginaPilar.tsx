@@ -14,6 +14,11 @@ import { faqSchema, breadcrumbSchema } from "@/lib/schema";
 import { PILARES, serviciosDe, type Faq } from "@/content/servicios";
 import { precioTexto } from "@/content/precios";
 import { ZONAS } from "@/content/zonas";
+import { STOCK } from "@/content/imagenes";
+import { Proceso } from "@/components/Proceso";
+import { BlogRelacionado } from "@/components/BlogRelacionado";
+import { Resenas } from "@/components/Resenas";
+import { ARTICULOS } from "@/content/blog";
 
 export function PaginaPilar({
   pilar,
@@ -32,6 +37,10 @@ export function PaginaPilar({
     { nombre: "Inicio", path: "/" },
     { nombre: p.nombre, path: `/${p.slug}` },
   ];
+  const slugsHijos = hijos.map((h) => h.slug);
+  const articulos = ARTICULOS.filter(
+    (a) => a.servicio && slugsHijos.includes(a.servicio),
+  ).slice(0, 3);
 
   return (
     <>
@@ -64,6 +73,7 @@ export function PaginaPilar({
             <Foto
               archivo={foto.archivo}
               priority
+              stock={STOCK[pilar]}
               foto={{ src: null, ratio: "4/3", alt: foto.alt, brief: foto.brief }}
             />
           </div>
@@ -133,6 +143,72 @@ export function PaginaPilar({
         </Container>
       </section>
 
+      {/* Comparativa rápida entre los tratamientos del pilar */}
+      <section className="bg-sand-50 py-14 sm:py-16">
+        <Container>
+          <div className="max-w-2xl">
+            <Eyebrow>De un vistazo</Eyebrow>
+            <h2 className="mt-3 text-2xl font-bold text-navy-800 sm:text-3xl">
+              Los tratamientos comparados
+            </h2>
+            <p className="mt-3 text-navy-600">
+              Las mismas cifras que verías en cada página, juntas, para que
+              compares sin ir y volver.
+            </p>
+          </div>
+          <div className="mt-8 overflow-x-auto rounded-3xl border border-navy-100 bg-white">
+            <table className="w-full min-w-[34rem] text-left">
+              <caption className="sr-only">
+                Comparativa de tratamientos de {p.nombre.toLowerCase()}
+              </caption>
+              <thead className="bg-sand-100">
+                <tr>
+                  <th scope="col" className="px-5 py-4 text-sm font-semibold text-navy-800">
+                    Tratamiento
+                  </th>
+                  {hijos[0].datos.map((d) => (
+                    <th
+                      key={d.label}
+                      scope="col"
+                      className="px-5 py-4 text-sm font-semibold text-navy-800"
+                    >
+                      {d.label}
+                    </th>
+                  ))}
+                  <th scope="col" className="px-5 py-4 text-right text-sm font-semibold text-navy-800">
+                    Desde
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-navy-100">
+                {hijos.map((s) => (
+                  <tr key={s.slug} className="transition hover:bg-sand-50">
+                    <th scope="row" className="px-5 py-4 text-left font-normal">
+                      <Link
+                        href={`/${p.slug}/${s.slug}`}
+                        className="font-medium text-navy-800 underline-offset-4 hover:text-teal-700 hover:underline"
+                      >
+                        {s.nombre}
+                      </Link>
+                    </th>
+                    {s.datos.map((d) => (
+                      <td key={d.label} className="px-5 py-4 text-[15px] text-navy-600">
+                        {d.valor}
+                      </td>
+                    ))}
+                    <td className="px-5 py-4 text-right font-display font-semibold text-navy-800">
+                      {precioTexto(s.slug)}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Container>
+      </section>
+
+      <Proceso />
+
       <section className="bg-navy-800 py-14 text-white sm:py-20">
         <Container className="max-w-3xl">
           <h2 className="text-3xl font-bold sm:text-4xl">{cierre.h2}</h2>
@@ -173,6 +249,10 @@ export function PaginaPilar({
           </ul>
         </Container>
       </section>
+
+      <Resenas fondo="sand" />
+
+      <BlogRelacionado articulos={articulos} />
 
       <CtaFinal mensaje={`Hola, quiero una valoración de ${p.nombre.toLowerCase()}.`} />
     </>

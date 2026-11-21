@@ -4,6 +4,8 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { Foto } from "@/components/Foto";
 import { Container, Eyebrow, CtaFinal, Migas } from "@/components/ui";
 import { CLINICA } from "@/content/clinica";
+import { STOCK } from "@/content/imagenes";
+import { Resenas } from "@/components/Resenas";
 
 export const metadata = buildMetadata({
   title: "Equipo | Ortodoncistas y endodoncistas en Corregidora | iDent",
@@ -127,6 +129,7 @@ export default function Page() {
           <div className="mt-8">
             <Foto
               archivo="consultorio-ident"
+              stock={STOCK.consultorio}
               foto={{
                 src: null,
                 ratio: "16/9",
@@ -138,6 +141,8 @@ export default function Page() {
           </div>
         </Container>
       </section>
+
+      <Resenas fondo="sand" />
 
       <CtaFinal mensaje="Hola, quiero agendar una valoración en iDent." />
     </>

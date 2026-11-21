@@ -4,6 +4,7 @@ import { breadcrumbSchema } from "@/lib/schema";
 import { FormularioContacto } from "@/components/FormularioContacto";
 import { Container, Eyebrow, Migas, BotonTelefono } from "@/components/ui";
 import { CLINICA, direccionUnaLinea } from "@/content/clinica";
+import { Resenas } from "@/components/Resenas";
 
 export const metadata = buildMetadata({
   title: "Contacto | Clínica dental iDent en Corregidora, Querétaro",
@@ -117,6 +118,8 @@ export default function Page() {
           </div>
         </Container>
       </section>
+
+      <Resenas fondo="sand" />
     </>
   );
 }

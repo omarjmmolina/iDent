@@ -14,6 +14,11 @@ import {
 import { CLINICA, direccionUnaLinea } from "@/content/clinica";
 import { PILARES, SERVICIOS, serviciosDe } from "@/content/servicios";
 import { ZONAS } from "@/content/zonas";
+import { STOCK } from "@/content/imagenes";
+import { Proceso } from "@/components/Proceso";
+import { BlogRelacionado } from "@/components/BlogRelacionado";
+import { Resenas } from "@/components/Resenas";
+import { ARTICULOS } from "@/content/blog";
 
 export const metadata = buildMetadata({
   title:
@@ -107,6 +112,7 @@ export default function Home() {
             <Foto
               archivo="fachada-clinica-ident-corregidora"
               priority
+              stock={STOCK.hero}
               foto={{
                 src: null,
                 ratio: "4/3",
@@ -236,6 +242,52 @@ export default function Home() {
                 <p className="mt-3 leading-relaxed text-navy-200">{item.d}</p>
               </div>
             ))}
+          </div>
+        </Container>
+      </section>
+
+      <Proceso fondo="sand" />
+
+      <Resenas fondo="blanco" />
+
+      {/* ───────── Formas de pago ───────── */}
+      <section className="bg-sand-50 py-14 sm:py-20">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+            <div>
+              <Eyebrow>Formas de pago</Eyebrow>
+              <h2 className="mt-3 text-3xl font-bold text-navy-800 sm:text-4xl">
+                Un tratamiento de dos años no se paga de una vez
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-navy-600">
+                Los tratamientos de ortodoncia se dividen en un pago inicial
+                y mensualidades que coinciden con las citas de ajuste. El
+                total se cierra en la valoración y no cambia después.
+              </p>
+              <Link
+                href="/precios"
+                className="mt-6 inline-block text-sm font-semibold text-teal-700 underline underline-offset-4"
+              >
+                Ver precios y qué incluye cada tratamiento →
+              </Link>
+            </div>
+            <ul className="grid gap-4 sm:grid-cols-2">
+              {[
+                { t: "Mensualidades", d: "Un pago inicial y cuotas que caen junto con cada cita de ajuste." },
+                { t: "Tarjeta", d: "Débito y crédito. Consulta los plazos disponibles a meses sin intereses." },
+                { t: "Efectivo y transferencia", d: "Las dos opciones, con comprobante." },
+                { t: "Por etapas", d: "En endodoncia con corona, el pago se puede dividir entre las dos fases." },
+              ].map((item) => (
+                <li key={item.t} className="rounded-3xl bg-white p-6">
+                  <h3 className="font-display text-lg font-semibold text-navy-800">
+                    {item.t}
+                  </h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-navy-600">
+                    {item.d}
+                  </p>
+                </li>
+              ))}
+            </ul>
           </div>
         </Container>
       </section>
@@ -380,6 +432,12 @@ export default function Home() {
           <Faqs faqs={FAQS_HOME} />
         </Container>
       </section>
+
+      <BlogRelacionado
+        articulos={ARTICULOS.slice(0, 3)}
+        titulo="Lo que más nos preguntan antes de la primera cita"
+        fondo="sand"
+      />
 
       <CtaFinal mensaje="Hola, vengo del sitio web y quiero agendar una valoración." />
     </>

@@ -12,6 +12,10 @@ import {
 } from "@/components/ui";
 import { SERVICIOS, PILARES } from "@/content/servicios";
 import { PRECIOS, precioTexto, MSI_MESES } from "@/content/precios";
+import { Resenas } from "@/components/Resenas";
+import { Proceso } from "@/components/Proceso";
+import { BlogRelacionado } from "@/components/BlogRelacionado";
+import { articulosDeCategoria } from "@/content/blog";
 
 export const metadata = buildMetadata({
   title: "Precios de ortodoncia y endodoncia en Querétaro | iDent",
@@ -191,6 +195,16 @@ export default function Page() {
           <Faqs faqs={FAQS} />
         </Container>
       </section>
+
+      <Proceso fondo="sand" />
+
+      <Resenas fondo="blanco" />
+
+      <BlogRelacionado
+        articulos={articulosDeCategoria("precios").slice(0, 3)}
+        titulo="Cómo leer un presupuesto dental"
+        fondo="sand"
+      />
 
       <CtaFinal
         titulo="¿Quieres el número de tu caso?"

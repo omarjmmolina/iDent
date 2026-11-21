@@ -78,6 +78,17 @@ ponerlo en la portada. Si ya no, hay que bajar ese post.
 
 ## 📋 6. Fotografías
 
+El sitio ya no se ve con huecos: los tratamientos y el consultorio llevan
+imágenes de stock de Unsplash marcadas como "Imagen ilustrativa". Son
+provisionales y conviene sustituirlas, porque las fotos reales de la
+clínica convierten bastante mejor.
+
+**Donde NO hay stock y sigue el marcador, a propósito:** retratos del
+equipo, casos de antes y después, y fachada de la clínica. Poner un modelo
+de banco de imágenes bajo el nombre de un doctor, o el resultado de otro
+paciente como caso propio, es engañar a quien lo lee.
+
+
 Cada hueco del sitio dice en pantalla qué foto va y con qué ruta. Resumen:
 
 **Clínica**

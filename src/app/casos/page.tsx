@@ -3,6 +3,7 @@ import { JsonLd } from "@/components/JsonLd";
 import { breadcrumbSchema } from "@/lib/schema";
 import { Foto } from "@/components/Foto";
 import { Container, Eyebrow, CtaFinal, Migas } from "@/components/ui";
+import { Resenas } from "@/components/Resenas";
 
 export const metadata = buildMetadata({
   title: "Casos antes y después | Ortodoncia y endodoncia | iDent Querétaro",
@@ -142,6 +143,8 @@ export default function Page() {
           </p>
         </Container>
       </section>
+
+      <Resenas fondo="sand" />
 
       <CtaFinal
         titulo="¿Quieres saber qué se puede hacer en tu caso?"

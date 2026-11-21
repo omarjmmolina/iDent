@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Foto as FotoTipo } from "@/content/servicios";
+import type { ImagenStock } from "@/content/imagenes";
 
 const RATIOS: Record<FotoTipo["ratio"], string> = {
   "16/9": "aspect-[16/9]",
@@ -9,41 +10,60 @@ const RATIOS: Record<FotoTipo["ratio"], string> = {
 };
 
 /**
- * Hueco de fotografía.
+ * Hueco de fotografía con tres estados:
  *
- * Mientras `foto.src` sea null muestra un marcador con el brief de la toma
- * y la ruta exacta donde hay que dejar el archivo. En cuanto la clínica
- * mande el material, se pone la ruta en el contenido y el marcador
- * desaparece: no hay que tocar las páginas.
+ * 1. Foto real de la clínica → se muestra sin más.
+ * 2. Sin foto real pero con imagen de stock → se muestra la de stock con
+ *    el pie "Imagen ilustrativa", para no hacer pasar una foto de banco
+ *    por una foto de la clínica.
+ * 3. Sin ninguna de las dos → marcador con el brief de la toma y la ruta
+ *    del archivo. Es lo que queda en equipo, casos y fachada, donde una
+ *    imagen de stock sería engañosa.
  */
 export function Foto({
   foto,
   archivo,
+  stock,
   className = "",
   priority = false,
 }: {
   foto: FotoTipo;
   /** Nombre sugerido del archivo, p. ej. "brackets-metalicos" */
   archivo: string;
+  /** Imagen de stock que se usa mientras no haya foto real. */
+  stock?: ImagenStock;
   className?: string;
   priority?: boolean;
 }) {
   const ratio = RATIOS[foto.ratio];
+  const src = foto.src ?? stock?.src ?? null;
+  const ilustrativa = !foto.src && Boolean(stock);
+  const alt = foto.src ? foto.alt : (stock?.alt ?? foto.alt);
 
-  if (foto.src) {
+  if (src) {
     return (
-      <div
-        className={`relative ${ratio} overflow-hidden rounded-3xl bg-navy-100 ${className}`}
-      >
-        <Image
-          src={foto.src}
-          alt={foto.alt}
-          fill
-          priority={priority}
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover"
-        />
-      </div>
+      <figure className={className}>
+        <div
+          className={`relative ${ratio} overflow-hidden rounded-3xl bg-navy-100`}
+        >
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            priority={priority}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
+        </div>
+        {ilustrativa && (
+          <figcaption
+            className="mt-2 text-xs text-navy-400"
+            data-foto-pendiente={archivo}
+          >
+            Imagen ilustrativa
+          </figcaption>
+        )}
+      </figure>
     );
   }
 
@@ -69,7 +89,7 @@ export function Foto({
             />
             <circle cx="12" cy="12.5" r="3.25" />
           </svg>
-          <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-700">
+          <span className="text-[11px] font-semibold tracking-[0.14em] text-teal-700 uppercase">
             Foto pendiente
           </span>
         </div>

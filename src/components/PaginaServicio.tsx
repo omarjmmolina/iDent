@@ -12,9 +12,14 @@ import {
   Dato,
 } from "@/components/ui";
 import { faqSchema, breadcrumbSchema, servicioSchema } from "@/lib/schema";
+import { Proceso } from "@/components/Proceso";
+import { BlogRelacionado } from "@/components/BlogRelacionado";
+import { Resenas } from "@/components/Resenas";
+import { articulosDeServicio, articulosDeCategoria } from "@/content/blog";
 import { PILARES, serviciosDe, type Servicio } from "@/content/servicios";
 import { PRECIOS, precioTexto, MSI_MESES } from "@/content/precios";
 import { ZONAS } from "@/content/zonas";
+import { STOCK, type ClaveStock } from "@/content/imagenes";
 
 export function PaginaServicio({ servicio }: { servicio: Servicio }) {
   const pilar = PILARES[servicio.pilar];
@@ -28,6 +33,15 @@ export function PaginaServicio({ servicio }: { servicio: Servicio }) {
     { nombre: pilar.nombre, path: `/${pilar.slug}` },
     { nombre: servicio.nombre, path },
   ];
+  // Artículos del blog que tocan este tratamiento; si no llegan a tres, se
+  // completa con los de precios, que es lo que más se busca.
+  const delServicio = articulosDeServicio(servicio.slug);
+  const articulos = [
+    ...delServicio,
+    ...articulosDeCategoria("precios").filter(
+      (a) => !delServicio.some((d) => d.slug === a.slug),
+    ),
+  ].slice(0, 3);
 
   return (
     <>
@@ -64,7 +78,12 @@ export function PaginaServicio({ servicio }: { servicio: Servicio }) {
                 <BotonTelefono />
               </div>
             </div>
-            <Foto archivo={servicio.slug} foto={servicio.foto} priority />
+            <Foto
+              archivo={servicio.slug}
+              foto={servicio.foto}
+              stock={STOCK[servicio.slug as ClaveStock]}
+              priority
+            />
           </div>
 
           <dl className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
@@ -120,6 +139,76 @@ export function PaginaServicio({ servicio }: { servicio: Servicio }) {
         </Container>
       </article>
 
+      {/* Qué incluye y qué se cotiza aparte */}
+      <section className="bg-sand-50 py-14 sm:py-16">
+        <Container>
+          <div className="max-w-2xl">
+            <Eyebrow>Sin letra pequeña</Eyebrow>
+            <h2 className="mt-3 text-2xl font-bold text-navy-800 sm:text-3xl">
+              Qué incluye y qué se cotiza aparte
+            </h2>
+          </div>
+          <div className="mt-8 grid gap-5 lg:grid-cols-2">
+            <div className="rounded-3xl bg-white p-6 sm:p-8">
+              <h3 className="font-display text-lg font-semibold text-navy-800">
+                Incluido en el precio
+              </h3>
+              <ul className="mt-4 space-y-2.5 text-navy-600">
+                {[
+                  "Valoración con radiografía y plan por escrito",
+                  "El tratamiento completo tal como se cotizó",
+                  "Las citas de control que requiera el caso",
+                  servicio.pilar === "ortodoncia"
+                    ? "Retiro del aparato y retenedores al terminar"
+                    : "Radiografía de control al terminar",
+                ].map((t) => (
+                  <li key={t} className="flex gap-3">
+                    <span
+                      aria-hidden="true"
+                      className="mt-2.5 size-1.5 shrink-0 rounded-full bg-teal-500"
+                    />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="rounded-3xl border border-navy-100 p-6 sm:p-8">
+              <h3 className="font-display text-lg font-semibold text-navy-800">
+                Se cotiza por separado
+              </h3>
+              <ul className="mt-4 space-y-2.5 text-navy-600">
+                {(servicio.pilar === "ortodoncia"
+                  ? [
+                      "Limpiezas y caries que haya que tratar antes de empezar",
+                      "Extracciones si el caso las requiere",
+                      "Reposición de aparatos o retenedores por pérdida o rotura",
+                    ]
+                  : [
+                      "Corona después del tratamiento, en molares y premolares",
+                      "Poste de fibra cuando queda poca estructura",
+                      "Limpiezas o tratamientos previos que el caso requiera",
+                    ]
+                ).map((t) => (
+                  <li key={t} className="flex gap-3">
+                    <span
+                      aria-hidden="true"
+                      className="mt-2.5 size-1.5 shrink-0 rounded-full bg-navy-300"
+                    />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-5 text-sm text-navy-400">
+                Todo esto se te dice en la valoración, antes de empezar. No
+                aparece a mitad del tratamiento.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <Proceso />
+
       <section className="pb-14 sm:pb-20">
         <Container className="max-w-3xl">
           <h2 className="mb-6 text-2xl font-bold text-navy-800 sm:text-3xl">
@@ -128,6 +217,10 @@ export function PaginaServicio({ servicio }: { servicio: Servicio }) {
           <Faqs faqs={servicio.faqs} />
         </Container>
       </section>
+
+      <Resenas fondo="sand" compacto />
+
+      <BlogRelacionado articulos={articulos} />
 
       {/* Enlazado interno: cada sub-servicio enlaza a su pilar y a sus hermanos */}
       <section className="border-t border-navy-100 py-14 sm:py-20">

@@ -16,6 +16,10 @@ import {
 import { ZONAS, zonaPorSlug } from "@/content/zonas";
 import { PILARES, serviciosDe } from "@/content/servicios";
 import { CLINICA, direccionUnaLinea } from "@/content/clinica";
+import { Proceso } from "@/components/Proceso";
+import { BlogRelacionado } from "@/components/BlogRelacionado";
+import { Resenas } from "@/components/Resenas";
+import { ARTICULOS } from "@/content/blog";
 
 export function generateStaticParams() {
   return ZONAS.map((z) => ({ zona: z.slug }));
@@ -52,6 +56,11 @@ export default async function Page({
     { nombre: z.nombreCorto, path: `/zonas/${z.slug}` },
   ];
   const otras = ZONAS.filter((o) => o.slug !== z.slug);
+  // Para zonas se eligen artículos de decisión: precios y comparativas son
+  // lo que más consulta alguien que está valorando si vale el traslado.
+  const articulos = ARTICULOS.filter(
+    (a) => a.categoria === "precios" || a.categoria === "comparativas",
+  ).slice(0, 3);
 
   return (
     <>
@@ -179,6 +188,53 @@ export default async function Page({
         </Container>
       </article>
 
+      {/* Cómo trabajamos con pacientes que se trasladan */}
+      <section className="bg-navy-800 py-14 text-white sm:py-16">
+        <Container>
+          <div className="max-w-2xl">
+            <p className="text-[11px] font-semibold tracking-[0.16em] text-teal-300 uppercase">
+              Si te trasladas
+            </p>
+            <h2 className="mt-3 text-2xl font-bold sm:text-3xl">
+              Cómo organizamos tus citas desde {z.nombreCorto}
+            </h2>
+          </div>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {[
+              {
+                t: "Confirmación el día anterior",
+                d: "Te escribimos por WhatsApp. Si vamos retrasados por una urgencia, te avisamos antes de que salgas de casa.",
+              },
+              {
+                t: "Citas agrupadas",
+                d: "Valoración, radiografía y lo que haga falta en una sola visita, en vez de repartirlo en tres.",
+              },
+              {
+                t: "Serie completa agendada",
+                d: "En tratamientos largos dejamos todas las citas apartadas desde el inicio, siempre en el mismo horario.",
+              },
+              {
+                t: "Cotización antes de viajar",
+                d: "Mándanos fotos y radiografía por WhatsApp: te damos un rango antes de que subas al coche.",
+              },
+            ].map((item) => (
+              <div key={item.t}>
+                <h3 className="font-display text-lg font-semibold">{item.t}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-navy-200">
+                  {item.d}
+                </p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 max-w-3xl text-sm text-navy-300">
+            Tiempo estimado desde {z.nombreCorto}: {z.traslado.tiempo}. Las
+            horas más cargadas del área metropolitana son de 7:30 a 9:30 y de
+            18:00 a 20:00; si puedes elegir, media mañana o media tarde se
+            hacen mucho mejor.
+          </p>
+        </Container>
+      </section>
+
       {/* Cada zona enlaza a los dos servicios principales (plan, frente 02) */}
       <section className="bg-sand-50 py-14 sm:py-20">
         <Container>
@@ -223,6 +279,16 @@ export default async function Page({
           <Faqs faqs={z.faqs} />
         </Container>
       </section>
+
+      <Proceso fondo="sand" />
+
+      <Resenas fondo="blanco" />
+
+      <BlogRelacionado
+        articulos={articulos}
+        titulo="Antes de decidir si vale el traslado"
+        fondo="sand"
+      />
 
       <section className="border-t border-navy-100 py-12">
         <Container>
