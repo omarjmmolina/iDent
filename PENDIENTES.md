@@ -155,13 +155,34 @@ Vercel responde `403 domain_not_owned`. El equipo **Crauli** es el único
 al que tiene acceso y tiene cinco dominios, ninguno es este. Lo compró
 alguien más desde su propia cuenta de Vercel.
 
-### Qué hace falta: un registro TXT
+### Decisión: se traspasa la cuenta (24-nov-2026)
 
-Vercel tiene un flujo para esto, "Claim Domain Ownership", y ya está
-iniciado desde el equipo Crauli. Pide verificar el control del DNS con
-un registro TXT. Como el dominio usa los nameservers de Vercel bajo la
-otra cuenta, **ese registro lo tiene que añadir quien tenga acceso a
-ella**, desde su propio panel de Vercel:
+En vez de reclamar el dominio, **se traspasa la cuenta de Vercel donde
+está**. Así el dominio viaja con ella y no hay que mover propiedad a
+mano ni verificar nada.
+
+El reclamo por TXT queda descartado y **no se completó**: no se añadió
+ningún registro y el dominio sigue intacto en su cuenta. Crauli sigue
+con sus cinco dominios de siempre.
+
+Una vez traspasada la cuenta, queda:
+
+1. Asignar `ident.com.mx` y `www.ident.com.mx` al proyecto
+   `ident-queretaro`.
+2. Crear la variable `NEXT_PUBLIC_SITE_URL` con `https://ident.com.mx`.
+3. Redesplegar: se activan las canónicas al dominio real y la
+   indexación.
+4. Search Console y enlazarlo desde la ficha de Google.
+
+Mientras tanto el sitio sigue en vivo en
+https://ident-queretaro.vercel.app, en noindex a propósito.
+
+<details>
+<summary>Por si hiciera falta la vía alternativa (reclamo por TXT)</summary>
+
+Vercel tiene el flujo "Claim Domain Ownership", que verifica el control
+del DNS con un registro TXT y no requiere ser miembro de ninguna cuenta.
+El registro que generó para este dominio:
 
 | Campo | Valor |
 |---|---|
@@ -169,14 +190,14 @@ ella**, desde su propio panel de Vercel:
 | Nombre | `_vercel` |
 | Valor | `vc-domain-verify=ident.com.mx,fa85da4c3642704a6ef7` |
 
-En cuanto propague, se pulsa "Verify & Claim" en Crauli y el dominio
-pasa a nuestro equipo. El registro se puede borrar después.
+Lo añade quien tenga acceso a esa cuenta, y después se pulsa
+"Verify & Claim" desde Crauli. ⚠️ Reclamar **mueve la propiedad**: el
+dominio sale de la cuenta donde está hoy.
 
-⚠️ Reclamar **mueve la propiedad** del dominio: sale de la cuenta donde
-está hoy. Conviene avisar a quien la tenga antes de completar el paso.
+Lo que no sirve es "transferir entre equipos": exige ser miembro de las
+dos cuentas y el plan Hobby no admite miembros.
 
-No sirve la vía de "transferir entre equipos": para eso haría falta ser
-miembro de las dos cuentas, y el plan Hobby no admite miembros.
+</details>
 
 ### Una vez transferido (minutos)
 
