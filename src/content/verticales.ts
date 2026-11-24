@@ -1,5 +1,5 @@
 /**
- * Las nueve verticales de servicio de la clínica.
+ * Las ocho verticales de servicio de la clínica.
  *
  * Lista proporcionada por la clínica (Karely, nov 2026). Dos de ellas,
  * ortodoncia y endodoncia, ya tenían sus páginas pilar con sub-páginas y
@@ -22,9 +22,16 @@
  * clínico que Google asocia a la especialidad.
  *
  * ⚠️ PENDIENTE: la lista que mandó la clínica empieza en el punto 2 y
- * falta confirmar cuál era el 1. Implantología se añadió como novena
- * vertical a petición del cliente, a partir de la mención de Karely por
- * WhatsApp y de lo que la clínica comunica en Facebook.
+ * falta confirmar cuál era el 1. Implantología se añadió a petición del
+ * cliente.
+ *
+ * 🚫 PERIODONCIA NO ESTÁ, Y ES A PROPÓSITO. La clínica no tiene
+ * periodoncista y rara vez deriva a uno, así que anunciarla llevaría a
+ * pacientes que piden algo que no se puede dar ese día. Si en algún
+ * momento incorporan al especialista, el bloque se puede recuperar del
+ * historial de git (commit anterior a esta nota) y se vuelve a enlazar
+ * solo: el menú, la portada, el pie, el schema y el sitemap salen todos
+ * de esta lista.
  */
 
 export type ClaveVertical =
@@ -33,7 +40,6 @@ export type ClaveVertical =
   | "ortodoncia"
   | "estetica"
   | "endodoncia"
-  | "periodoncia"
   | "cirugia"
   | "implantologia"
   | "odontopediatria";
@@ -137,14 +143,14 @@ export const VERTICALES: Vertical[] = [
           "Sí reduce el sangrado de encías y el mal aliento que viene de ahí.",
           "Sí deja los dientes un tono más claros, porque quita manchas superficiales de café y tabaco.",
           "No blanquea: eso es otro tratamiento, el blanqueamiento.",
-          "No cura una enfermedad periodontal avanzada: ahí hace falta raspado y alisado radicular.",
+          "No cura una enfermedad periodontal avanzada: eso necesita tratamiento de periodoncia y, si tu caso lo requiere, te derivamos con un especialista.",
         ],
       },
       {
         h2: "Por qué sangra la encía durante la limpieza",
         parrafos: [
           "Porque ya estaba inflamada antes de entrar. Una encía sana no sangra al tocarla. Si sangra durante la limpieza, lo que se está viendo es el estado real de la encía, no un daño del procedimiento.",
-          "Tras unos días con buena higiene, ese sangrado desaparece. Si sigue a las dos semanas, hay que valorar periodoncia.",
+          "Tras unos días con buena higiene, ese sangrado desaparece. Si sigue a las dos semanas, hay que valorarlo: puede ser enfermedad de las encías, y en ese caso te orientamos sobre a quién acudir.",
         ],
       },
     ],
@@ -420,109 +426,7 @@ export const VERTICALES: Vertical[] = [
     keyword: "endodoncia queretaro",
   },
 
-  // ───────────────────────── 6. Periodoncia ─────────────────────────
-  {
-    clave: "periodoncia",
-    slug: "tratamiento-de-encias-queretaro",
-    nombre: "Encías y periodoncia",
-    nombreClinico: "Periodoncia",
-    tambienBuscado: [
-      "encías que sangran",
-      "tratamiento de encías",
-      "raspado y alisado radicular",
-      "dientes flojos",
-      "gingivitis y periodontitis",
-    ],
-    resumen:
-      "Tratar lo que sostiene los dientes. Encías que sangran, retracción y dientes que se mueven: detectado a tiempo se controla, dejado pasar se pierden piezas sanas.",
-    icono: "encia",
-    imagen: "/img/stock/periodoncia.webp",
-    orden: 6,
-    tienePagina: false,
-    titulo:
-      "Tratamiento de encías en Querétaro | Periodoncia | iDent Corregidora",
-    metaDescription:
-      "Tratamiento de encías en Corregidora: sangrado, retracción y dientes flojos. Periodoncia con sondaje, raspado y alisado radicular y mantenimiento.",
-    h1: "Tratamiento de encías en Querétaro",
-    keyword: "tratamiento de encias queretaro",
-    entradilla:
-      "La enfermedad de las encías es la causa número uno de pérdida de dientes en adultos, y avanza casi sin síntomas. No duele hasta que es tarde: para cuando un diente se mueve, ya se perdió buena parte del hueso que lo sostenía. Lo único que cambia el desenlace es llegar pronto.",
-    datos: [
-      { label: "Diagnóstico", valor: "Sondaje + radiografías" },
-      { label: "Tratamiento", valor: "2 a 4 sesiones" },
-      { label: "Mantenimiento", valor: "Cada 3 a 4 meses" },
-    ],
-    tratamientos: [
-      {
-        nombre: "Sondaje periodontal y diagnóstico",
-        descripcion:
-          "Se mide la profundidad alrededor de cada diente en seis puntos y se valora con radiografías cuánto hueso queda. Es el diagnóstico real, no una impresión a ojo.",
-      },
-      {
-        nombre: "Raspado y alisado radicular",
-        descripcion:
-          "Limpieza profunda por debajo de la encía, con anestesia, para retirar el sarro adherido a la raíz. Es el tratamiento base de la periodontitis.",
-      },
-      {
-        nombre: "Tratamiento de gingivitis",
-        descripcion:
-          "Cuando la inflamación todavía no afectó al hueso. Se resuelve con limpieza y técnica de higiene, y es completamente reversible.",
-      },
-      {
-        nombre: "Mantenimiento periodontal",
-        descripcion:
-          "Revisiones y limpiezas cada tres o cuatro meses. Es lo que determina el resultado a diez años: la periodontitis no se cura, se controla.",
-      },
-    ],
-    secciones: [
-      {
-        h2: "Las señales que no hay que dejar pasar",
-        lista: [
-          "La encía sangra al cepillar o al usar hilo. Una encía sana no sangra.",
-          "Mal aliento que no se quita con enjuague.",
-          "Los dientes se ven más largos: la encía se está retrayendo.",
-          "Aparecen espacios nuevos entre dientes que antes no estaban.",
-          "Sientes algún diente flojo, o la mordida distinta.",
-          "La encía está roja e hinchada en vez de rosa y firme.",
-        ],
-      },
-      {
-        h2: "Gingivitis y periodontitis no son lo mismo",
-        parrafos: [
-          "La gingivitis es la inflamación de la encía. Duele poco, sangra y es completamente reversible: con una limpieza y buena técnica en casa, la encía vuelve a la normalidad en semanas.",
-          "La periodontitis es el paso siguiente: la inflamación llegó al hueso y empezó a destruirlo. Eso ya no se revierte. El hueso perdido no vuelve a crecer solo; lo que se hace es detener el proceso y conservar lo que queda.",
-          "La diferencia entre las dos la marca una medición, no una impresión. Por eso el sondaje es la primera cita.",
-        ],
-      },
-      {
-        h2: "Por qué importa más allá de la boca",
-        parrafos: [
-          "La enfermedad periodontal es una inflamación crónica con bacterias en contacto permanente con el torrente sanguíneo. Hay asociación documentada con control de la diabetes, enfermedad cardiovascular y complicaciones del embarazo.",
-          "Si tienes diabetes, la relación va en los dos sentidos: la periodontitis dificulta el control glucémico y el mal control agrava la periodontitis. Dilo en la consulta, cambia el plan de mantenimiento.",
-        ],
-      },
-    ],
-    faqs: [
-      {
-        q: "¿Es normal que me sangren las encías al cepillarme?",
-        a: "No. Es la señal más temprana y la más ignorada. Una encía sana no sangra, ni con el cepillo ni con el hilo. Si sangra, hay inflamación.",
-      },
-      {
-        q: "¿El raspado y alisado duele?",
-        a: "Se hace con anestesia, así que durante el procedimiento no. Después puede haber sensibilidad al frío unos días, porque queda expuesta una superficie de raíz que estaba cubierta de sarro.",
-      },
-      {
-        q: "¿El hueso perdido se recupera?",
-        a: "En general no. En defectos concretos hay técnicas regenerativas que pueden recuperar una parte, pero la regla es que lo perdido no vuelve. Por eso llegar pronto cambia tanto el pronóstico.",
-      },
-      {
-        q: "¿Puedo hacerme ortodoncia si tengo problemas de encías?",
-        a: "Primero se trata la encía. Mover dientes sobre un terreno inflamado acelera la pérdida de hueso. Una vez controlada, la ortodoncia se puede hacer con seguimiento más estrecho.",
-      },
-    ],
-  },
-
-  // ───────────────────────── 7. Cirugía oral ─────────────────────────
+  // ───────────────────────── 6. Cirugía oral ─────────────────────────
   {
     clave: "cirugia",
     slug: "extraccion-de-muelas-queretaro",
@@ -539,7 +443,7 @@ export const VERTICALES: Vertical[] = [
       "Extracciones y muelas del juicio, con diagnóstico previo y recuperación explicada. La extracción es el último recurso: primero vemos si el diente se puede conservar.",
     icono: "bisturi",
     imagen: "/img/stock/cirugia-oral.webp",
-    orden: 7,
+    orden: 6,
     tienePagina: false,
     titulo:
       "Extracción de muelas y muelas del juicio en Querétaro | Cirugía oral | iDent",
@@ -625,7 +529,7 @@ export const VERTICALES: Vertical[] = [
     ],
   },
 
-  // ───────────────────────── 8. Implantología ─────────────────────────
+  // ───────────────────────── 7. Implantología ─────────────────────────
   {
     clave: "implantologia",
     slug: "implantes-dentales-queretaro",
@@ -642,7 +546,7 @@ export const VERTICALES: Vertical[] = [
       "Reponer una pieza perdida con un implante y su corona. Entra cuando ya no hay diente que salvar: antes de llegar ahí, siempre miramos si se puede conservar el tuyo.",
     icono: "implante",
     imagen: "/img/stock/implantologia.webp",
-    orden: 8,
+    orden: 7,
     tienePagina: false,
     titulo:
       "Implantes dentales en Querétaro | Implantología | iDent Corregidora",
@@ -764,7 +668,7 @@ export const VERTICALES: Vertical[] = [
       "Atención dental para niños, pensada para que la primera vez no sea la última. Prevención, caries en dientes de leche y seguimiento del recambio.",
     icono: "nino",
     imagen: "/img/stock/odontopediatria.webp",
-    orden: 9,
+    orden: 8,
     tienePagina: false,
     titulo:
       "Dentista para niños en Querétaro | Odontopediatría | iDent Corregidora",

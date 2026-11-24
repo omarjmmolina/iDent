@@ -5,7 +5,7 @@ import { VERTICALES_ORDENADAS } from "@/content/verticales";
 import { IconoVertical } from "@/components/iconos";
 
 /**
- * Las nueve verticales de servicio, en tarjetas.
+ * Las ocho verticales de servicio, en tarjetas.
  *
  * Cada tarjeta lleva el nombre en lenguaje de paciente y, debajo, la
  * especialidad en lenguaje clínico. Así el visitante entiende de qué se
@@ -13,7 +13,7 @@ import { IconoVertical } from "@/components/iconos";
  */
 export function Verticales({
   titulo = "Todo lo que hacemos",
-  bajada = "Nueve especialidades en una sola clínica, en El Pueblito, Corregidora. Ortodoncia y endodoncia son la casa; el resto se atiende aquí mismo.",
+  bajada = "Ocho especialidades en una sola clínica, en El Pueblito, Corregidora. Ortodoncia y endodoncia son la casa; el resto se atiende aquí mismo.",
   fondo = "blanco",
 }: {
   titulo?: string;
@@ -31,7 +31,7 @@ export function Verticales({
           <p className="mt-4 text-lg text-navy-600">{bajada}</p>
         </div>
 
-        <ul className="reveal-grupo mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="reveal-grupo mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {VERTICALES_ORDENADAS.map((v) => (
             <li key={v.clave}>
               <Link

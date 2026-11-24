@@ -53,7 +53,7 @@ export function clinicaSchema() {
     })),
     medicalSpecialty: ["Dentistry", "Orthodontic", "Endodontic"],
     /**
-     * Las nueve verticales que la clínica declara, con su nombre clínico.
+     * Las ocho verticales que la clínica declara, con su nombre clínico.
      * Es donde vive la palabra clave semántica de cada especialidad.
      */
     availableService: VERTICALES.map((v) => ({

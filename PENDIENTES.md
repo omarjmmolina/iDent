@@ -99,6 +99,31 @@ qué se cotiza aparte.
 GRATIS"**. Si sigue vigente es el mejor gancho del sitio y va en portada.
 Si ya no, hay que bajar ese post.
 
+## ✅ Criterio de imágenes de las verticales (24-nov-2026)
+
+Omar pidió que las tarjetas de servicio no lleven personas: se nota que
+no son ellos y resta. Las ocho pasaron a objetos y modelos:
+
+| Vertical | Imagen |
+|---|---|
+| Limpieza y prevención | Cepillo de dientes, macro |
+| Resinas y coronas | Modelos dentales |
+| Ortodoncia | Modelo con brackets |
+| Estética dental | Macro de sonrisa *(ver nota)* |
+| Endodoncia | Corte de diente con sus conductos |
+| Cirugía y extracciones | Instrumental quirúrgico |
+| Implantes dentales | Implante con corona *(le gustó, no se tocó)* |
+| Dentista para niños | Cepillos de colores |
+
+**La única con persona es estética dental**, y es una macro de labios y
+dientes sin rostro. La dejamos porque en estética el resultado *es* la
+sonrisa y no identifica a nadie. Si prefieren quitarla también, se
+cambia por una guía de color.
+
+⚠️ **Pendiente de decidir:** el mismo criterio no se ha aplicado todavía
+a las ocho páginas de tratamiento ni a los 40 artículos del blog, donde
+sí hay fotos con personas. Decir si se cambian también.
+
 ## 📋 7. Fotografías
 
 El sitio no se ve con huecos: tratamientos, consultorio y los 40
@@ -248,6 +273,25 @@ Pendiente también el **estacionamiento** de Plaza El Jacal: si es propio,
 si es libre y si hay espacio para camioneta.
 
 ---
+
+## ✅ Periodoncia: fuera del sitio (24-nov-2026)
+
+Se quitó la vertical de periodoncia a petición de la clínica: no tienen
+periodoncista y rara vez derivan a uno, así que anunciarla llevaría
+pacientes a pedir algo que no se puede resolver ese día.
+
+Qué quedó:
+
+- Página, menú, tarjeta de portada, pie, schema y sitemap: fuera.
+- La página de prevención ahora **deriva**: dice que una enfermedad
+  periodontal avanzada necesita periodoncia y que, si hace falta, se
+  orienta sobre a quién acudir.
+- Los artículos del blog sobre encías **se quedan**: son información
+  útil, no prometen el tratamiento, y traen tráfico de búsquedas que
+  acaba en valoración.
+
+Para recuperarla, el bloque está en el historial de git y todo el sitio
+se reconstruye solo desde `src/content/verticales.ts`.
 
 ## ❓ 12. Falta el punto 1 de la lista de servicios
 

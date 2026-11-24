@@ -2,8 +2,8 @@
 
 Sitio de **iDent Clínica Dental** (El Pueblito, Corregidora, Querétaro),
 construido según el [plan de trabajo de noviembre 2026](docs/iDent_Plan_de_Trabajo_Noviembre_2026.pdf):
-**70 páginas indexables**, cada una apuntando a una búsqueda distinta:
-nueve verticales de servicio, cobertura por municipio y 40 artículos de
+**69 páginas indexables**, cada una apuntando a una búsqueda distinta:
+ocho verticales de servicio, cobertura por municipio y 40 artículos de
 blog para búsquedas de cola larga. Ortodoncia y endodoncia siguen siendo
 el foco del plan y las únicas con sub-páginas propias.
 
@@ -29,16 +29,15 @@ npm run dev     # http://localhost:3000
 npm run build   # genera las 25 páginas estáticas
 ```
 
-## Las 70 páginas
+## Las 69 páginas
 
 ```
 /                                             Home
 
-Las nueve verticales
+Las ocho verticales
 /limpieza-dental-queretaro                    Odontología preventiva
 /resinas-y-coronas-queretaro                  Odontología restauradora
 /estetica-dental-queretaro                    Odontología estética
-/tratamiento-de-encias-queretaro              Periodoncia
 /extraccion-de-muelas-queretaro               Cirugía oral
 /implantes-dentales-queretaro                 Implantología
 /dentista-para-ninos-queretaro                Odontopediatría
