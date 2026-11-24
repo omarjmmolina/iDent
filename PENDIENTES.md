@@ -5,38 +5,50 @@ Actualizado el 21-nov-2026, después de verificar los datos contra la
 
 ---
 
-## ✅ Resuelto con la ficha de Google
-
-La ficha zanjó los dos conflictos de NAP que había. El sitio ya usa estos
-datos:
+## ✅ Datos que usa el sitio
 
 | Dato | Valor confirmado |
 |---|---|
 | Nombre | Clínica Dental, iDent |
 | Dirección | Av. Prolongación El Jacal **955**, Local 23, Plaza El Jacal, 76910 El Pueblito, Corregidora |
-| Teléfono | **775 144 8793** |
+| Teléfono | **442 143 7966** (clínica, 24-nov-2026) |
 | Horario | Lunes a viernes 9:00–21:00 · Sábado 10:00–18:00 · Domingo cerrado |
 | Coordenadas | 20.5598265, -100.4313485 |
 | Plus code | HH59+WF El Pueblito, Querétaro |
 | Reseñas | 4.9 con 47 opiniones |
 
-## 🚨 1. Facebook está desactualizado y hay que corregirlo
+## 🚨 1. El teléfono no coincide en ningún lado
 
-Facebook contradice a Google en los dos campos que más pesan para el
-posicionamiento local:
+El 24-nov-2026 el Dr. Omar Molina pasó el número de la clínica: **442 143
+7966**, la cuenta de WhatsApp Business «Clínica dental iDent». El sitio ya
+lo usa en todos lados (botón de llamada, WhatsApp, pie, schema).
 
-| Campo | Google (correcto) | Facebook (hay que corregir) |
+El problema es que ese número no está en ninguna de las dos fichas:
+
+| Dónde | Qué dice hoy | Qué debería decir |
 |---|---|---|
-| Número | El Jacal **955** | El Jacal 953 |
-| Teléfono | **775 144 8793** | 775 144 7793 |
+| Sitio | **442 143 7966** | ✅ ya está |
+| Google Business Profile | 775 144 8793 *(personal del doctor)* | 442 143 7966 |
+| Facebook · contacto | 775 144 7793 *(ni uno ni otro)* | 442 143 7966 |
+| Facebook · dirección | El Jacal 953 | El Jacal **955** |
+| Facebook · portada | 442 143 7966 | ✅ este sí estaba bien |
 
-Además, la portada de Facebook muestra un tercer número, **442 143 7966**,
-y un anuncio antiguo un cuarto incompleto. Google premia que el NAP
-coincida carácter por carácter en todos lados: mientras haya cuatro
-versiones circulando, se está perdiendo señal.
+Google premia que el NAP coincida carácter por carácter en todos lados.
+Con cuatro versiones circulando se está perdiendo señal local, y es de lo
+más barato de arreglar que queda en la lista.
 
-**Acción:** corregir la información de contacto de Facebook y rehacer o
-retirar la imagen de portada con el teléfono viejo.
+**Acción, por orden de impacto:**
+
+1. Cambiar el teléfono de la ficha de Google. Es el que más pesa y el que
+   aparece en el botón de llamar de Maps.
+2. Corregir teléfono y dirección en la información de contacto de
+   Facebook.
+3. Decidir si el 775 144 8793 se queda en algún lado. Si es el personal
+   del doctor, lo lógico es que no aparezca en ninguna ficha pública.
+
+**Ojo con el cambio en Google:** cambiar el teléfono de una ficha
+verificada puede mandarla a revisión unos días. Conviene hacerlo ya, no
+cuando el sitio esté recibiendo tráfico.
 
 ## ✅ Mapa activo
 
@@ -272,7 +284,8 @@ despliegue fuera de nuestro alcance con el trabajo a medias.
 ## 📋 10b. Correo
 - **Correo de contacto.** En Facebook aparece `omarmmolina@outlook.com`,
   que es personal. Conviene uno del dominio.
-- **WhatsApp.** Confirmar que es el mismo 775 144 8793.
+- **WhatsApp.** ✅ Confirmado: es el 442 143 7966, la cuenta de WhatsApp
+  Business de la clínica. Los botones del sitio ya apuntan ahí.
 
 ## 📋 11. Llegada a la clínica
 

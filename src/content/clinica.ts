@@ -1,15 +1,19 @@
 /**
  * Datos de la clínica (NAP) — FUENTE ÚNICA DE VERDAD.
  *
- * ✅ VERIFICADO contra la ficha de Google Business Profile el 21-nov-2026:
- * https://maps.app.goo.gl/49F15e9GqALj7oEYA
+ * ✅ Dirección VERIFICADA contra la ficha de Google Business Profile el
+ * 21-nov-2026: https://maps.app.goo.gl/49F15e9GqALj7oEYA
+ * Es el 955, no el 953 que aparece en Facebook.
  *
- * La ficha resolvió los dos conflictos que había:
- *   · Dirección: es el 955, no el 953 que aparece en Facebook.
- *   · Teléfono: es 775 144 8793, no el 7793 de Facebook.
- * Facebook está desactualizado en los dos campos. Hay que corregirlo allá,
- * porque Google premia que el NAP coincida carácter por carácter en todos
- * lados y castiga lo contrario.
+ * ☎️ TELÉFONO (24-nov-2026): el de la clínica es el **442 143 7966**, la
+ * cuenta de WhatsApp Business «Clínica dental iDent». Lo pasó el Dr. Omar
+ * Molina por WhatsApp. El 775 144 8793 que trae la ficha de Google es su
+ * número personal, así que el sitio ya no lo publica.
+ *
+ * ⚠️ El NAP todavía NO coincide en los tres lados y eso cuesta
+ * posicionamiento local: Google premia que el teléfono sea idéntico
+ * carácter por carácter. Hay que actualizar la ficha de Google (teléfono)
+ * y Facebook (teléfono y dirección). Está anotado en PENDIENTES.md.
  */
 
 export const CLINICA = {
@@ -21,11 +25,11 @@ export const CLINICA = {
     "Clínica dental en El Pueblito, Corregidora, especializada en ortodoncia y endodoncia, con atención para todo Querétaro.",
 
   // --- Contacto -------------------------------------------------------
-  // ✅ Google Business Profile
-  telefono: "+527751448793",
-  telefonoVisible: "775 144 8793",
-  /** ⚠️ POR CONFIRMAR: ¿el WhatsApp es este mismo número? */
-  whatsapp: "527751448793",
+  // ☎️ Número de la clínica, no el personal del doctor (24-nov-2026).
+  telefono: "+524421437966",
+  telefonoVisible: "442 143 7966",
+  /** El mismo número: es la cuenta de WhatsApp Business de la clínica. */
+  whatsapp: "524421437966",
   email: "", // TODO: correo del dominio. En Facebook hay uno personal.
 
   // --- Dirección ------------------------------------------------------
