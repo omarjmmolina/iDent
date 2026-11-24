@@ -43,6 +43,13 @@ const ICONOS: Record<string, React.ReactNode> = {
       <path d="m11 7 6 6" />
     </>
   ),
+  implante: (
+    <>
+      <path d="M12 3.5c-1.9 0-3.3 1.2-3.3 2.8 0 1 .5 1.7 1.3 2.2h4c.8-.5 1.3-1.2 1.3-2.2 0-1.6-1.4-2.8-3.3-2.8Z" />
+      <path d="M10 8.5h4l-.5 12a1.5 1.5 0 0 1-3 0l-.5-12Z" />
+      <path d="M9.6 11.5h4.8M9.8 14.5h4.4M10 17.5h4" />
+    </>
+  ),
   nino: (
     <>
       <circle cx="12" cy="7.5" r="3.5" />
@@ -61,7 +68,7 @@ const ICONOS: Record<string, React.ReactNode> = {
  */
 export function Verticales({
   titulo = "Todo lo que hacemos",
-  bajada = "Ocho especialidades en una sola clínica, en El Pueblito, Corregidora. Ortodoncia y endodoncia son la casa; el resto se atiende aquí mismo.",
+  bajada = "Nueve especialidades en una sola clínica, en El Pueblito, Corregidora. Ortodoncia y endodoncia son la casa; el resto se atiende aquí mismo.",
   fondo = "blanco",
 }: {
   titulo?: string;
@@ -79,7 +86,7 @@ export function Verticales({
           <p className="mt-4 text-lg text-navy-600">{bajada}</p>
         </div>
 
-        <ul className="reveal-grupo mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="reveal-grupo mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {VERTICALES_ORDENADAS.map((v) => (
             <li key={v.clave}>
               <Link

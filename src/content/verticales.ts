@@ -1,5 +1,5 @@
 /**
- * Las ocho verticales de servicio de la clínica.
+ * Las nueve verticales de servicio de la clínica.
  *
  * Lista proporcionada por la clínica (Karely, nov 2026). Dos de ellas,
  * ortodoncia y endodoncia, ya tenían sus páginas pilar con sub-páginas y
@@ -21,10 +21,10 @@
  * Así el menú se entiende a la primera sin renunciar al vocabulario
  * clínico que Google asocia a la especialidad.
  *
- * ⚠️ PENDIENTE: la lista que mandó la clínica empieza en el punto 2. Falta
- * confirmar cuál era el 1. Karely mencionó además "implantes" por
- * WhatsApp, que hoy se cubre dentro de restauradora: confirmar si quieren
- * página propia de implantología.
+ * ⚠️ PENDIENTE: la lista que mandó la clínica empieza en el punto 2 y
+ * falta confirmar cuál era el 1. Implantología se añadió como novena
+ * vertical a petición del cliente, a partir de la mención de Karely por
+ * WhatsApp y de lo que la clínica comunica en Facebook.
  */
 
 export type ClaveVertical =
@@ -35,6 +35,7 @@ export type ClaveVertical =
   | "endodoncia"
   | "periodoncia"
   | "cirugia"
+  | "implantologia"
   | "odontopediatria";
 
 export type Tratamiento = { nombre: string; descripcion: string };
@@ -624,6 +625,128 @@ export const VERTICALES: Vertical[] = [
     ],
   },
 
+  // ───────────────────────── 8. Implantología ─────────────────────────
+  {
+    clave: "implantologia",
+    slug: "implantes-dentales-queretaro",
+    nombre: "Implantes dentales",
+    nombreClinico: "Implantología",
+    tambienBuscado: [
+      "implante dental",
+      "poner un diente que falta",
+      "cuánto cuesta un implante",
+      "implante y corona",
+      "reponer una muela",
+    ],
+    resumen:
+      "Reponer una pieza perdida con un implante y su corona. Entra cuando ya no hay diente que salvar: antes de llegar ahí, siempre miramos si se puede conservar el tuyo.",
+    icono: "implante",
+    imagen: "/img/stock/implantologia.webp",
+    orden: 8,
+    tienePagina: false,
+    titulo:
+      "Implantes dentales en Querétaro | Implantología | iDent Corregidora",
+    metaDescription:
+      "Implantes dentales en Corregidora: valoración con radiografía, colocación, integración y corona. Qué cuesta, cuánto tarda y cuándo conviene de verdad.",
+    h1: "Implantes dentales en Querétaro",
+    keyword: "implantes dentales queretaro",
+    entradilla:
+      "Un implante es un tornillo de titanio que sustituye la raíz de un diente perdido y sobre el que se atornilla una corona. Es la mejor solución que existe para reponer una pieza, y conviene decir la otra mitad: casi siempre es mejor no llegar a necesitarlo. Antes de plantear un implante miramos si el diente que tienes se puede salvar.",
+    datos: [
+      { label: "Proceso completo", valor: "4 a 8 meses" },
+      { label: "Cirugía", valor: "40 a 90 min" },
+      { label: "Integración al hueso", valor: "3 a 6 meses" },
+    ],
+    tratamientos: [
+      {
+        nombre: "Valoración y estudio previo",
+        descripcion:
+          "Radiografía y, cuando el caso lo pide, tomografía, para medir cuánto hueso hay y dónde pasan el nervio y el seno maxilar. Sin ese estudio no se coloca nada.",
+      },
+      {
+        nombre: "Implante unitario",
+        descripcion:
+          "Para reponer una sola pieza sin tocar los dientes de al lado. Es la ventaja frente a un puente, que obliga a tallar los vecinos sanos.",
+      },
+      {
+        nombre: "Varios implantes y rehabilitación",
+        descripcion:
+          "Cuando faltan varias piezas. Según el caso se colocan implantes individuales o se planifica una prótesis que se apoya en varios.",
+      },
+      {
+        nombre: "Injerto óseo y regeneración",
+        descripcion:
+          "Si el hueso se reabsorbió por llevar tiempo sin el diente, se regenera antes o durante la colocación. Es lo que alarga el tratamiento cuando se esperó mucho.",
+      },
+      {
+        nombre: "Corona sobre implante",
+        descripcion:
+          "La parte visible, que se atornilla o se cementa una vez integrado el implante. Es el paso final y lo que devuelve la masticación.",
+      },
+    ],
+    secciones: [
+      {
+        h2: "Primero: ¿de verdad hay que extraer?",
+        parrafos: [
+          "Es la pregunta que ordena toda la conversación. Un diente con la raíz íntegra y estructura suficiente casi siempre se conserva con una endodoncia y una corona, y eso cuesta una fracción de lo que cuesta un implante, tarda semanas en vez de meses y no requiere cirugía.",
+          "El implante es la mejor opción cuando ya no hay diente que salvar: fractura vertical de raíz, caries que llegó por debajo del hueso o pérdida ósea avanzada. En esos casos sí, y lo decimos con la radiografía enfrente.",
+        ],
+      },
+      {
+        h2: "Cómo es el proceso y por qué tarda meses",
+        lista: [
+          "Estudio y planificación: radiografía o tomografía para medir hueso y estructuras.",
+          "Cirugía de colocación, con anestesia local. Entre cuarenta y noventa minutos.",
+          "Osteointegración: de tres a seis meses mientras el hueso se une al titanio. No se puede acelerar.",
+          "Colocación del pilar y toma de impresión o escaneo.",
+          "Cementado o atornillado de la corona definitiva.",
+          "Revisión y mantenimiento periódico, igual que con un diente natural.",
+        ],
+      },
+      {
+        h2: "Por qué no conviene dejar pasar el tiempo",
+        parrafos: [
+          "El hueso que sostenía el diente deja de recibir estímulo al masticar y empieza a reabsorberse desde el primer año. Cuanto más tiempo pase, menos hueso queda donde anclar el implante.",
+          "A eso se suma que los dientes vecinos se inclinan hacia el hueco y el de la arcada opuesta se extruye buscando contacto. Cuando eso ocurre, antes de poner el implante hay que recuperar el espacio con ortodoncia.",
+          "Esperar no es neutro: convierte un tratamiento sencillo en uno que necesita injerto óseo, ortodoncia previa o las dos cosas.",
+        ],
+      },
+      {
+        h2: "El mantenimiento que casi nadie menciona",
+        parrafos: [
+          "Un implante no se caria, pero el hueso que lo rodea sí se puede inflamar. Se llama periimplantitis, funciona parecido a la enfermedad periodontal y es la causa más frecuente de fracaso a largo plazo.",
+          "Se previene con higiene específica alrededor del implante y revisiones periódicas. Quien tuvo enfermedad de encías antes tiene más riesgo y necesita un seguimiento más estrecho.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "¿Duele poner un implante?",
+        a: "Durante la cirugía no: se trabaja con anestesia local y la zona está dormida por completo. Después hay molestia e inflamación dos o tres días, que se controla con analgésico. La mayoría de los pacientes lo compara con una extracción.",
+      },
+      {
+        q: "¿Cuánto cuesta un implante dental?",
+        a: "Depende de si hace falta injerto óseo, del número de piezas y del material de la corona. Conviene preguntar siempre si el precio incluye la corona: un presupuesto que solo cotiza el tornillo se ve más barato y no está comparando lo mismo.",
+      },
+      {
+        q: "¿Cuánto dura un implante?",
+        a: "Con buena higiene y mantenimiento puede durar décadas. Lo que falla no suele ser el titanio sino el hueso de alrededor, por periimplantitis. Por eso el seguimiento importa tanto como la cirugía.",
+      },
+      {
+        q: "¿Me quedo sin diente los meses de espera?",
+        a: "No necesariamente. Según el caso se puede colocar un provisional, sobre todo en la zona de delante. Se valora en la planificación, antes de empezar.",
+      },
+      {
+        q: "¿Puedo ponerme un implante si fumo o tengo diabetes?",
+        a: "Son dos factores que aumentan el riesgo de fracaso, pero no lo impiden por sí solos. En diabetes, lo que importa es el control; en tabaquismo, reducir o dejarlo durante el periodo de cicatrización cambia mucho el pronóstico. Dilo en la valoración: cambia el plan y el seguimiento.",
+      },
+      {
+        q: "¿Implante o puente?",
+        a: "El implante no toca los dientes vecinos; el puente obliga a tallarlos aunque estén sanos. Si los de al lado ya llevan coronas o están muy destruidos, el puente puede tener sentido. Si están sanos, el implante los conserva.",
+      },
+    ],
+  },
+
   // ───────────────────────── 8. Odontopediatría ─────────────────────────
   {
     clave: "odontopediatria",
@@ -641,7 +764,7 @@ export const VERTICALES: Vertical[] = [
       "Atención dental para niños, pensada para que la primera vez no sea la última. Prevención, caries en dientes de leche y seguimiento del recambio.",
     icono: "nino",
     imagen: "/img/stock/odontopediatria.webp",
-    orden: 8,
+    orden: 9,
     tienePagina: false,
     titulo:
       "Dentista para niños en Querétaro | Odontopediatría | iDent Corregidora",

@@ -24,7 +24,7 @@ import { ARTICULOS } from "@/content/blog";
 /**
  * Página de una vertical de servicio.
  *
- * Sirve a las seis verticales que no tienen sub-páginas propias.
+ * Sirve a las siete verticales que no tienen sub-páginas propias.
  * Ortodoncia y endodoncia siguen usando PaginaPilar, que además lista sus
  * tratamientos como páginas independientes.
  */

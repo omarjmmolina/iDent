@@ -155,14 +155,13 @@ si es libre y si hay espacio para camioneta.
 
 ---
 
-## ❓ 12. Dos huecos en la lista de servicios
+## ❓ 12. Falta el punto 1 de la lista de servicios
 
 La lista que mandó la clínica **empieza en el punto 2**. Falta confirmar
-cuál era el 1: puede ser odontología general o implantología.
+cuál era el 1: puede ser odontología general.
 
-Y **implantes** aparece en el mensaje de Karely por WhatsApp pero no en la
-lista numerada. Hoy se cubre dentro de "Resinas y coronas" (prótesis).
-¿Quieren página propia de implantología? Sería la novena vertical.
+Implantología ya quedó como novena vertical, con su página en
+`/implantes-dentales-queretaro`.
 
 ## ❓ 13. Las zonas lejanas
 

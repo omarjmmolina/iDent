@@ -73,7 +73,7 @@ export function Header() {
             <div className="invisible absolute inset-x-0 top-full z-50 pt-1 opacity-0 transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
               <div className="mx-auto max-w-6xl px-4 sm:px-6">
                 <div className="rounded-3xl border border-navy-100 bg-white p-6 shadow-xl shadow-navy-900/10">
-                  <ul className="grid grid-cols-4 gap-x-6 gap-y-5">
+                  <ul className="grid grid-cols-3 gap-x-8 gap-y-5">
                     {VERTICALES_ORDENADAS.map((v) => (
                       <li key={v.clave}>
                         <Link
