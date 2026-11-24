@@ -174,6 +174,29 @@ cuenta.
 
 No hace falta tocar DNS ni código.
 
+### Y a futuro: traspasar el proyecto entero a la clínica
+
+El plan promete que "nada queda a nombre nuestro", así que el destino
+final es que el proyecto viva en la cuenta de la clínica, no en Crauli.
+Vercel lo permite sin cortes y el traspaso **se lleva el dominio con
+él**, además de despliegues, variables de entorno y el vínculo con
+GitHub.
+
+**El requisito que condiciona el calendario**, según la documentación de
+Vercel: *"You must be an owner of the team you're transferring from, and
+a member of the team you're transferring to."* Es decir, hay que ser
+miembro de la cuenta destino.
+
+Y el plan **Hobby no tiene colaboración de equipo**: no admite invitar
+miembros. Si la cuenta de la clínica es Hobby, el traspaso no se puede
+iniciar. Para hacerlo tendrían que pasar a **Pro** (20 USD al mes) e
+invitar a Crauli como miembro.
+
+**Recomendación:** conectar el dominio ahora para poder publicar, y
+traspasar el proyecto completo al entregar, que es cuando toca según el
+plan. Traspasarlo hoy a una cuenta sin colaboración dejaría el
+despliegue fuera de nuestro alcance con el trabajo a medias.
+
 ## 📋 10b. Correo
 - **Correo de contacto.** En Facebook aparece `omarmmolina@outlook.com`,
   que es personal. Conviene uno del dominio.
