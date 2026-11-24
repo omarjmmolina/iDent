@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { CLINICA, waLink } from "@/content/clinica";
 import { PILARES, serviciosDe } from "@/content/servicios";
@@ -30,10 +30,60 @@ const SIMPLES = [
   { nombre: "Contacto", href: "/contacto" },
 ];
 
+type Menu = "tratamientos" | "zonas" | null;
+
 export function Header() {
   const [abierto, setAbierto] = useState(false);
+  const [menu, setMenu] = useState<Menu>(null);
+  const temporizador = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
   const cerrar = () => setAbierto(false);
+
+  /**
+   * Apertura y cierre del mega-menú.
+   *
+   * Con solo :hover el menú se cerraba al mover el cursor del botón hacia
+   * una opción: entre los dos hay unos píxeles de cabecera que no son
+   * parte del grupo. Con un retardo al cerrar, ese recorrido deja de
+   * importar, y de paso el menú funciona con teclado (focus), con Escape
+   * y con un toque en móvil o tableta.
+   */
+  const cancelarCierre = useCallback(() => {
+    if (temporizador.current) {
+      clearTimeout(temporizador.current);
+      temporizador.current = null;
+    }
+  }, []);
+
+  const abrirMenu = useCallback(
+    (cual: Exclude<Menu, null>) => {
+      cancelarCierre();
+      setMenu(cual);
+    },
+    [cancelarCierre],
+  );
+
+  const programarCierre = useCallback(() => {
+    cancelarCierre();
+    temporizador.current = setTimeout(() => setMenu(null), 260);
+  }, [cancelarCierre]);
+
+  // Se cierra al cambiar de página y con Escape.
+  useEffect(() => {
+    setMenu(null);
+    setAbierto(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const alPulsar = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenu(null);
+    };
+    document.addEventListener("keydown", alPulsar);
+    return () => {
+      document.removeEventListener("keydown", alPulsar);
+      if (temporizador.current) clearTimeout(temporizador.current);
+    };
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 border-b border-navy-100 bg-white/90 backdrop-blur">
@@ -51,12 +101,25 @@ export function Header() {
         </Link>
 
         {/* ── Navegación de escritorio ── */}
-        <nav aria-label="Principal" className="ml-2 hidden items-center lg:flex">
+        <nav aria-label="Principal" className="ml-2 hidden h-full items-center lg:flex">
           {/* Mega-menú de tratamientos */}
-          <div className="group static">
+          <div
+            className="static flex h-full items-center"
+            onMouseEnter={() => abrirMenu("tratamientos")}
+            onMouseLeave={programarCierre}
+            onFocus={() => abrirMenu("tratamientos")}
+            onBlur={programarCierre}
+          >
             <button
               type="button"
-              className="flex items-center gap-1 rounded-lg px-3 py-2 text-[15px] font-medium text-navy-700 transition group-hover:text-teal-700"
+              aria-expanded={menu === "tratamientos"}
+              aria-haspopup="true"
+              onClick={() =>
+                setMenu((m) => (m === "tratamientos" ? null : "tratamientos"))
+              }
+              className={`flex items-center gap-1 rounded-lg px-3 py-2 text-[15px] font-medium transition ${
+                menu === "tratamientos" ? "text-teal-700" : "text-navy-700"
+              }`}
             >
               Tratamientos
               <svg
@@ -65,13 +128,23 @@ export function Header() {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
-                className="size-3.5 text-navy-300 transition group-hover:text-teal-600"
+                className={`size-3.5 transition ${
+                  menu === "tratamientos"
+                    ? "rotate-180 text-teal-600"
+                    : "text-navy-300"
+                }`}
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
               </svg>
             </button>
 
-            <div className="invisible absolute inset-x-0 top-full z-50 pt-1 opacity-0 transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+            <div
+              className={`absolute inset-x-0 top-full z-50 pt-1 transition duration-150 ${
+                menu === "tratamientos"
+                  ? "visible translate-y-0 opacity-100"
+                  : "invisible -translate-y-1 opacity-0"
+              }`}
+            >
               <div className="mx-auto max-w-6xl px-4 sm:px-6">
                 <div className="rounded-3xl border border-navy-100 bg-white p-5 shadow-xl shadow-navy-900/10">
                   {/* Columnas que fluyen, no rejilla: con una rejilla la
@@ -131,10 +204,19 @@ export function Header() {
           </div>
 
           {/* Zonas */}
-          <div className="group relative">
+          <div
+            className="relative flex h-full items-center"
+            onMouseEnter={() => abrirMenu("zonas")}
+            onMouseLeave={programarCierre}
+            onFocus={() => abrirMenu("zonas")}
+            onBlur={programarCierre}
+          >
             <Link
               href={`/zonas/${ZONAS[0].slug}`}
-              className="flex items-center gap-1 rounded-lg px-3 py-2 text-[15px] font-medium text-navy-700 transition hover:text-teal-700"
+              aria-expanded={menu === "zonas"}
+              className={`flex items-center gap-1 rounded-lg px-3 py-2 text-[15px] font-medium transition ${
+                menu === "zonas" ? "text-teal-700" : "text-navy-700"
+              }`}
             >
               Zonas
               <svg
@@ -143,12 +225,20 @@ export function Header() {
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
-                className="size-3.5 text-navy-300 transition group-hover:text-teal-600"
+                className={`size-3.5 transition ${
+                  menu === "zonas" ? "rotate-180 text-teal-600" : "text-navy-300"
+                }`}
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="m6 9 6 6 6-6" />
               </svg>
             </Link>
-            <div className="invisible absolute top-full left-0 w-72 pt-1 opacity-0 transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+            <div
+              className={`absolute top-full left-0 w-72 pt-1 transition duration-150 ${
+                menu === "zonas"
+                  ? "visible translate-y-0 opacity-100"
+                  : "invisible -translate-y-1 opacity-0"
+              }`}
+            >
               <ul className="rounded-2xl border border-navy-100 bg-white p-2 shadow-lg shadow-navy-900/5">
                 {ZONAS.map((z) => (
                   <li key={z.slug}>
