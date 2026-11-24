@@ -59,7 +59,7 @@ export const TIEMPOS_ARTICULOS: Articulo[] = [
       { tipo: "pasos", items: ["Día 1: endodoncia y restauración provisional.", "Días 2 a 7: molestia al morder que va bajando.", "Semanas 1 a 4: se valora colocar la corona.", "Corona: dos citas, una para tallar y tomar impresión y otra para cementar, con una o dos semanas de laboratorio entre ellas."] },
       { tipo: "alerta", texto: "No conviene alargar el provisional más de un mes. Se desgasta, se filtra y el conducto recién sellado se vuelve a contaminar." },
       { tipo: "h2", texto: "Si vienes de lejos" },
-      { tipo: "p", texto: "Para pacientes que se trasladan desde San Juan del Río, Juriquilla o El Marqués, procuramos resolver en sesión única y coordinar la corona para que sean los menos viajes posibles." },
+      { tipo: "p", texto: "Si el traslado te complica, dilo al agendar: procuramos resolver en sesión única y coordinar la corona para que sean los menos viajes posibles." },
       { tipo: "nota", texto: "Mándanos la radiografía por WhatsApp si la tienes: con eso te decimos antes de venir si tu caso es de una o dos sesiones." },
     ],
     faqs: [

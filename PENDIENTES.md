@@ -274,14 +274,15 @@ despliegue fuera de nuestro alcance con el trabajo a medias.
   que es personal. Conviene uno del dominio.
 - **WhatsApp.** Confirmar que es el mismo 775 144 8793.
 
-## 📋 11. Tiempos de traslado
+## 📋 11. Llegada a la clínica
 
-Las páginas de zona dicen tiempos aproximados en tráfico normal
-(Juriquilla ~40 min, Zibatá 35–45, El Marqués y Huimilpan 25–40, San Juan
-del Río 55–65). Conviene contrastarlos con lo que reportan los pacientes.
+Con las zonas lejanas fuera (ver más abajo), ya no hay tiempos de
+traslado que contrastar: las dos páginas que quedan son del propio
+municipio.
 
-Pendiente también el **estacionamiento** de Plaza El Jacal: si es propio,
-si es libre y si hay espacio para camioneta.
+Sigue pendiente el **estacionamiento** de Plaza El Jacal: si es propio,
+si es libre y si hay espacio para camioneta. Es el dato que más preguntan
+los pacientes que llegan en coche.
 
 ---
 
@@ -312,16 +313,31 @@ cuál era el 1: puede ser odontología general.
 Implantología ya quedó como novena vertical, con su página en
 `/implantes-dentales-queretaro`.
 
-## ❓ 13. Las zonas lejanas
+## ✅ 13. Zonas lejanas: fuera del sitio (24-nov-2026)
 
-En la conversación quedó abierto quitar las zonas más lejanas. Están las
-seis: Corregidora y El Pueblito como sede, y Juriquilla, Zibatá, El
-Marqués y Huimilpan, y San Juan del Río como traslado.
+Decisión de la clínica: **solo se publican zonas a 25 minutos o menos**.
+Quedan dos páginas, las dos de la sede:
 
-Mi lectura: las cuatro de traslado ya no prometen sucursal, así que el
-riesgo de doorway page está resuelto. La que menos se sostiene es San
-Juan del Río, a una hora: funciona para endodoncia y alineadores, poco
-para el resto. Si hay que recortar, esa primero.
+- `/dentista-en-corregidora`
+- `/dentista-en-el-pueblito`
+
+Se retiraron Juriquilla (~40 min), Zibatá (35–45), El Marqués y
+Huimilpan (25–40) y San Juan del Río (55–65), con sus páginas, su
+entrada en el menú, su enlace en el pie y su línea del sitemap.
+
+También se reescribió todo lo que prometía atenderlas: la pregunta
+frecuente de la portada, la de ortodoncia y dos párrafos del blog ahora
+hablan de «menos de veinticinco minutos» en vez de nombrar municipios.
+Las menciones que quedan en el blog son contexto de mercado (lo que
+cuesta la ortodoncia en Juriquilla, cuánto se hace de allá a
+Corregidora): informan, no prometen cita.
+
+`areaServed` del schema ya no se deriva de `ZONAS`; está escrito a mano
+en `src/lib/schema.ts` como Corregidora y Santiago de Querétaro.
+
+Para recuperar una zona basta volver a añadirla a
+`src/content/zonas.ts`: la página, el menú y el sitemap se reconstruyen
+solos, y el bloque original está en el historial de git.
 
 ## ❓ 14. Decisiones de alcance
 

@@ -50,7 +50,7 @@ export default function Page() {
         },
         {
           q: "¿Cada cuánto tengo que ir a cita?",
-          a: "Con brackets, cada cuatro semanas. Con alineadores invisibles, cada seis a ocho semanas. Si vienes de Juriquilla, Zibatá o San Juan del Río, lo tomamos en cuenta al planear el tratamiento.",
+          a: "Con brackets, cada cuatro semanas. Con alineadores invisibles, cada seis a ocho semanas. Si el traslado te complica, lo tomamos en cuenta al planear el tratamiento.",
         },
       ]}
     />
