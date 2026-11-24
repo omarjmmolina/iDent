@@ -136,10 +136,51 @@ Al revisarla salieron dos cosas que son trabajo inmediato del plan:
 También conviene cargar los servicios uno por uno con su descripción y
 declarar la zona de cobertura por municipio.
 
-## 📋 10. Dominio y correo
+## 🚨 10. Dominio: falta saber cuál es
 
-- **Dominio definitivo.** `SITE_URL` en `src/content/clinica.ts` está hoy
-  en `https://identqueretaro.com` como marcador.
+Estado comprobado el 23-nov-2026 en la cuenta de Vercel (equipo
+**crauli**):
+
+- ✅ El proyecto **ident-queretaro** existe y despliega solo desde
+  GitHub. El sitio está en vivo en
+  https://ident-queretaro.vercel.app
+- ❌ **No tiene ningún dominio propio conectado**, solo subdominios
+  `.vercel.app`.
+- ❌ En la cuenta hay 5 dominios y **ninguno es de iDent**:
+  cursogoogleads.mx, palyandyoung.com.mx, mhaconsulting.mx,
+  gerardosanchezseo.com y grupostelegramlatam.com.
+- ❌ `identqueretaro.com`, que era el marcador del código, **no está
+  registrado** (whois: "No match").
+
+**Hace falta el nombre del dominio que compraron.** Si se compró en otro
+registrador (GoDaddy, Namecheap, Neubox, Hostinger…), no aparece en
+Vercel hasta que se añada.
+
+### Cómo conectarlo cuando se sepa
+
+1. En Vercel, proyecto `ident-queretaro` → Settings → Domains → añadir el
+   dominio y el `www`.
+2. En el registrador, apuntar el DNS. Dos opciones:
+   - Cambiar los nameservers a los de Vercel, o
+   - Registro **A** del dominio raíz a `76.76.21.21` y **CNAME** de `www`
+     a `cname.vercel-dns.com`.
+3. En Vercel → Settings → Environment Variables, crear
+   **`NEXT_PUBLIC_SITE_URL`** con el dominio (sin barra final) y
+   redesplegar.
+4. Verificar en Search Console y enviar el sitemap.
+5. Enlazar el sitio desde la ficha de Google Business Profile.
+
+El paso 3 es el único que toca el sitio, y no requiere cambiar código.
+
+### Mientras tanto, el sitio está fuera del índice
+
+Sin `NEXT_PUBLIC_SITE_URL`, el sitio usa su URL de Vercel para canónicas
+y sitemap, y se sirve con `noindex` y `robots.txt` en Disallow. Es a
+propósito: si Google indexa la dirección temporal, las señales se
+reparten entre dos URLs y después hay que redirigir todo. En cuanto se
+ponga la variable, se indexa.
+
+## 📋 10b. Correo
 - **Correo de contacto.** En Facebook aparece `omarmmolina@outlook.com`,
   que es personal. Conviene uno del dominio.
 - **WhatsApp.** Confirmar que es el mismo 775 144 8793.

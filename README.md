@@ -242,7 +242,30 @@ y de número de calle que hay que resolver.
 
 ## Despliegue en Vercel
 
-1. Importar el repositorio en Vercel (detecta Next.js solo).
-2. Cambiar `SITE_URL` en `src/content/clinica.ts` al dominio definitivo.
-3. Apuntar el DNS del dominio a Vercel.
-4. Dar de alta el sitio en Google Search Console y enviar el sitemap.
+El proyecto ya está desplegado: **ident-queretaro**, en el equipo
+`crauli`, con despliegue automático desde la rama `main` de GitHub.
+URL actual: https://ident-queretaro.vercel.app
+
+### Conectar el dominio definitivo
+
+1. Vercel → proyecto `ident-queretaro` → Settings → Domains → añadir el
+   dominio y el `www`.
+2. En el registrador, apuntar el DNS: nameservers de Vercel, o registro
+   **A** del raíz a `76.76.21.21` y **CNAME** de `www` a
+   `cname.vercel-dns.com`.
+3. Vercel → Settings → Environment Variables → crear
+   **`NEXT_PUBLIC_SITE_URL`** con el dominio, sin barra final, y
+   redesplegar.
+4. Search Console: verificar y enviar el sitemap.
+5. Enlazar el sitio desde la ficha de Google Business Profile, que hoy no
+   tiene web.
+
+No hace falta tocar código: el dominio sale de la variable de entorno.
+
+### Por qué el sitio está en noindex
+
+Mientras `NEXT_PUBLIC_SITE_URL` no exista, el sitio usa su URL de Vercel
+en canónicas y sitemap, y se sirve con `noindex` y `robots.txt` en
+Disallow. Indexar una dirección temporal reparte las señales entre dos
+URLs y obliga a redirigir todo después. Al poner la variable, se indexa
+solo.

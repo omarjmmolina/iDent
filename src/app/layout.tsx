@@ -6,7 +6,13 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { clinicaSchema } from "@/lib/schema";
-import { CLINICA, SITE_URL, waLink, telLink } from "@/content/clinica";
+import {
+  CLINICA,
+  SITE_URL,
+  DOMINIO_DEFINITIVO,
+  waLink,
+  telLink,
+} from "@/content/clinica";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -30,7 +36,9 @@ export const metadata: Metadata = {
   applicationName: CLINICA.nombre,
   authors: [{ name: CLINICA.nombreLegal }],
   formatDetection: { telephone: true },
-  robots: { index: true, follow: true },
+  robots: DOMINIO_DEFINITIVO
+    ? { index: true, follow: true }
+    : { index: false, follow: false },
 };
 
 export const viewport = {

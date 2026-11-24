@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { SITE_URL, CLINICA } from "@/content/clinica";
+import { SITE_URL, CLINICA, DOMINIO_DEFINITIVO } from "@/content/clinica";
 
 type Args = {
   title: string;
@@ -30,7 +30,12 @@ export function buildMetadata({
     title,
     description,
     alternates: { canonical: url },
-    robots: noIndex ? { index: false, follow: false } : undefined,
+    // Explícito en cada página: si se deja en undefined, Next lo toma
+    // como "sin valor" y pisa lo que define el layout.
+    robots:
+      noIndex || !DOMINIO_DEFINITIVO
+        ? { index: false, follow: false }
+        : { index: true, follow: true },
     openGraph: {
       type: "website",
       locale: "es_MX",

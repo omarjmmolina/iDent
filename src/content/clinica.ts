@@ -114,8 +114,30 @@ export const CLINICA = {
   },
 } as const;
 
-/** Dominio final del sitio. TODO: cambiar al dominio real antes de publicar. */
-export const SITE_URL = "https://identqueretaro.com";
+/**
+ * Dominio del sitio.
+ *
+ * Sale de NEXT_PUBLIC_SITE_URL, que se configura en Vercel. Mientras no
+ * esté puesta, el sitio usa su URL de Vercel: así las canónicas, el
+ * sitemap y los datos estructurados apuntan a donde el sitio está de
+ * verdad, en vez de a un dominio que todavía no existe.
+ *
+ * Para conectar el dominio definitivo: añadirlo al proyecto en Vercel y
+ * crear la variable NEXT_PUBLIC_SITE_URL con su valor (sin barra final).
+ * No hay que tocar código.
+ */
+const URL_VERCEL = "https://ident-queretaro.vercel.app";
+
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL || URL_VERCEL
+).replace(/\/+$/, "");
+
+/**
+ * ¿Es el dominio definitivo? Mientras el sitio viva en la URL de Vercel,
+ * se mantiene fuera del índice de Google: indexar una URL temporal
+ * reparte señales entre dos direcciones y obliga a redirigir después.
+ */
+export const DOMINIO_DEFINITIVO = Boolean(process.env.NEXT_PUBLIC_SITE_URL);
 
 export const direccionUnaLinea = [
   CLINICA.direccion.calle,
