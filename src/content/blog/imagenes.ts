@@ -30,7 +30,7 @@ export const IMAGENES_BLOG: Record<string, ImagenArticulo> = {
   ),
   "cuanto-cuesta-la-ortodoncia-en-queretaro": b(
     "cuanto-cuesta-la-ortodoncia-en-queretaro",
-    "Odontólogo explicando una radiografía a una paciente durante la valoración de ortodoncia",
+    "Calculadora y monedas sobre una mesa, para comparar presupuestos de ortodoncia",
   ),
   "cuanto-cuestan-los-brackets-en-queretaro": b(
     "cuanto-cuestan-los-brackets-en-queretaro",
@@ -46,7 +46,7 @@ export const IMAGENES_BLOG: Record<string, ImagenArticulo> = {
   ),
   "precio-de-la-ortodoncia-infantil-en-queretaro": s(
     "ortodoncia-infantil",
-    "Odontólogo revisando los dientes de un niño en una valoración de ortodoncia infantil",
+    "Modelos dentales infantiles con brackets",
   ),
   "ortodoncia-a-meses-sin-intereses-en-queretaro": b(
     "ortodoncia-a-meses-sin-intereses-en-queretaro",
@@ -54,21 +54,21 @@ export const IMAGENES_BLOG: Record<string, ImagenArticulo> = {
   ),
   "por-que-varia-tanto-el-precio-entre-dentistas": b(
     "por-que-varia-tanto-el-precio-entre-dentistas",
-    "Persona comparando presupuestos con una tarjeta en la mano frente a una laptop",
+    "Tarjeta y laptop sobre una mesa, al comparar presupuestos",
   ),
 
   // ── Comparativas ──
   "brackets-o-alineadores-invisibles": b(
     "brackets-o-alineadores-invisibles",
-    "Paciente colocándose un alineador invisible, la alternativa a los brackets",
+    "Alineador invisible transparente sostenido con guante clínico",
   ),
   "brackets-metalicos-o-esteticos": s(
     "brackets-esteticos",
-    "Primer plano de una sonrisa con brackets, para comparar metálicos y estéticos",
+    "Primer plano de brackets colocados en un modelo dental",
   ),
   "brackets-de-ceramica-o-zafiro": b(
     "brackets-de-ceramica-o-zafiro",
-    "Asistente dental mostrando un modelo a una paciente en el consultorio",
+    "Primer plano de brackets estéticos colocados en un modelo dental",
   ),
   "endodoncia-o-extraccion-e-implante": b(
     "endodoncia-o-extraccion-e-implante",
@@ -80,11 +80,11 @@ export const IMAGENES_BLOG: Record<string, ImagenArticulo> = {
   ),
   "retenedor-fijo-o-removible": b(
     "retenedor-fijo-o-removible",
-    "Paciente colocándose un retenedor removible después de la ortodoncia",
+    "Retenedor transparente sostenido con guante clínico",
   ),
   "ortodoncista-o-dentista-general-para-brackets": s(
     "ortodoncia",
-    "Odontólogo conversando con una paciente en una consulta dental",
+    "Modelo dental con brackets colocados en ambas arcadas",
   ),
   "clinica-cerca-o-especialista-lejos": b(
     "clinica-cerca-o-especialista-lejos",
@@ -94,23 +94,23 @@ export const IMAGENES_BLOG: Record<string, ImagenArticulo> = {
   // ── Dolor y miedo ──
   "duele-poner-brackets": b(
     "duele-poner-brackets",
-    "Sonrisa de una paciente después de la colocación de brackets",
+    "Primer plano de una dentadura con brackets recién colocados",
   ),
   "duele-la-endodoncia": b(
     "duele-la-endodoncia",
-    "Odontólogo realizando un tratamiento a un paciente con anestesia",
+    "Limas de endodoncia, el instrumental con el que se limpian los conductos",
   ),
   "miedo-al-dentista-que-hacer": b(
     "miedo-al-dentista-que-hacer",
-    "Profesional de la salud conversando de forma cercana con una paciente",
+    "Consultorio dental vacío y tranquilo",
   ),
   "cuanto-dura-el-dolor-despues-de-una-endodoncia": s(
     "urgencia-dolor-dental",
-    "Persona con gesto de molestia llevándose la mano a la mandíbula",
+    "Blísteres de analgésicos, lo que controla la molestia de los primeros días",
   ),
   "me-duele-la-muela-que-hago-mientras-llego": b(
     "me-duele-la-muela-que-hago-mientras-llego",
-    "Mujer con dolor de muela cubriéndose la boca con la mano",
+    "Blísteres de analgésicos, lo primero que alivia mientras llegas a la clínica",
   ),
 
   // ── Tiempos ──
@@ -128,7 +128,7 @@ export const IMAGENES_BLOG: Record<string, ImagenArticulo> = {
   ),
   "cuanto-tardan-en-moverse-los-dientes": b(
     "cuanto-tardan-en-moverse-los-dientes",
-    "Odontólogo revisando radiografías dentales en un negatoscopio",
+    "Modelo dental con brackets y su arco, el sistema que mueve los dientes",
   ),
 
   // ── Cuidados ──
@@ -138,11 +138,11 @@ export const IMAGENES_BLOG: Record<string, ImagenArticulo> = {
   ),
   "que-no-comer-con-brackets": b(
     "que-no-comer-con-brackets",
-    "Persona mordiendo una manzana, uno de los alimentos que hay que cortar si traes brackets",
+    "Manzana entera, de las frutas que hay que cortar en trozos si traes brackets",
   ),
   "cuidados-despues-de-una-endodoncia": s(
     "tratamiento-de-conductos",
-    "Revisión dental con espejo e instrumental tras un tratamiento de conductos",
+    "Limas de endodoncia, el instrumental con el que se limpian los conductos",
   ),
   "como-limpiar-los-alineadores-invisibles": s(
     "alineadores-invisibles",
@@ -154,31 +154,31 @@ export const IMAGENES_BLOG: Record<string, ImagenArticulo> = {
   ),
   "cuanto-tiempo-hay-que-usar-retenedores": b(
     "cuanto-tiempo-hay-que-usar-retenedores",
-    "Sonrisa alineada después de terminar un tratamiento de ortodoncia",
+    "Retenedor transparente sostenido con guante clínico",
   ),
 
   // ── Niños ──
   "a-que-edad-llevar-a-mi-hijo-al-ortodoncista": s(
     "ortopedia-maxilar",
-    "Niño sonriendo en el sillón dental antes de su primera valoración de ortodoncia",
+    "Modelo dental con aparatología de ortodoncia",
   ),
   "mi-hijo-se-chupa-el-dedo-consecuencias": b(
     "mi-hijo-se-chupa-el-dedo-consecuencias",
-    "Revisión dental infantil en el consultorio",
+    "Chupetes sobre una mesa, uno de los hábitos que modifican el paladar",
   ),
   "mi-hijo-respira-por-la-boca": b(
     "mi-hijo-respira-por-la-boca",
-    "Niña durmiendo en su cama, momento en el que se detecta la respiración bucal",
+    "Cepillo de dientes infantil",
   ),
   "perdida-prematura-de-dientes-de-leche": s(
     "ortodoncia-infantil",
-    "Odontólogo revisando la dentadura de un niño en recambio dental",
+    "Modelos dentales infantiles con brackets",
   ),
 
   // ── Señales de alerta ──
   "senales-de-que-necesitas-endodoncia": s(
     "endodoncia",
-    "Odontólogo revisando radiografías para diagnosticar si hace falta una endodoncia",
+    "Modelo anatómico que muestra el interior de un diente y sus conductos",
   ),
   "diente-oscuro-despues-de-un-golpe": b(
     "diente-oscuro-despues-de-un-golpe",
@@ -186,7 +186,7 @@ export const IMAGENES_BLOG: Record<string, ImagenArticulo> = {
   ),
   "absceso-dental-que-hacer": b(
     "absceso-dental-que-hacer",
-    "Persona con dolor e inflamación en la zona de la mandíbula",
+    "Analgésicos sobre una superficie, lo que alivia mientras se atiende el absceso",
   ),
   "se-me-cayo-una-corona-que-hago": s(
     "retratamiento",

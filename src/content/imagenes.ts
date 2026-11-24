@@ -43,13 +43,13 @@ export const STOCK = {
   ),
   ortodoncia: u(
     "ortodoncia",
-    "photo-1777331903190-341a3dd0441b",
-    "Odontólogo explicando un tratamiento de ortodoncia a una paciente en consulta",
+    "photo-1684607632829-1e5bf4f21dab",
+    "Modelo dental con brackets colocados en ambas arcadas",
   ),
   endodoncia: u(
     "endodoncia",
-    "photo-1588776814546-1ffcf47267a5",
-    "Odontólogo revisando radiografías dentales en un negatoscopio",
+    "photo-1777793389944-f7165259a05c",
+    "Modelo anatómico que muestra el interior de un diente y sus conductos",
   ),
   "brackets-metalicos": u(
     "brackets-metalicos",
@@ -58,28 +58,28 @@ export const STOCK = {
   ),
   "brackets-esteticos": u(
     "brackets-esteticos",
-    "photo-1656514894252-fb336a3ad6a6",
-    "Primer plano de una sonrisa con brackets",
+    "photo-1720685193964-4529228a33c1",
+    "Primer plano de brackets colocados en un modelo dental",
   ),
   "alineadores-invisibles": u(
     "alineadores-invisibles",
-    "photo-1609840114035-3c981b782dfe",
-    "Paciente colocándose un alineador dental transparente",
+    "photo-1695275857301-19e5a9995108",
+    "Alineador invisible transparente sostenido con guante clínico",
   ),
   "ortodoncia-infantil": u(
     "ortodoncia-infantil",
-    "photo-1758205307836-0829c799890b",
-    "Odontólogo revisando los dientes de un niño en consulta",
+    "photo-1636307739505-413f99c224e0",
+    "Modelos dentales infantiles con brackets",
   ),
   "ortopedia-maxilar": u(
     "ortopedia-maxilar",
-    "photo-1631051103633-24959376b92d",
-    "Niño sonriendo sentado en el sillón dental antes de una revisión",
+    "photo-1720685193942-5a1c5ac7fd80",
+    "Modelo dental con aparatología de ortodoncia",
   ),
   "tratamiento-de-conductos": u(
     "tratamiento-de-conductos",
-    "photo-1606811971618-4486d14f3f99",
-    "Revisión dental con espejo e instrumental en boca",
+    "photo-1643292116094-bd2fb3ed4d64",
+    "Limas de endodoncia, el instrumental con el que se limpian los conductos",
   ),
   retratamiento: u(
     "retratamiento",
@@ -88,8 +88,8 @@ export const STOCK = {
   ),
   "urgencia-dolor-dental": u(
     "urgencia-dolor-dental",
-    "photo-1758600432436-f8abdbf44bde",
-    "Persona con gesto de dolor llevándose la mano a la mandíbula",
+    "photo-1584308666744-24d5c474f2ae",
+    "Blísteres de analgésicos, lo que alivia mientras llegas a la clínica",
   ),
 } as const;
 

@@ -120,9 +120,20 @@ dientes sin rostro. La dejamos porque en estética el resultado *es* la
 sonrisa y no identifica a nadie. Si prefieren quitarla también, se
 cambia por una guía de color.
 
-⚠️ **Pendiente de decidir:** el mismo criterio no se ha aplicado todavía
-a las ocho páginas de tratamiento ni a los 40 artículos del blog, donde
-sí hay fotos con personas. Decir si se cambian también.
+**El criterio se aplicó a todo el sitio** (24-nov-2026): se cambiaron 20
+imágenes más, seis de páginas de tratamiento y trece del blog. Ahora el
+sitio no tiene ninguna foto con una persona identificable.
+
+Lo que sí quedó, y es deliberado:
+
+- **Manos con guante** en alineadores, endodoncia e implantes. Son
+  clínicas y anónimas: no se leen como "una persona que no es de aquí".
+- **Macros de sonrisa sin rostro** en estética dental y en tres
+  artículos donde el tema *es* el resultado o el aspecto de los dientes.
+
+Efecto secundario a vigilar: el modelo dental con brackets aparece ahora
+en cinco sitios. Es coherente, pero si llegan fotos propias de
+ortodoncia, esas son las primeras que conviene sustituir.
 
 ## 📋 7. Fotografías
 
