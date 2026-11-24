@@ -155,13 +155,28 @@ Vercel responde `403 domain_not_owned`. El equipo **Crauli** es el único
 al que tiene acceso y tiene cinco dominios, ninguno es este. Lo compró
 alguien más desde su propia cuenta de Vercel.
 
-### Qué hace falta
+### Qué hace falta: un registro TXT
 
-Que quien tenga esa cuenta **transfiera el dominio al equipo Crauli**:
-Vercel → Domains → ident.com.mx → ⋯ → Transfer → Crauli. Es gratis,
-instantáneo y sin corte de servicio, porque los nameservers ya son de
-Vercel. La alternativa es que inviten a Crauli como miembro de esa
-cuenta.
+Vercel tiene un flujo para esto, "Claim Domain Ownership", y ya está
+iniciado desde el equipo Crauli. Pide verificar el control del DNS con
+un registro TXT. Como el dominio usa los nameservers de Vercel bajo la
+otra cuenta, **ese registro lo tiene que añadir quien tenga acceso a
+ella**, desde su propio panel de Vercel:
+
+| Campo | Valor |
+|---|---|
+| Tipo | `TXT` |
+| Nombre | `_vercel` |
+| Valor | `vc-domain-verify=ident.com.mx,fa85da4c3642704a6ef7` |
+
+En cuanto propague, se pulsa "Verify & Claim" en Crauli y el dominio
+pasa a nuestro equipo. El registro se puede borrar después.
+
+⚠️ Reclamar **mueve la propiedad** del dominio: sale de la cuenta donde
+está hoy. Conviene avisar a quien la tenga antes de completar el paso.
+
+No sirve la vía de "transferir entre equipos": para eso haría falta ser
+miembro de las dos cuentas, y el plan Hobby no admite miembros.
 
 ### Una vez transferido (minutos)
 
