@@ -136,49 +136,43 @@ Al revisarla salieron dos cosas que son trabajo inmediato del plan:
 También conviene cargar los servicios uno por uno con su descripción y
 declarar la zona de cobertura por municipio.
 
-## 🚨 10. Dominio: falta saber cuál es
+## 🚨 10. Dominio: está comprado, pero en otra cuenta de Vercel
 
-Estado comprobado el 23-nov-2026 en la cuenta de Vercel (equipo
-**crauli**):
+El dominio es **ident.com.mx**. Estado comprobado el 23-nov-2026:
 
-- ✅ El proyecto **ident-queretaro** existe y despliega solo desde
-  GitHub. El sitio está en vivo en
-  https://ident-queretaro.vercel.app
-- ❌ **No tiene ningún dominio propio conectado**, solo subdominios
-  `.vercel.app`.
-- ❌ En la cuenta hay 5 dominios y **ninguno es de iDent**:
-  cursogoogleads.mx, palyandyoung.com.mx, mhaconsulting.mx,
-  gerardosanchezseo.com y grupostelegramlatam.com.
-- ❌ `identqueretaro.com`, que era el marcador del código, **no está
-  registrado** (whois: "No match").
+| | |
+|---|---|
+| Registrado | 18-nov-2026 (expira 18-nov-2027) |
+| Registrador | Name.com, que es el que usa Vercel al comprar desde Vercel |
+| Nameservers | `ns1.vercel-dns.com` y `ns2.vercel-dns.com` |
+| Responde | `404 DEPLOYMENT_NOT_FOUND`, servido por Vercel |
 
-**Hace falta el nombre del dominio que compraron.** Si se compró en otro
-registrador (GoDaddy, Namecheap, Neubox, Hostinger…), no aparece en
-Vercel hasta que se añada.
+O sea: está comprado, apunta a Vercel y Vercel lo sirve, pero **no tiene
+ningún proyecto asignado**.
 
-### Cómo conectarlo cuando se sepa
+**El problema:** no está en la cuenta de Gerardo. Al intentar asignarlo,
+Vercel responde `403 domain_not_owned`. El equipo **Crauli** es el único
+al que tiene acceso y tiene cinco dominios, ninguno es este. Lo compró
+alguien más desde su propia cuenta de Vercel.
 
-1. En Vercel, proyecto `ident-queretaro` → Settings → Domains → añadir el
-   dominio y el `www`.
-2. En el registrador, apuntar el DNS. Dos opciones:
-   - Cambiar los nameservers a los de Vercel, o
-   - Registro **A** del dominio raíz a `76.76.21.21` y **CNAME** de `www`
-     a `cname.vercel-dns.com`.
-3. En Vercel → Settings → Environment Variables, crear
-   **`NEXT_PUBLIC_SITE_URL`** con el dominio (sin barra final) y
-   redesplegar.
-4. Verificar en Search Console y enviar el sitemap.
-5. Enlazar el sitio desde la ficha de Google Business Profile.
+### Qué hace falta
 
-El paso 3 es el único que toca el sitio, y no requiere cambiar código.
+Que quien tenga esa cuenta **transfiera el dominio al equipo Crauli**:
+Vercel → Domains → ident.com.mx → ⋯ → Transfer → Crauli. Es gratis,
+instantáneo y sin corte de servicio, porque los nameservers ya son de
+Vercel. La alternativa es que inviten a Crauli como miembro de esa
+cuenta.
 
-### Mientras tanto, el sitio está fuera del índice
+### Una vez transferido (minutos)
 
-Sin `NEXT_PUBLIC_SITE_URL`, el sitio usa su URL de Vercel para canónicas
-y sitemap, y se sirve con `noindex` y `robots.txt` en Disallow. Es a
-propósito: si Google indexa la dirección temporal, las señales se
-reparten entre dos URLs y después hay que redirigir todo. En cuanto se
-ponga la variable, se indexa.
+1. Asignar `ident.com.mx` y `www.ident.com.mx` al proyecto
+   `ident-queretaro`.
+2. Crear la variable `NEXT_PUBLIC_SITE_URL` con `https://ident.com.mx`.
+3. Redesplegar: se activan las canónicas al dominio real y la
+   indexación.
+4. Search Console y enlazarlo desde la ficha de Google.
+
+No hace falta tocar DNS ni código.
 
 ## 📋 10b. Correo
 - **Correo de contacto.** En Facebook aparece `omarmmolina@outlook.com`,
