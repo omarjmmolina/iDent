@@ -2,9 +2,10 @@
 
 Sitio de **iDent Clínica Dental** (El Pueblito, Corregidora, Querétaro),
 construido según el [plan de trabajo de noviembre 2026](docs/iDent_Plan_de_Trabajo_Noviembre_2026.pdf):
-**63 páginas indexables**, cada una apuntando a una búsqueda distinta, con
-foco en ortodoncia, endodoncia, cobertura por municipio y 40 artículos de
-blog para búsquedas de cola larga.
+**69 páginas indexables**, cada una apuntando a una búsqueda distinta:
+ocho verticales de servicio, cobertura por municipio y 40 artículos de
+blog para búsquedas de cola larga. Ortodoncia y endodoncia siguen siendo
+el foco del plan y las únicas con sub-páginas propias.
 
 > El plan parte de un hallazgo concreto: los dos competidores de referencia
 > tienen entre **1 y 2 URLs indexables** y **ningún sitemap**. Nadie cubre
@@ -28,10 +29,19 @@ npm run dev     # http://localhost:3000
 npm run build   # genera las 25 páginas estáticas
 ```
 
-## Las 63 páginas
+## Las 69 páginas
 
 ```
 /                                             Home
+
+Las ocho verticales
+/limpieza-dental-queretaro                    Odontología preventiva
+/resinas-y-coronas-queretaro                  Odontología restauradora
+/estetica-dental-queretaro                    Odontología estética
+/tratamiento-de-encias-queretaro              Periodoncia
+/extraccion-de-muelas-queretaro               Cirugía oral
+/dentista-para-ninos-queretaro                Odontopediatría
+
 /ortodoncia-queretaro                         Pilar
   /brackets-metalicos
   /brackets-esteticos
@@ -88,6 +98,22 @@ cambiar contenido.**
 **Regla del plan:** nada duplicado entre servicios ni entre municipios.
 Google penaliza las páginas clonadas que solo cambian el nombre de la zona.
 Si se agrega una página, se escribe texto nuevo.
+
+### Nombres de servicio: clínico y de paciente
+
+La clínica nombra sus verticales en lenguaje clínico ("odontología
+preventiva"); los pacientes buscan en lenguaje común ("limpieza dental").
+El sitio usa los dos y no renuncia a ninguno:
+
+| Campo | Para qué | Ejemplo |
+|---|---|---|
+| `nombre` | Menú y tarjetas: por donde llega el tráfico | Limpieza y prevención |
+| `nombreClinico` | Etiqueta de especialidad, visible y en el schema | Odontología preventiva |
+| `tambienBuscado` | Sinónimos y cola larga, en chips bajo el H1 | limpieza de sarro, profilaxis dental |
+
+El slug y el H1 llevan el término que la gente teclea; la especialidad
+viaja en el eyebrow, el título y `availableService` del schema. Se edita
+en `src/content/verticales.ts`.
 
 ### La regla de las zonas
 

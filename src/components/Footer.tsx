@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { CLINICA, direccionUnaLinea, telLink } from "@/content/clinica";
 import { PILARES, serviciosDe } from "@/content/servicios";
+import { VERTICALES_ORDENADAS } from "@/content/verticales";
 import { ZONAS } from "@/content/zonas";
 
 export function Footer() {
@@ -30,38 +31,29 @@ export function Footer() {
 
           <div>
             <h2 className="font-display text-sm font-semibold tracking-[0.12em] text-white uppercase">
-              Ortodoncia
+              Tratamientos
             </h2>
             <ul className="mt-4 space-y-2.5 text-sm">
-              <li>
-                <Link href={`/${PILARES.ortodoncia.slug}`} className="text-teal-300 transition hover:text-teal-200">
-                  Ortodoncia en Querétaro
-                </Link>
-              </li>
-              {orto.map((s) => (
-                <li key={s.slug}>
+              {VERTICALES_ORDENADAS.map((v) => (
+                <li key={v.clave}>
                   <Link
-                    href={`/${PILARES.ortodoncia.slug}/${s.slug}`}
+                    href={`/${v.slug}`}
                     className="text-navy-200 transition hover:text-white"
                   >
-                    {s.nombre}
+                    {v.nombre}
                   </Link>
                 </li>
               ))}
             </ul>
+
             <h2 className="mt-8 font-display text-sm font-semibold tracking-[0.12em] text-white uppercase">
-              Endodoncia
+              Ortodoncia y endodoncia
             </h2>
             <ul className="mt-4 space-y-2.5 text-sm">
-              <li>
-                <Link href={`/${PILARES.endodoncia.slug}`} className="text-teal-300 transition hover:text-teal-200">
-                  Endodoncia en Querétaro
-                </Link>
-              </li>
-              {endo.map((s) => (
+              {[...orto, ...endo].map((s) => (
                 <li key={s.slug}>
                   <Link
-                    href={`/${PILARES.endodoncia.slug}/${s.slug}`}
+                    href={`/${PILARES[s.pilar].slug}/${s.slug}`}
                     className="text-navy-200 transition hover:text-white"
                   >
                     {s.nombre}

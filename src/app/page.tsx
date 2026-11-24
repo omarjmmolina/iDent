@@ -17,10 +17,11 @@ import {
   Faqs,
 } from "@/components/ui";
 import { CLINICA, direccionUnaLinea, waLink } from "@/content/clinica";
-import { PILARES, SERVICIOS, serviciosDe } from "@/content/servicios";
+import { PILARES, serviciosDe } from "@/content/servicios";
 import { ZONAS } from "@/content/zonas";
 import { STOCK } from "@/content/imagenes";
 import { MapaClinica } from "@/components/MapaClinica";
+import { Verticales } from "@/components/Verticales";
 import { ARTICULOS } from "@/content/blog";
 
 export const metadata = buildMetadata({
@@ -300,52 +301,7 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* ───────── Todos los tratamientos (carrusel) ───────── */}
-      <section className="bg-sand-50 py-16 sm:py-20">
-        <Container>
-          <div className="reveal max-w-2xl">
-            <Eyebrow>Tratamientos</Eyebrow>
-            <h2 className="mt-3 text-3xl font-bold text-navy-800 sm:text-4xl">
-              Todo lo que resolvemos
-            </h2>
-          </div>
-          <Carrusel etiqueta="Tratamientos de iDent" className="mt-10">
-            {SERVICIOS.map((s) => (
-              <li key={s.slug} className="w-[17rem] sm:w-[19rem]">
-                <Link
-                  href={`/${PILARES[s.pilar].slug}/${s.slug}`}
-                  className="grupo-flecha tarjeta-hover flex h-full flex-col overflow-hidden rounded-3xl border border-navy-100 bg-white"
-                >
-                  <span className="zoom-foto relative block aspect-[4/3] overflow-hidden bg-navy-100">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`/img/stock/${s.slug}.webp`}
-                      alt=""
-                      loading="lazy"
-                      className="size-full object-cover"
-                    />
-                  </span>
-                  <span className="flex flex-1 flex-col p-6">
-                    <span className="text-[11px] font-semibold tracking-[0.12em] text-teal-600 uppercase">
-                      {PILARES[s.pilar].nombre}
-                    </span>
-                    <span className="mt-2 font-display text-lg leading-tight font-semibold text-navy-800">
-                      {s.nombre}
-                    </span>
-                    <span className="mt-2 flex-1 text-sm leading-relaxed text-navy-500">
-                      {s.datos[0].label}: {s.datos[0].valor}
-                    </span>
-                    <span className="mt-4 text-sm font-semibold text-teal-700">
-                      Ver tratamiento{" "}
-                      <span className="flecha inline-block">→</span>
-                    </span>
-                  </span>
-                </Link>
-              </li>
-            ))}
-          </Carrusel>
-        </Container>
-      </section>
+      <Verticales fondo="sand" />
 
       {/* ───────── Por qué iDent ───────── */}
       <section className="relative overflow-hidden bg-navy-800 py-16 text-white sm:py-24">

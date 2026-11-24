@@ -155,7 +155,27 @@ si es libre y si hay espacio para camioneta.
 
 ---
 
-## ❓ 12. Decisiones de alcance
+## ❓ 12. Dos huecos en la lista de servicios
+
+La lista que mandó la clínica **empieza en el punto 2**. Falta confirmar
+cuál era el 1: puede ser odontología general o implantología.
+
+Y **implantes** aparece en el mensaje de Karely por WhatsApp pero no en la
+lista numerada. Hoy se cubre dentro de "Resinas y coronas" (prótesis).
+¿Quieren página propia de implantología? Sería la novena vertical.
+
+## ❓ 13. Las zonas lejanas
+
+En la conversación quedó abierto quitar las zonas más lejanas. Están las
+seis: Corregidora y El Pueblito como sede, y Juriquilla, Zibatá, El
+Marqués y Huimilpan, y San Juan del Río como traslado.
+
+Mi lectura: las cuatro de traslado ya no prometen sucursal, así que el
+riesgo de doorway page está resuelto. La que menos se sostiene es San
+Juan del Río, a una hora: funciona para endodoncia y alineadores, poco
+para el resto. Si hay que recortar, esa primero.
+
+## ❓ 14. Decisiones de alcance
 
 - **Implantología y odontología general.** Facebook comunica cuatro
   especialidades. El sitio cubre las dos del plan. ¿Se abre página de

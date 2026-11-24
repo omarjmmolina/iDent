@@ -1,6 +1,7 @@
 import { CLINICA, SITE_URL, direccionUnaLinea } from "@/content/clinica";
 import { ZONAS } from "@/content/zonas";
 import type { Faq } from "@/content/servicios";
+import { VERTICALES } from "@/content/verticales";
 
 const CLINICA_ID = `${SITE_URL}/#clinica`;
 
@@ -50,19 +51,18 @@ export function clinicaSchema() {
       name: m,
       containedInPlace: { "@type": "State", name: "Querétaro" },
     })),
-    medicalSpecialty: ["Orthodontic", "Endodontic"],
-    availableService: [
-      { "@type": "MedicalProcedure", name: "Ortodoncia" },
-      { "@type": "MedicalProcedure", name: "Brackets metálicos" },
-      { "@type": "MedicalProcedure", name: "Brackets estéticos" },
-      { "@type": "MedicalProcedure", name: "Alineadores invisibles" },
-      { "@type": "MedicalProcedure", name: "Ortodoncia infantil" },
-      { "@type": "MedicalProcedure", name: "Ortopedia maxilar" },
-      { "@type": "MedicalProcedure", name: "Endodoncia" },
-      { "@type": "MedicalProcedure", name: "Tratamiento de conductos" },
-      { "@type": "MedicalProcedure", name: "Retratamiento de conductos" },
-      { "@type": "MedicalProcedure", name: "Urgencias dentales" },
-    ],
+    medicalSpecialty: ["Dentistry", "Orthodontic", "Endodontic"],
+    /**
+     * Las ocho verticales que la clínica declara, con su nombre clínico.
+     * Es donde vive la palabra clave semántica de cada especialidad.
+     */
+    availableService: VERTICALES.map((v) => ({
+      "@type": "MedicalProcedure",
+      name: v.nombreClinico,
+      alternateName: v.nombre,
+      url: `${SITE_URL}/${v.slug}`,
+    })),
+    knowsAbout: VERTICALES.flatMap((v) => v.tambienBuscado),
     sameAs: [CLINICA.redes.facebook, CLINICA.redes.instagram].filter(Boolean),
     ...(CLINICA.marcarAggregateRating
       ? {

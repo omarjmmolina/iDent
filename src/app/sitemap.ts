@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/content/clinica";
 import { PILARES, SERVICIOS } from "@/content/servicios";
 import { ZONAS } from "@/content/zonas";
+import { VERTICALES } from "@/content/verticales";
 import { ARTICULOS } from "@/content/blog";
 
 /**
@@ -14,8 +15,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const estaticas: { path: string; priority: number }[] = [
     { path: "/", priority: 1 },
-    { path: `/${PILARES.ortodoncia.slug}`, priority: 0.9 },
-    { path: `/${PILARES.endodoncia.slug}`, priority: 0.9 },
+    // Las ocho verticales. Ortodoncia y endodoncia pesan más: son el
+    // foco del plan de trabajo.
+    ...VERTICALES.map((v) => ({
+      path: `/${v.slug}`,
+      priority: v.tienePagina ? 0.9 : 0.85,
+    })),
     { path: "/precios", priority: 0.8 },
     { path: "/casos", priority: 0.7 },
     { path: "/equipo", priority: 0.6 },
