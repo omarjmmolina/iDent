@@ -8,6 +8,7 @@ import { CLINICA, waLink } from "@/content/clinica";
 import { PILARES, serviciosDe } from "@/content/servicios";
 import { VERTICALES_ORDENADAS } from "@/content/verticales";
 import { ZONAS } from "@/content/zonas";
+import { IconoVertical } from "@/components/iconos";
 
 /** Sub-páginas de las dos verticales que las tienen. */
 const SUBPAGINAS: Record<string, { nombre: string; href: string }[]> = {
@@ -72,30 +73,40 @@ export function Header() {
 
             <div className="invisible absolute inset-x-0 top-full z-50 pt-1 opacity-0 transition group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
               <div className="mx-auto max-w-6xl px-4 sm:px-6">
-                <div className="rounded-3xl border border-navy-100 bg-white p-6 shadow-xl shadow-navy-900/10">
-                  <ul className="grid grid-cols-3 gap-x-8 gap-y-5">
+                <div className="rounded-3xl border border-navy-100 bg-white p-5 shadow-xl shadow-navy-900/10">
+                  {/* Columnas que fluyen, no rejilla: con una rejilla la
+                      altura de cada fila la marca el bloque más alto
+                      (ortodoncia, con cinco sub-páginas) y el resto queda
+                      con huecos enormes. Así el contenido se reparte y las
+                      tres columnas quedan parejas solas. */}
+                  <ul className="columns-3 gap-x-10">
                     {VERTICALES_ORDENADAS.map((v) => (
-                      <li key={v.clave}>
+                      <li key={v.clave} className="mb-1 break-inside-avoid">
                         <Link
                           href={`/${v.slug}`}
-                          className="group/v block rounded-xl p-2 transition hover:bg-sand-50"
+                          className="group/v flex gap-3 rounded-xl p-2.5 transition hover:bg-sand-50"
                         >
-                          <span className="block font-display text-[15px] leading-tight font-semibold text-navy-800 transition group-hover/v:text-teal-700">
-                            {v.nombre}
+                          <span className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-xl bg-sand-100 text-navy-500 transition group-hover/v:bg-teal-50 group-hover/v:text-teal-700">
+                            <IconoVertical nombre={v.icono} className="size-[18px]" />
                           </span>
-                          <span className="mt-0.5 block text-[11px] tracking-wide text-navy-400 uppercase">
-                            {v.nombreClinico}
+                          <span className="min-w-0">
+                            <span className="block font-display text-[15px] leading-tight font-semibold text-navy-800 transition group-hover/v:text-teal-700">
+                              {v.nombre}
+                            </span>
+                            <span className="mt-0.5 block text-[10.5px] leading-tight tracking-[0.08em] text-navy-400 uppercase">
+                              {v.nombreClinico}
+                            </span>
                           </span>
                         </Link>
                         {SUBPAGINAS[v.clave] && (
-                          <ul className="mt-1 space-y-0.5 pl-2">
-                            {SUBPAGINAS[v.clave].map((s) => (
-                              <li key={s.href}>
+                          <ul className="mt-1 mb-2 ml-[3.4rem] border-l border-navy-100 pl-3">
+                            {SUBPAGINAS[v.clave].map((sp) => (
+                              <li key={sp.href}>
                                 <Link
-                                  href={s.href}
-                                  className="block rounded-lg px-2 py-1 text-[13px] text-navy-500 transition hover:text-teal-700"
+                                  href={sp.href}
+                                  className="block rounded-md py-1 text-[13.5px] text-navy-500 transition hover:text-teal-700"
                                 >
-                                  {s.nombre}
+                                  {sp.nombre}
                                 </Link>
                               </li>
                             ))}
@@ -104,7 +115,7 @@ export function Header() {
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-5 border-t border-navy-100 pt-4 text-sm text-navy-500">
+                  <p className="mt-4 border-t border-navy-100 pt-4 text-sm text-navy-500">
                     Todos los tratamientos se realizan en nuestra clínica de
                     El Pueblito, Corregidora.{" "}
                     <Link
