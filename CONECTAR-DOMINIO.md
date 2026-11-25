@@ -107,6 +107,24 @@ URLs canónicas apuntan al dominio bueno.
 Si se olvida, se agrega después en **Settings → Environment Variables** y
 se vuelve a desplegar: la variable solo entra en builds nuevos.
 
+### Dos tropiezos que ya nos pasaron
+
+**1. Tipo «Config», no «Secret».** Vercel rechaza una variable marcada
+como Secret si lleva el prefijo `NEXT_PUBLIC_`, y tiene razón: ese
+prefijo significa que el valor se incrusta en el JavaScript que llega al
+navegador, así que secreta no puede ser. Aquí no hay nada que proteger,
+el valor es la dirección pública del sitio.
+
+**2. El «Redeploy» con caché puede no servir.** Si el código no cambió,
+Vercel reutiliza el build anterior y vuelve a publicar exactamente lo
+mismo, variable nueva incluida pero sin aplicar. Dos formas de forzar un
+build de verdad:
+
+- En el diálogo de Redeploy, **desmarcar «Use existing Build Cache»**.
+- O empujar un commit cualquiera, que es lo que hacemos desde aquí.
+
+La prueba de que sirvió es que `robots.txt` deje de decir `Disallow: /`.
+
 ## Dominios
 
 En **Settings → Domains** del proyecto deben quedar los dos:
