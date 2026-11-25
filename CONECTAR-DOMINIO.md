@@ -30,40 +30,28 @@ Es el proyecto `ident` del scope `i-dent` (plan Hobby, usuario
 **Traducción: falta una sola cosa, que ese proyecto tenga un deploy.**
 En cuanto lo tenga, el dominio funciona solo.
 
-## El único obstáculo: que su Vercel vea el repo
+## El código ya está en su repo (25-nov-2026)
 
-El repo es `gerardossanchez01-creator/ident-queretaro` y es **privado**.
-Su Vercel no puede importar lo que no ve. Tres formas de resolverlo, de
-más a menos recomendable:
+Se subió el historial completo —21 commits— a **`omarjmmolina/iDent`**,
+que estaba vacío. Se empujó desde el remote `cliente`:
 
-### A. Omar como colaborador del repo (recomendada)
+```
+git remote add cliente https://github.com/omarjmmolina/iDent.git
+git push cliente main
+```
 
-Conserva el código a nuestro nombre y se puede revocar en cualquier
-momento.
+El repo sigue siendo **público** por decisión del cliente. No hay
+credenciales dentro (no se rastrea ningún `.env`), pero sí están
+visibles las notas internas de PENDIENTES.md. Si más adelante quieren
+cerrarlo, lo hace Omar en **Settings → General → Change repository
+visibility**; nuestro permiso es `push`, no `admin`.
 
-1. Pedirle a Omar su **usuario exacto de GitHub**. Si no tiene, que cree
-   uno; es gratis y tarda dos minutos.
-2. Invitarlo (`gh repo add-collaborator` no existe; va por la API):
-   ```
-   gh api --method PUT repos/gerardossanchez01-creator/ident-queretaro/collaborators/OMAR -f permission=push
-   ```
-   Con `permission=push` puede leer el repo y que Vercel lo despliegue,
-   pero no puede borrarlo ni cambiar su configuración.
-3. Que acepte la invitación desde su correo (caduca a los 7 días).
-4. En su Vercel: **Add New → Project → Import Git Repository**, conectar
-   su GitHub y elegir `ident-queretaro`.
+A partir de ahora, cada cambio se publica en los dos lados:
 
-### B. Conectar nuestro GitHub a su Vercel
-
-Si Omar no quiere saber nada de GitHub, se hace desde su pantalla con
-nuestra cuenta. Al instalar la app de Vercel en GitHub hay que elegir
-**«Only select repositories»** y marcar **solo `ident-queretaro`**. Si se
-deja en «All repositories», su Vercel ve los 16 repos de la agencia.
-
-### C. Transferir el repo a su GitHub
-
-Es el traspaso definitivo. Solo cuando el proyecto esté cerrado y
-cobrado, porque después ya no es nuestro.
+```
+git push origin main    # nuestro repo
+git push cliente main   # el de la clínica, el que despliega
+```
 
 ## Configuración al importar
 
