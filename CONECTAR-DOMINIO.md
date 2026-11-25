@@ -43,10 +43,12 @@ momento.
 
 1. Pedirle a Omar su **usuario exacto de GitHub**. Si no tiene, que cree
    uno; es gratis y tarda dos minutos.
-2. Invitarlo:
+2. Invitarlo (`gh repo add-collaborator` no existe; va por la API):
    ```
-   gh repo add-collaborator gerardossanchez01-creator/ident-queretaro OMAR --permission push
+   gh api --method PUT repos/gerardossanchez01-creator/ident-queretaro/collaborators/OMAR -f permission=push
    ```
+   Con `permission=push` puede leer el repo y que Vercel lo despliegue,
+   pero no puede borrarlo ni cambiar su configuración.
 3. Que acepte la invitación desde su correo (caduca a los 7 días).
 4. En su Vercel: **Add New → Project → Import Git Repository**, conectar
    su GitHub y elegir `ident-queretaro`.
