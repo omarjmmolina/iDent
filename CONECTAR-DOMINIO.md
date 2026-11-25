@@ -46,12 +46,26 @@ visibles las notas internas de PENDIENTES.md. Si más adelante quieren
 cerrarlo, lo hace Omar en **Settings → General → Change repository
 visibility**; nuestro permiso es `push`, no `admin`.
 
-A partir de ahora, cada cambio se publica en los dos lados:
+### Cómo se trabaja a partir de aquí
+
+El repo que despliega es el de la clínica, así que cada cambio tiene que
+llegar a los dos. Para no depender de acordarse, `origin` quedó
+configurado con **dos URLs de push**:
 
 ```
-git push origin main    # nuestro repo
-git push cliente main   # el de la clínica, el que despliega
+git remote set-url --add --push origin https://github.com/gerardossanchez01-creator/ident-queretaro.git
+git remote set-url --add --push origin https://github.com/omarjmmolina/iDent.git
 ```
+
+Con eso el flujo no cambia en nada:
+
+```
+git push origin main
+```
+
+va a los dos repos de un golpe, y el push al de la clínica es el que
+dispara el deploy en Vercel. Si alguna vez hace falta subir a uno solo,
+el remote `cliente` sigue apuntando nada más al de ellos.
 
 ## Conectar: usar el proyecto que YA existe
 
@@ -102,6 +116,24 @@ En **Settings → Domains** del proyecto deben quedar los dos:
 
 Probablemente ya estén, porque el DNS ya resuelve. Solo hay que
 confirmar que están en **este** proyecto y no en otro.
+
+## Estado al 25-nov-2026, ya conectado
+
+El proyecto quedó conectado y el sitio sirve bien el contenido, pero
+faltan dos cosas en Vercel:
+
+1. **La variable `NEXT_PUBLIC_SITE_URL` no se puso.** Consecuencia: el
+   `robots.txt` dice `Disallow: /`, las páginas salen con
+   `<meta name="robots" content="noindex, nofollow">` y las canónicas y
+   el sitemap apuntan a `ident-queretaro.vercel.app`. El sitio está
+   vivo pero invisible para Google.
+2. **La redirección está al revés.** `ident.com.mx` hace 308 hacia
+   `www.ident.com.mx`, o sea que el Primary es el `www`. La
+   configuración del sitio asume el dominio sin www.
+
+Se arregla en ese orden: poner la variable, dejar `ident.com.mx` como
+Primary con el `www` redirigiendo a él, y volver a desplegar. La
+variable solo entra en builds nuevos.
 
 ## Verificación, en este orden
 
