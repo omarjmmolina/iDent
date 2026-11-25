@@ -43,6 +43,15 @@ export const metadata: Metadata = {
   robots: DOMINIO_DEFINITIVO
     ? { index: true, follow: true }
     : { index: false, follow: false },
+  /**
+   * Verificación de Google Search Console (propiedad de ident.com.mx).
+   * Next lo imprime como <meta name="google-site-verification">. No se
+   * quita nunca: Google revisa la etiqueta cada tanto y, si desaparece,
+   * da de baja la propiedad y se pierde el histórico.
+   */
+  verification: {
+    google: "j3A7KNS9e70SKSJ9VSv8RJWCSHzaxRHrEWKtx6qXo3w",
+  },
 };
 
 export const viewport = {
