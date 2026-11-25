@@ -53,13 +53,31 @@ git push origin main    # nuestro repo
 git push cliente main   # el de la clínica, el que despliega
 ```
 
-## Configuración al importar
+## Conectar: usar el proyecto que YA existe
+
+⚠️ No crear un proyecto nuevo. El dominio ya está pegado al proyecto
+**`ident`** del scope **`i-dent`**. Si se importa el repo como proyecto
+nuevo, el dominio se queda en el viejo y hay que moverlo a mano.
+
+El camino correcto es entrar a ese proyecto y conectarle el repo:
+
+**Proyecto `ident` → Settings → Git → Connect Git Repository →
+`omarjmmolina/iDent`**
+
+⚠️ **Cuidado con la sesión de GitHub del navegador.** Al conectar, Vercel
+abre la autorización de GitHub usando la sesión que el navegador tenga
+abierta. Si es la de la agencia, su Vercel termina viendo nuestros repos.
+Conviene hacerlo en una ventana privada. La cuenta de Vercel de la
+clínica (`omarjmmolina-5059`) parece creada desde GitHub, así que lo más
+probable es que ya esté vinculada a `omarjmmolina` y el repo aparezca en
+la lista sin pedir nada.
 
 | Campo | Valor |
 |---|---|
 | Framework Preset | Next.js *(lo detecta solo)* |
 | Root Directory | `./` |
 | Build Command | el de por defecto |
+| Production Branch | `main` |
 
 **Variable de entorno, en Production. Es la que importa:**
 
