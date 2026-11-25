@@ -5,6 +5,10 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
+import {
+  GoogleTagManager,
+  GoogleTagManagerNoScript,
+} from "@/components/GoogleTagManager";
 import { clinicaSchema } from "@/lib/schema";
 import {
   CLINICA,
@@ -54,6 +58,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`${inter.variable} ${outfit.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-white">
+        <GoogleTagManagerNoScript />
+        <GoogleTagManager />
         <JsonLd data={clinicaSchema()} />
         <a
           href="#contenido"

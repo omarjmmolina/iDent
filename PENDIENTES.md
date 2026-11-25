@@ -281,6 +281,17 @@ traspasar el proyecto completo al entregar, que es cuando toca según el
 plan. Traspasarlo hoy a una cuenta sin colaboración dejaría el
 despliegue fuera de nuestro alcance con el trabajo a medias.
 
+## 📋 Aviso de privacidad y cookies
+
+Con Google Tag Manager instalado (contenedor `GTM-TWT59HQN`), en cuanto
+le cuelguen GA4 o el píxel de Meta el sitio empieza a poner cookies de
+terceros. El aviso de privacidad todavía no lo dice.
+
+Hay que añadirle un apartado de cookies y datos de navegación: qué se
+recoge, para qué y cómo se desactiva. Va junto con la revisión legal del
+aviso que ya estaba pendiente. GTM por sí solo no pone cookies; las
+ponen las etiquetas que se configuren dentro.
+
 ## 📋 10b. Correo
 - **Correo de contacto.** En Facebook aparece `omarmmolina@outlook.com`,
   que es personal. Conviene uno del dominio.
