@@ -135,23 +135,38 @@ En **Settings → Domains** del proyecto deben quedar los dos:
 Probablemente ya estén, porque el DNS ya resuelve. Solo hay que
 confirmar que están en **este** proyecto y no en otro.
 
-## Estado al 25-nov-2026, ya conectado
+## ✅ Conectado y verificado (25-nov-2026)
 
-El proyecto quedó conectado y el sitio sirve bien el contenido, pero
-faltan dos cosas en Vercel:
+```
+www.ident.com.mx  →  301  →  https://ident.com.mx/   (un solo salto)
+ident.com.mx      →  200
+canonical            https://ident.com.mx
+meta robots          index, follow
+robots.txt           Allow: / + Host + Sitemap
+sitemap              69 URLs, todas en ident.com.mx
+GTM                  GTM-TWT59HQN cargando
+Search Console       etiqueta presente en las 69 páginas
+```
 
-1. **La variable `NEXT_PUBLIC_SITE_URL` no se puso.** Consecuencia: el
-   `robots.txt` dice `Disallow: /`, las páginas salen con
-   `<meta name="robots" content="noindex, nofollow">` y las canónicas y
-   el sitemap apuntan a `ident-queretaro.vercel.app`. El sitio está
-   vivo pero invisible para Google.
-2. **La redirección está al revés.** `ident.com.mx` hace 308 hacia
-   `www.ident.com.mx`, o sea que el Primary es el `www`. La
-   configuración del sitio asume el dominio sin www.
+El sitio está en línea, indexable y midiendo. El apex es el dominio
+principal y el `www` redirige hacia él, que es lo que dicen las
+canónicas.
 
-Se arregla en ese orden: poner la variable, dejar `ident.com.mx` como
-Primary con el `www` redirigiendo a él, y volver a desplegar. La
-variable solo entra en builds nuevos.
+Queda `i-dent.vercel.app` apuntando también a producción. No estorba:
+las canónicas le dicen a Google cuál es la versión buena.
+
+### Lo que falta, y ya no es código
+
+1. **Search Console**: darle a Verificar y enviar el sitemap. Lo más
+   cómodo es dar de alta una propiedad de **dominio** (por DNS, desde el
+   mismo Vercel): cubre el apex, el `www` y cualquier subdominio.
+2. **Ficha de Google**: poner `https://ident.com.mx` como sitio web del
+   perfil de negocio. Es el enlace que más pesa para el SEO local.
+3. **Teléfono de la ficha**: sigue con el personal del doctor. Ver
+   PENDIENTES.md, punto 1.
+4. **GTM**: el contenedor carga, pero hay que configurarle las etiquetas
+   dentro (GA4 y las conversiones de clic). Los CTA ya traen
+   `data-evento`.
 
 ## Verificación, en este orden
 
