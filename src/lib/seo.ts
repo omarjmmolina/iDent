@@ -25,7 +25,20 @@ export function buildMetadata({
   imagen,
 }: Args): Metadata {
   const url = `${SITE_URL}${path}`;
-  const imagenes = imagen ? [{ url: imagen }] : undefined;
+  /**
+   * Imagen de Open Graph: la tarjeta que se ve al pegar el enlace en
+   * WhatsApp, Facebook o Slack. Sin esto sale un recuadro vacío, y la
+   * clínica comparte su sitio sobre todo por WhatsApp. Cada página puede
+   * pasar la suya; si no, va la genérica de la marca.
+   */
+  const imagenes = [
+    {
+      url: imagen ?? "/og.png",
+      width: 1200,
+      height: 630,
+      alt: `${CLINICA.nombreLegal} · ${CLINICA.tagline}`,
+    },
+  ];
   return {
     title,
     description,
