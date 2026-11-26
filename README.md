@@ -2,14 +2,14 @@
 
 Sitio de **iDent Clínica Dental** (El Pueblito, Corregidora, Querétaro),
 construido según el [plan de trabajo de noviembre 2026](docs/iDent_Plan_de_Trabajo_Noviembre_2026.pdf):
-**65 páginas indexables**, cada una apuntando a una búsqueda distinta:
+**69 páginas indexables**, cada una apuntando a una búsqueda distinta:
 ocho verticales de servicio, cobertura por municipio y 40 artículos de
 blog para búsquedas de cola larga. Ortodoncia y endodoncia siguen siendo
 el foco del plan y las únicas con sub-páginas propias.
 
 > El plan parte de un hallazgo concreto: los dos competidores de referencia
 > tienen entre **1 y 2 URLs indexables** y **ningún sitemap**. Nadie cubre
-> Corregidora ni El Pueblito con páginas propias.
+> Corregidora, El Marqués, Huimilpan ni San Juan del Río con páginas propias.
 
 ## Stack
 
@@ -29,7 +29,7 @@ npm run dev     # http://localhost:3000
 npm run build   # genera las 25 páginas estáticas
 ```
 
-## Las 65 páginas
+## Las 69 páginas
 
 ```
 /                                             Home
@@ -54,6 +54,10 @@ Las ocho verticales
   /urgencia-dolor-dental
 /zonas/dentista-en-corregidora                Sede · Prioridad 1
 /zonas/dentista-en-el-pueblito                Sede · Prioridad 1
+/zonas/dentista-para-juriquilla               Traslado · Prioridad 3
+/zonas/dentista-para-zibata                   Traslado · Prioridad 3
+/zonas/dentista-para-el-marques-y-huimilpan   Traslado · Prioridad 4
+/zonas/dentista-para-san-juan-del-rio         Traslado · Prioridad 5
 /precios   /casos   /equipo   /contacto
 /blog                                         Índice con 7 categorías
 /blog/<40 artículos>                          Cola larga
@@ -114,15 +118,11 @@ en `src/content/verticales.ts`.
 ### La regla de las zonas
 
 iDent tiene **una sola clínica**, en Plaza El Jacal, El Pueblito,
-Corregidora. No hay sucursales en ninguna otra parte.
+Corregidora. No hay sucursales en Juriquilla, Zibatá, El Marqués,
+Huimilpan ni San Juan del Río.
 
-Desde el 24-nov-2026 solo se publican zonas a **25 minutos o menos** de
-la clínica, que son las dos de la sede: Corregidora y El Pueblito. Las
-que estaban más lejos —Juriquilla, Zibatá, El Marqués y Huimilpan, San
-Juan del Río— se retiraron a petición de la clínica.
-
-Las páginas de zona existen porque los pacientes **se trasladan** a la
-clínica, no porque atendamos allá. Por eso:
+Las páginas de zona existen porque los pacientes de esas zonas **se
+trasladan**, no porque atendamos allá. Por eso:
 
 - Las zonas sede llevan slug `dentista-en-…`; las demás, `dentista-para-…`.
 - El título dice de dónde es el paciente y que la clínica está en

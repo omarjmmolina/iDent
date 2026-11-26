@@ -298,15 +298,15 @@ ponen las etiquetas que se configuren dentro.
 - **WhatsApp.** ✅ Confirmado: es el 442 143 7966, la cuenta de WhatsApp
   Business de la clínica. Los botones del sitio ya apuntan ahí.
 
-## 📋 11. Llegada a la clínica
+## 📋 11. Tiempos de traslado
 
-Con las zonas lejanas fuera (ver más abajo), ya no hay tiempos de
-traslado que contrastar: las dos páginas que quedan son del propio
-municipio.
+Las páginas de zona dicen tiempos aproximados en tráfico normal
+(Juriquilla ~40 min, Zibatá 35–45, El Marqués y Huimilpan 25–40, San Juan
+del Río 55–65). Conviene contrastarlos con lo que reportan los pacientes,
+porque son el dato que decide si alguien se anima a venir.
 
-Sigue pendiente el **estacionamiento** de Plaza El Jacal: si es propio,
-si es libre y si hay espacio para camioneta. Es el dato que más preguntan
-los pacientes que llegan en coche.
+Pendiente también el **estacionamiento** de Plaza El Jacal: si es propio,
+si es libre y si hay espacio para camioneta.
 
 ---
 
@@ -337,31 +337,26 @@ cuál era el 1: puede ser odontología general.
 Implantología ya quedó como novena vertical, con su página en
 `/implantes-dentales-queretaro`.
 
-## ✅ 13. Zonas lejanas: fuera del sitio (24-nov-2026)
+## ✅ 13. Las zonas lejanas: fuera y de vuelta
 
-Decisión de la clínica: **solo se publican zonas a 25 minutos o menos**.
-Quedan dos páginas, las dos de la sede:
+Historia corta, por si alguien revisa el historial y se confunde:
 
-- `/dentista-en-corregidora`
-- `/dentista-en-el-pueblito`
+- **24-nov-2026.** La clínica pidió quedarse solo con zonas a 25 minutos
+  o menos. Se quitaron Juriquilla, Zibatá, El Marqués y Huimilpan, y San
+  Juan del Río.
+- **25-nov-2026.** La clínica pidió recuperarlas. Vuelven las seis
+  páginas, los textos que las mencionan y el `areaServed` derivado de
+  `ZONAS`.
 
-Se retiraron Juriquilla (~40 min), Zibatá (35–45), El Marqués y
-Huimilpan (25–40) y San Juan del Río (55–65), con sus páginas, su
-entrada en el menú, su enlace en el pie y su línea del sitemap.
+Queda como estaba: dos zonas sede (`dentista-en-…`) y cuatro de traslado
+(`dentista-para-…`). Ninguna promete sucursal; todas dicen que la clínica
+está en Corregidora y llevan el mismo mapa. Eso es lo que evita que
+Google las trate como *doorway pages*, y es la regla que no se puede
+romper si más adelante se añaden más ciudades.
 
-También se reescribió todo lo que prometía atenderlas: la pregunta
-frecuente de la portada, la de ortodoncia y dos párrafos del blog ahora
-hablan de «menos de veinticinco minutos» en vez de nombrar municipios.
-Las menciones que quedan en el blog son contexto de mercado (lo que
-cuesta la ortodoncia en Juriquilla, cuánto se hace de allá a
-Corregidora): informan, no prometen cita.
-
-`areaServed` del schema ya no se deriva de `ZONAS`; está escrito a mano
-en `src/lib/schema.ts` como Corregidora y Santiago de Querétaro.
-
-Para recuperar una zona basta volver a añadirla a
-`src/content/zonas.ts`: la página, el menú y el sitemap se reconstruyen
-solos, y el bloque original está en el historial de git.
+La que menos se sostiene sigue siendo San Juan del Río, a una hora:
+funciona para endodoncia y alineadores, poco para un tratamiento con
+cita mensual. Si alguna vez hay que recortar, esa primero.
 
 ## ❓ 14. Decisiones de alcance
 

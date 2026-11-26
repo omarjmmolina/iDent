@@ -35,7 +35,7 @@ export const metadata = buildMetadata({
 const FAQS_HOME = [
   {
     q: "¿Dónde está iDent?",
-    a: `Estamos en ${direccionUnaLinea}. Atendemos sobre todo a pacientes de Corregidora, El Pueblito y la zona sur de Santiago de Querétaro, que es desde donde se llega en menos de veinticinco minutos.`,
+    a: `Estamos en ${direccionUnaLinea}. Atendemos a pacientes de Corregidora, El Pueblito, Santiago de Querétaro, Juriquilla, Zibatá, El Marqués, Huimilpan y San Juan del Río.`,
   },
   {
     q: "¿Qué incluye la valoración?",

@@ -268,7 +268,7 @@ export const COMPARATIVAS_ARTICULOS: Articulo[] = [
       { tipo: "lista", items: ["Si vives lejos y quieres ortodoncia, pregunta si pueden espaciar los ajustes a seis semanas.", "Pregunta si los alineadores son viables en tu caso: las revisiones son cada seis a ocho semanas.", "Pide que te agenden la serie completa de citas desde el inicio, siempre en el mismo horario.", "Pide confirmación el día anterior para no hacer el viaje en balde.", "Agrupa procedimientos: valoración, radiografía y limpieza en una sola visita."] },
       { tipo: "h2", texto: "La diferencia de precio también cuenta" },
       { tipo: "p", texto: "En el área metropolitana, el mismo tratamiento se cotiza distinto según la zona. Cuando la diferencia en un tratamiento completo es de varios miles de pesos, el cálculo cambia: cuarenta minutos una vez al mes empiezan a tener sentido." },
-      { tipo: "nota", texto: "Nuestra clínica está en El Pueblito, Corregidora, y trabajamos sobre todo con pacientes que llegan en menos de veinticinco minutos: en un tratamiento de veinte citas, esa cercanía es lo que hace que se termine." },
+      { tipo: "nota", texto: "A los pacientes que vienen de Juriquilla, Zibatá o San Juan del Río les organizamos las citas con ese criterio. Tenemos una página por zona con la ruta y el tiempo estimado." },
     ],
     faqs: [
       { q: "¿Puedo hacerme la valoración lejos y el tratamiento cerca?", a: "La valoración y una segunda opinión sí se pueden buscar donde quieras. El tratamiento de ortodoncia conviene hacerlo con quien pueda darte seguimiento real." },

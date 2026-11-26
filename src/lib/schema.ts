@@ -1,4 +1,5 @@
 import { CLINICA, SITE_URL, direccionUnaLinea } from "@/content/clinica";
+import { ZONAS } from "@/content/zonas";
 import type { Faq } from "@/content/servicios";
 import { VERTICALES } from "@/content/verticales";
 
@@ -43,13 +44,9 @@ export function clinicaSchema() {
       opens: h.abre,
       closes: h.cierra,
     })),
-    /**
-     * Área de servicio declarada: la clínica está en Corregidora y los
-     * pacientes se desplazan a ella. Solo se declara lo que queda a 25
-     * minutos o menos (criterio del 24-nov-2026), por eso está escrita a
-     * mano y ya no se deriva de ZONAS.
-     */
-    areaServed: ["Corregidora", "Santiago de Querétaro"].map((m) => ({
+    areaServed: [
+      ...new Set(ZONAS.flatMap((z) => z.municipio.split(" y "))),
+    ].map((m) => ({
       "@type": "City",
       name: m,
       containedInPlace: { "@type": "State", name: "Querétaro" },
